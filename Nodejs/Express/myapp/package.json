@@ -1,0 +1,17 @@
+{
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "this is a test about express",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "express"
+    ],
+    "author": "jesse",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.15.3"
+    }
+}

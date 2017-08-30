@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>开始使用layer</title>
+    <style type="text/css">
+    .layer-photos-demo {
+        margin: 10px 0;
+    }
+    
+    .layer-photos-demo img {
+        width: 160px;
+        height: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <button id="test1">小小提示层</button>
+    <p>你必须先引入jQuery1.8或以上版本</p>
+    <button id="test2">弹出页面层</button>
+    <div id="layer-photos-demo" class="layer-photos-demo">
+        <img layer-src="http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" layer-pid="" src="http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" alt="layer宣传图">
+        <img layer-src="http://sentsin.qiniudn.com/sentsinmy5.jpg" layer-pid="" src="http://sentsin.qiniudn.com/sentsinmy5.jpg" alt="我入互联网这五年">
+        <img layer-src="" layer-pid="" src="http://sentsin.qiniudn.com/sentsin_39101a660cf4671b7ec297a74cc652c74152104f.jpg" alt="微摄影">
+        <img layer-src="http://sentsin.qiniudn.com/sentsinsan01.jpg" layer-pid="" src="http://sentsin.qiniudn.com/sentsinsan01.jpg" alt="三清山">
+        <img layer-src="http://ww2.sinaimg.cn/mw1024/5db11ff4jw1ehcyirr6quj20q00ex42w.jpg" layer-pid="" src="http://ww2.sinaimg.cn/mw1024/5db11ff4jw1ehcyirr6quj20q00ex42w.jpg" alt="国足">
+        <img layer-src="http://sentsin.qiniudn.com/sentsin_7dee4a4134214dd2d8ff390fbeb11333.jpg" layer-pid="" src="http://sentsin.qiniudn.com/sentsin_7dee4a4134214dd2d8ff390fbeb11333.jpg" alt="劲草">
+    </div>
+    <button id="test3">弹出相册层</button>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/layer/2.0/layer.js"></script>
+    <script>
+    $('#test1').on('click', function() {
+        layer.msg('Hello layer');
+    });
+    $('#test2').on('click', function() {
+        layer.open({
+            type: 1,
+            area: ['600px', '360px'],
+            shadeClose: true,
+            content: '\<\div style="padding:20px;">hello world!\<\/div>'
+        })
+    });
+    layer.config({
+        extend: 'extend/layer.ext.js'
+    });
+    //相册层
+    layer.ready(function() { //为了layer.ext.js加载完毕再执行
+        layer.photos({
+            photos: '#layer-photos-demo'
+        });
+    });
+    </script>
+</body>
+
+</html>

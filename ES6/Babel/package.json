@@ -1,0 +1,18 @@
+{
+  "name": "es6-to-es5",
+  "version": "1.0.0",
+  "main": "test.js",
+  "dependencies": {
+    "babel-cli":"^6.26.0",
+    "babel-preset-es2015":"^6.24.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start":"babel test.js -o compiled.js"
+  },
+  "keywords": [
+    "babel"
+  ],
+  "author": "jesse",
+  "license": "ISC"
+}

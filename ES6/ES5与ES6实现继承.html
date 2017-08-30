@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ES5/ES6实现继承</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Jesse">
+  <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script type="text/javascript">
+      //ES5实现继承
+      // function Sup(name){
+      //   this.name = name;
+      // }
+      // Sup.prototype.printName = function(){
+      //   console.log(this.name);
+      // }
+      // function Sub(name,age){
+      //   Sup.call(this,name);
+      //   this.age = age;
+      // }
+      // Sub.prototype = new Sup;
+      // Sub.prototype.constructor = Sub;
+      // Sub.prototype.printAge = function(){
+      //   console.log(this.age);
+      // }
+      // var jack = new Sub('jack',23);
+      // console.log(jack.__proto__ === Sub.prototype);
+      // console.log(Sub.prototype.__proto__ === Sup.prototype);
+      // console.log(Sup.prototype.__proto__ === Object.prototype);
+      // console.log(Object.prototype.__proto__ === null);
+      // console.log(jack.name); //jack
+      // console.log(jack.age); //23
+      //ES6实现继承
+      class sup{
+        constructor(name){
+          this.name = name;
+        }
+        printName(){
+          console.log(this.name);
+        }
+      }
+      class sub extends sup{
+        constructor(name,age){
+          super(name);
+          this.age = age;
+        }
+        printAge(){
+          console.log(this.age)
+        }
+      }
+      let jack = new sub('jack',23);
+      jack.printName();
+      jack.printAge();
+    </script>
+</body>
+
+</html>

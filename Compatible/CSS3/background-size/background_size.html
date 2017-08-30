@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>background-size</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Jesse">
+    <style type="text/css">
+    .size {
+        width: 400px;
+        height: 400px;
+        margin: 20px auto 0;
+        background: green url(img/1.jpg) no-repeat scroll center 0;
+        background-size: cover;  
+    }
+    </style>
+    <!--[if IE 8]>
+    	<style type="text/css">
+			.size{-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/1.jpg', sizingMethod='scale')";} 
+			//该函数只能模仿cover值，IE8下效果与IE9/10稍有不同，图片占满背景大小且不超出
+		</style>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="size">
+    </div>
+</body>
+
+</html>

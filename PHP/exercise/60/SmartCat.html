@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>聪明的猫</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Jesse">
+    <style type="text/css">
+    	.retangle,.circle{display:none;}
+    </style>
+</head>
+
+<body>
+	<h3>聪明的猫</h3>
+	<input id="opeartion" type="radio" name="type" value="" checked="true" onclick="change(opeartionFrom)">四则运算
+	<input id="retangle" type="radio" name="type" value="" onclick="change(retangleFrom)">矩形面积
+	<input id="circle" type="radio" name="type" value="" onclick="change(circleFrom)">圆形面积
+	<br>
+	<br>
+	<div>
+		<form action="SmartCat.php" method="post" class="opeartion">
+			<label>请输入第一个数：</label>
+			<input type="text" name="num1">
+			<br>
+			<label>请输入第二个数：</label>
+			<input type="text" name="num2">
+			<br>
+			<label>请选择运算符：</label>
+			<select name="opear">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+			</select>
+			<br>
+			<input type="hidden" name="doing" value="opeartion">
+			<input type="submit" value="开始计算">
+		</form>
+		<form action="SmartCat.php" method="post" class="retangle">
+			<label>请输入矩形的长：</label>
+			<input type="text" name="length">
+			<br>
+			<label>请输入矩形的宽：</label>
+			<input type="text" name="width">
+			<br>
+			<input type="hidden" name="doing" value="retangle">
+			<input type="submit" value="开始计算面积">
+		</form>
+		<form action="SmartCat.php" method="post" class="circle">
+			<label>请输入圆的半径：</label>
+			<input type="text" name="radius">
+			<br>
+			<input type="hidden" name="doing" value="circle">
+			<input type="submit" value="开始计算面积">
+		</form>
+	</div>
+	<script type="text/javascript">
+		var opeartionFrom = document.querySelector('.opeartion'),
+		retangleFrom      = document.querySelector('.retangle'),
+		circleFrom        = document.querySelector('.circle');
+		function change(form){
+			var forms = document.forms;
+			for(var i = 0;i < 3;i++){
+				if(form === forms[i]){
+					forms[i].style.display = "block";
+				}else{
+					forms[i].style.display = "none";
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

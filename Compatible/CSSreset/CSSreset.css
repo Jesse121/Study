@@ -1,0 +1,80 @@
+/*Mobile css reset*/
+body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%}   /*继承body设定的字体大小*/
+/* 根据屏幕大小改变文字大小 */
+@media screen and (min-width: 320px) and (max-width:360px) {
+    /*手机屏幕在320px~360px之间*/
+    html {
+        font-size:62.5%;/*62.5%相当于10px，1rem=10px*/
+    }
+}
+@media screen and (min-width: 360px) and (max-width:480px) {
+    /*手机屏幕在360px~480px之间*/
+    html {
+        font-size: 75%;/*75%相当于12px，1rem=12px*/
+    }
+}
+@media screen and (min-width: 480px) and (max-width:640px) {
+    /*手机屏幕在480px~640px之间*/
+    html {
+        font-size: 87.5%;/*87.5%相当于14px，1rem=14px*/
+    }
+}
+@media screen and (min-width: 640px) {
+    /*手机屏幕在640px以上*/
+    html {
+        font-size: 100%;/*100%相当于16px，1rem=16px*/
+    }
+}  
+html { -webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}/* 禁用iPhone中Safari的字号自动调整 */
+body{font-family: Helvetica; color:#555; background-color:#F7F7F7;max-width: 640px;min-width:320px;margin: 0 auto;height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch;-webkit-font-smoothing: antialiased;}
+.clearfix:after{content:"."; display:block; visibility:hidden; height:0; clear:both;}   /*除去浮动*/
+a { text-decoration: none; outline: none; -webkit-tap-highlight-color: transparent;display:inline-block; }/*设置的tap  a标签的时候出现的黑色高亮*/
+a:hover{text-decoration: none;}
+ul,ol{list-style: none;margin:0;padding:0;} 
+img {max-width: 100%;height: auto;} /* 图片自适应 */
+fieldset,img{border:0}
+em,i{font-style: normal}  /*如需默认样式可修改*/
+button,input,select,textarea{vertical-align:middle;outline:none;}  /*除去获得焦点下的蓝色边框*/
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #ccc;}  /*修改placeholder文字颜色*/
+input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;border-radius: 0;}/* 去除iphone ipad 设备默认按钮样式 */
+
+
+/*PC css reset*/
+body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%}   /*继承body设定的字体大小*/    
+body{font-family: "Microsoft YaHei",Tahoma,Arial,simsun,sans-serif;}
+.clearfix:after{content:"."; display:block; visibility:hidden; height:0; clear:both;} /*除去浮动*/
+.clearfix{zoom:1;} 
+.left{float:left;}.right{float:right;}
+a:hover{text-decoration: none;}  
+ul,ol{list-style: none;margin:0;padding:0;}    /*当要添加小图标时可修改*/
+img{vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;} /*在IE下除去边框和底部空白*/
+fieldset,img{border:0}
+em,i{font-style: normal}  /*如需默认样式可修改*/
+input,select,textarea{vertical-align:middle;outline:none;}  /*除去获得焦点下的蓝色边框*/
+textarea{resize:none;}  /*禁止用户缩放文本框*/
+table {border-collapse: collapse;border-spacing: 0;}  
+button,input[type="button"],input[type="reset"],input[type="submit"] {cursor:pointer;-webkit-appearance:button;-moz-appearance:button;} /*按钮初始化*/
+input::-moz-placeholder,textarea::-moz-placeholder {color: #ccc;}   /*修改placeholder文字颜色*/
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #ccc;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #ccc;}
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section,main {display: block;}/*HTML5标签初始化*/
+
+
+
+
+
+
+
+
+address,cite,dfn,em,var{font-style:normal}
+code,kbd,pre,samp,tt{font-family:"Courier New",Courier,monospace}
+small{font-size:12px}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help}
+legend{color:#000}
+audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
+a:active { outline: 0; }
+input[type="text"],input[type="tel"] {-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: '';}

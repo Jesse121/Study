@@ -1,0 +1,17 @@
+Yii 1.5  PHP框架
+
+placeholder 兼容插件
+
+plupload 上传插件
+
+layer
+
+jquery.jcrop 图像裁剪
+
+return和return false的区别
+return 可防止默认事件行为，把控制权返回给页面
+return false 取消默认动作
+
+前端开发中常用/用过的插件清单
+
+用seajs做几个实例

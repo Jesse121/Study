@@ -56,9 +56,11 @@ input,select,textarea{vertical-align:middle;outline:none;}  /*除去获得焦点
 textarea{resize:none;}  /*禁止用户缩放文本框*/
 table {border-collapse: collapse;border-spacing: 0;}  
 button,input[type="button"],input[type="reset"],input[type="submit"] {cursor:pointer;-webkit-appearance:button;-moz-appearance:button;} /*按钮初始化*/
-input::-moz-placeholder,textarea::-moz-placeholder {color: #ccc;}   /*修改placeholder文字颜色*/
-input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #ccc;}
-input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #ccc;}
+
+::-webkit-input-placeholder,::-webkit-input-placeholder {color: #ccc;}
+:-ms-input-placeholder,:-ms-input-placeholder {color: #ccc;}
+::-moz-placeholder,::-moz-placeholder {color: #ccc;}   /*修改placeholder文字颜色*/
+
 article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section,main {display: block;}/*HTML5标签初始化*/
 
 

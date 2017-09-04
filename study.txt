@@ -5,3 +5,7 @@
 用seajs做几个实例
 
 http://blog.163.com/chenzizhao_77/blog/static/255798037201771691515900/
+
+yarn
+
+chmod -R 777 *

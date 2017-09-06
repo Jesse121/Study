@@ -8,6 +8,5 @@ http://blog.163.com/chenzizhao_77/blog/static/255798037201771691515900/
 
 yarn
 
-chmod -R 777 *
-
+zepto click事件
 picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片

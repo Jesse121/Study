@@ -6,13 +6,25 @@ categories:
 tags: 
 - CSS
 ---
-作为一个前端开发工程师保证页面具有良好的兼容性是我们的基本职责，但是对于那些古老的浏览器的兼容问题的调试是一件非常痛苦的事情。从IE6一路走来，经历了各种无法想象的不兼容问题，可我还是耐着性子，本着以发现问题，分析问题，解决问题的精神，一步步将问题处理掉。每碰到一个关于CSS兼容性问题我就将其记下（bug总有消完的一天），陆陆续续记了很久才有了这篇内容，并且后续将一直更新。  
+作为一个前端开发工程师保证页面具有良好的兼容性是我们的基本职责，但是对于那些古老的浏览器的兼容问题的调试是一件非常痛苦的事情。从IE6一路走来，经历了各种无法想象的不兼容问题，可我还是耐着性子，本着以发现问题，分析问题，解决问题的精神，一步步将问题处理掉。每碰到一个关于CSS兼容性问题我就将其记下（兼容问题总有消完的一天），陆陆续续记了很久才有了这篇内容，并且后续将一直更新。  
 如今市场早已抛弃IE6/7，IE6/7的兼容问题解决办法这里就不展示了(可在源码中的注释里查看)  
 关于CSS3的兼容性问题可参见我的这篇博文[CSS3新特性，兼容性，兼容方法总结](http://www.jesse131.cn/blog/articles/html-css/css3-new-features-compatibility-compatibility-methods-summary.html),所以在本文中就不包含CSS3了。
 
 <!-- more -->
+### 统一浏览器默认样式
+推荐使用Normalize.css
+```html
+<link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css">
+```
+### 浏览器兼容前缀
+```
+-o-        //Opera
+-ms-       //IE
+-moz-      //Firefox
+-webkit-   //Chrome
+```
 
-### chrome 最小字体的兼容性
+### Chrome最小字体的兼容性
 问题描述：ff和IE最小字体可设置为1px，可是chorme中文版最小字体是12px，小于12px的字体全部显示为12px.
 解决方案：chrome支持CSS3的缩放属性scale，可用以下方法来解决
 ```css
@@ -34,22 +46,21 @@ img{
 }
 ```
 ### img图片下的莫名留白问题
-问题描述：图片底部的空隙实际上涉及行内元素的布局模型，图片默认的垂直对齐方式是基线，而基线的位置是与字体相关的。所以在某些时候，图片底部的空隙可能是 2px，而有时可能是 4px 或更多。不同的 font-size 应该也会影响到这个空隙的大小。
+问题描述：图片底部的空隙实际上涉及行内元素的布局模型，图片默认的垂直对齐方式是基线，而基线的位置是与字体相关的。所以在某些时候，图片底部的空隙可能是 2px，而有时可能是 4px 或更多。不同的 font-size 应该也会影响到这个空隙的大小。  
 解决方法：给img设定 display:block或者vertical-align:top或bottom。
 
-### ff不识别background-position-y 或background-position-x;
-问题描述：在设置background-position属性时，firefox不识别不识别background-position-y 或background-position-x;
-解决办法：background-position:x y;两个都写；
-
-
+### Firefox不识别background-position-y 或background-position-x;
+问题描述：在设置background-position属性时，firefox不识别background-position-y 或background-position-x;  
+解决办法：background-position:x y;两个都写，不要单独设置；
 
 
 ### IE CSS hack
-css hack是指一种兼容css在不同浏览器中正确显示的技巧方法
+css hack是指一种兼容css在不同浏览器中正确显示的技巧方法  
+针对不同的IE浏览器，可以使用不同的字符对特定版本的IE浏览器进行样式控制  
 ```
 .header {_width:100px;}            /* IE6专用*/
-.header {*width:100px;}            /* IE6、IE7共用*/
-.header {width:100px\0;}           /* IE8、IE9共用*/
+.header {*width:100px;}            /* IE6/7共用*/
+.header {width:100px\0;}           /* IE8/9/10共用*/
 .header {width:100px\9;}           /* IE6/7/8/9/10共用*/
 ```
 
@@ -57,7 +68,7 @@ css hack是指一种兼容css在不同浏览器中正确显示的技巧方法
 ### IE专用条件注释
 ```html
 <!--[if !IE]><!-->
-<P>您使用不是IE</P>
+<P>您使用不是IE，IE10可能有问题</P> 
 <!--<![endif]-->
 
 <!--IE8及以下 -->

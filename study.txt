@@ -11,3 +11,5 @@ yarn
 chmod -R 777 *
 
 zepto clickÊÂ¼ş
+
+vmware workstation

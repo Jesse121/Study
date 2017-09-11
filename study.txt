@@ -13,3 +13,6 @@ chmod -R 777 *
 zepto click事件
 
 vmware workstation
+
+Linux删除文件夹命令
+rm -rf 目录名字

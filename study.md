@@ -5,3 +5,6 @@ picturefillÌá¹©ÁËÕë¶Ôpicture±êÇ©ºÍsrcsetÊôĞÔµÄ¼æÈİ ÕâÁ©Ö§³ÖÉè±¸·Ö±æÂÊ²»Í¬¼ÓÔØ²»Í
 flexboxÊÇ·ñ¿ÉÓÃ
 
 gulp-image
+
+½«ÏîÄ¿³£Ê¹ÓÃ×îĞÂÖªÊ¶À´Ğ´ 
+gulp webpack´ò°ü vueµÄÊ¹ÓÃ ES6  Ô­Éújs 

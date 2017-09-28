@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>markdown</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="style.css" rel="stylesheet">
+    <script src="../js/vue.js"></script>
+    <script src="lodash.min.js"></script>
+    <script src="marked.js"></script>
+</head>
+
+<body>
+    <div id="editor">
+        <textarea :value="input" @input="update"></textarea>
+        <div v-html="compiledMarkdown"></div>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#editor',
+            data: {
+                input: '# hello'
+            },
+            computed: {
+                compiledMarkdown: function() {
+                    return marked(this.input, { sanitize: true })
+                }
+            },
+            methods: {
+                update: _.debounce(function(e) {
+                    this.input = e.target.value
+                }, 300)
+            }
+        })
+    </script>
+</body>
+
+</html>

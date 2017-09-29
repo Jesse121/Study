@@ -1,3 +1,4 @@
+//Terminal string styling done right
 var chalk = require('chalk')
 var semver = require('semver')
 var packageConfig = require('../package.json')

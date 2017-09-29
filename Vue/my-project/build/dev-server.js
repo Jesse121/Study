@@ -5,8 +5,6 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
-//A better node-open. 
-//Opens stuff like websites, files, executables. Cross-platform.
 var opn = require('opn')
 var path = require('path')
 var express = require('express')

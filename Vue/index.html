@@ -13,24 +13,51 @@
 
 <body>
     <div id='example-3'>
-        <select v-model="selected">
-            <option v-for="option in options" :value="option.value">
-                {{ option.text }}
-            </option>
-        </select>
-        <span>Selected: {{ selected }}</span>
+        <!-- <input v-model="todo" placeholder="what you want to do"> -->
+        <p v-once>this is what you want: {{ msg + " name" }}</p>
+        <div v-html="rawHtml"></div>
+        <div v-bind:id="'dynamic-' + 'id'">123</div>
+        <!-- <div v-bind:class="[isActive ? activeClass : '', errorClass]">test</div> -->
+        <div v-bind:style="[baseStyles, overridingStyles]">test</div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <h1 v-show="isShow">Hello!</h1>
+        <ul>
+            <li v-for="n in evenNumbers">{{ n }}</li>
+        </ul>
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        <br>
+        <p style="white-space: pre-line;">{{ message }}</p>
+        <input type="checkbox" id="checkbox" v-model="checked" :value="checked">
+        <label for="checkbox">basketball</label>
     </div>
     <script type="text/javascript">
-        new Vue({
+        var vm = new Vue({
             el: '#example-3',
             data: {
-                selected: 'A',
-                options: [
-                    { text: 'One', value: 'A' },
-                    { text: 'Two', value: 'B' },
-                    { text: 'Three', value: 'C' }
-                ]
+                msg: "test",
+                message:"",
+                checked:false,
+                rawHtml: '<p>this is a test</p>',
+                'dynamic-id': 'test',
+                isButtonDisabled: true,
+                baseStyles: {
+                    'color': 'red'
+                },
+                overridingStyles: {
+                    'font-size': '14px'
+                },
+                isShow: true,
+                numbers: [1, 2, 3, 4, 5]
+            },
+            computed: {
+                evenNumbers: function() {
+                    return this.numbers.sort(function(a,b){
+                        return b - a;
+                    });
+                }
             }
+
+
         })
     </script>
 </body>

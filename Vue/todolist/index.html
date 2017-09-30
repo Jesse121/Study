@@ -9,7 +9,7 @@
     <meta name="keywords" content="">
     <link href="https://unpkg.com/todomvc-app-css@2.0.6/index.css" rel="stylesheet">
     <style type="text/css">
-        [v-cloak] { display: none; }
+        /*[v-cloak] { display: none; }*/
     </style>
     <script src="js/vue.js"></script>
 </head>
@@ -36,8 +36,8 @@
         </section>
         <footer class="footer" v-show="todos.length" v-cloak>
             <span class="todo-count">
-          <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
-        </span>
+                <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
+            </span>
             <ul class="filters">
                 <li><a href="#/all" :class="{ selected: visibility == 'all' }">All</a></li>
                 <li><a href="#/active" :class="{ selected: visibility == 'active' }">Active</a></li>
@@ -53,6 +53,7 @@
         <p>Written by <a href="http://evanyou.me">Evan You</a></p>
         <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
+    <script src="js/todolist.js"></script>
 </body>
 
 </html>

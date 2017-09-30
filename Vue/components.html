@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>components</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+      <my-component></my-component>
+    </div>
+    <script type="text/javascript">
+        Vue.component('my-component', {
+          template: '<div>A custom component!</div>'
+        })
+        // 创建根实例
+        new Vue({
+          el: '#example'
+        })
+    </script>
+</body>
+
+</html>

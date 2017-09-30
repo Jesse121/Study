@@ -37,6 +37,7 @@ var filters = {
 // app Vue instance
 var app = new Vue({
     // app initial state
+    el:'.todoapp',
     data: {
         todos: todoStorage.fetch(),
         newTodo: '',
@@ -154,4 +155,4 @@ window.addEventListener('hashchange', onHashChange)
 onHashChange()
 
 // mount
-app.$mount('.todoapp')
+// app.$mount('.todoapp')

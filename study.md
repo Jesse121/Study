@@ -1,4 +1,10 @@
 zepto click事件
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  FastClick.attach(document.body)
+}, false)
+</script>
 
 picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
 
@@ -12,12 +18,4 @@ ejs
 vue 
 layer
 express nodejs
-
 lodash
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      FastClick.attach(document.body)
-    }, false)
-    </script>

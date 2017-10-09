@@ -17,3 +17,6 @@ lodash
 vue todomvc
 flexible
 
+
+
+编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果

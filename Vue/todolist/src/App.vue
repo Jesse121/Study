@@ -33,6 +33,7 @@
             </button>
         </footer>
     </section>
+    <router-view></router-view>
   </div>
 </template>
 

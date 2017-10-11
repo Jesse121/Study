@@ -2,7 +2,7 @@
   <div id="app">
     <section class="todoapp">
         <header class="header">
-            <h1>todos</h1>
+            <h1>todos</h1>  
             <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?" v-model="newTodo" @keyup.enter="addTodo">
         </header>
         <section class="main" v-show="todos.length" v-cloak>
@@ -14,8 +14,7 @@
                         <label @dblclick="editTodo(todo)">{{ todo.title }}</label>
                         <button class="destroy" @click="removeTodo(todo)"></button>
                     </div>
-                    <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)"
-                        @keyup.esc="cancelEdit(todo)">
+                    <input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" @blur="doneEdit(todo)" @keyup.enter="doneEdit(todo)"  @keyup.esc="cancelEdit(todo)">
                 </li>
             </ul>
         </section>
@@ -24,6 +23,7 @@
                 <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
             </span>
             <ul class="filters">
+                <li><a href="#/all" @click="proxy">All</a></li>
                 <li><a href="#/all" :class="{ selected: visibility == 'all' }">All</a></li>
                 <li><a href="#/active" :class="{ selected: visibility == 'active' }">Active</a></li>
                 <li><a href="#/completed" :class="{ selected: visibility == 'completed' }">Completed</a></li>
@@ -70,6 +70,7 @@ var filters = {
 
 export default {
   name: 'app',
+  // 用函数是使得每个实例中的data彼此独立不会互相干扰
   data: function () {
     return {
       todos: todoStorage.fetch(),
@@ -150,6 +151,18 @@ export default {
 
     removeCompleted: function () {
       this.todos = filters.active(this.todos)
+    },
+
+    proxy: function () {
+      var xhr = new XMLHttpRequest()
+      var url = '/api/hello'
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText)
+        }
+      }
+      xhr.open('GET', url, true)
+      xhr.send(null)
     }
   },
   directives: {
@@ -163,6 +176,9 @@ export default {
 </script>
 
 <style>
+  [v-cloak] {
+    display: none;
+  }
   html,
   body {
     margin: 0;

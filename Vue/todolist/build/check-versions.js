@@ -1,8 +1,13 @@
+// 设置命令行文字颜色
 var chalk = require('chalk')
+// npm语义化的版本管理器，是用来对特定的版本号做判断的
 var semver = require('semver')
 var packageConfig = require('../package.json')
 var shell = require('shelljs')
+
 function exec (cmd) {
+  // 脚本可以通过 child_process 模块新建子进程，从而执行 Unix 系统命令
+  //下面这段代码实际就是把cmd这个参数传递的值，转化成前后没有空格的字符串，也就是版本号
   return require('child_process').execSync(cmd).toString().trim()
 }
 
@@ -43,6 +48,7 @@ module.exports = function () {
       console.log('  ' + warning)
     }
     console.log()
+    //退出当前程序
     process.exit(1)
   }
 }

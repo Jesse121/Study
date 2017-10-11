@@ -27,11 +27,11 @@ var options = {
   index: false,
   maxAge: '1d',
   redirect: false,
-  setHeaders: function (res, path, stat) {
+  setHeaders: function(res, path, stat) {
     res.set('x-timestamp', Date.now());
   }
 };
-app.use(express.static(path.join(__dirname, 'public'),options));
+app.use(express.static(path.join(__dirname, 'public'), options));
 
 app.use('/', index);
 app.use('/users', users);

@@ -1,14 +1,16 @@
 require('./check-versions')()
 
 var config = require('../config')
-if (!process.env.NODE_ENV) {
+if (!process.env.NODE_ENV) {//默认开发环境
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
+//用来在默认浏览器中打开链接 opn(url)
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+//此插件是用来代理请求的只能用于开发环境，目的主要是解决跨域请求后台api
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 
@@ -22,12 +24,13 @@ var proxyTable = config.dev.proxyTable
 
 var app = express()
 var compiler = webpack(webpackConfig)
-
+//webpack-dev-middleware将修改的文件编译后，告诉nodejs服务器哪些文件修改了
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true
 })
-
+//这个插件是用来将webpack-dev-middleware编译更新后的文件通知浏览器，
+//并且告诉浏览器如何更新文件，从而实现 Webpack hot reloading
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
   heartbeat: 2000
@@ -74,7 +77,7 @@ console.log('> Starting dev server...')
 devMiddleware.waitUntilValid(() => {
   console.log('> Listening at ' + uri + '\n')
   // when env is testing, don't need open it
-  if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
+  if(autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
     opn(uri)
   }
   _resolve()

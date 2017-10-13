@@ -10,6 +10,9 @@
     <link href="css/checkout.css" rel="stylesheet">
     <link href="css/modal.css" rel="stylesheet">
     <style type="text/css">
+        [v-cloak]{
+          display:none;
+        }
         .quantity input {
             width: 40px;
             padding: 5px 10px;
@@ -19,7 +22,7 @@
 </head>
 <body>
     <div class="checkout">
-      <div id="app">
+      <div id="app" v-cloak>
         <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <symbol id="icon-add" viewBox="0 0 32 32">
@@ -99,11 +102,11 @@
                       </div>
                     </div>
                     <div class="cart-tab-4">
-                      <div class="item-price-total">{{item.productPrice*item.productQuantity  | money("元")}}</div>
+                      <div class="item-price-total">{{item.productPrice*item.productQuantity | money("元")}}</div>
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-operation">
-                        <a href="javascript:void 0" class="item-edit-btn" @click="delConfirm()">
+                        <a href="javascript:void 0" class="item-edit-btn" @click="delConfirm(item)">
                           <svg class="icon icon-del"><use xlink:href="#icon-del" ></use></svg>
                         </a>
                       </div>
@@ -132,7 +135,7 @@
               </div>
               <div class="cart-foot-r">
                 <div class="item-total">
-                  Item total: <span class="total-price">{{totalMoney | money("元") }}</span>
+                  Item total: <span class="total-price">{{totalMoney | money("元")}}</span>
                 </div>
                 <div class="next-btn-wrap">
                   <a href="javascrit:;" class="btn btn--red" style="width: 200px">结账</a>

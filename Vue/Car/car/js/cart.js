@@ -1,11 +1,14 @@
-var vm = new Vue({
+Vue.filter("money",function(value,type){
+    return "￥"+ value.toFixed(2) + type;
+})
+new Vue({
     el:'#app',
     data:{
         totalMoney:0,
         productList:[],
         checkAllFlag:false,
         delFlag:false,
-        currentProduct
+        currentProduct:""
     },
     filters:{
         formatMoney:function(value){
@@ -69,13 +72,10 @@ var vm = new Vue({
             this.currentProduct = item;
         },
         delProduct:function(){
-            var index = this.productList.indexOf(this.curProduct);
+            var index = this.productList.indexOf(this.currentProduct);
             this.productList.splice(index,1);
             this.delFlag = false;
 
         }
     }
-})
-Vue.filter("money",function(value,type){
-    return "￥"+ value.toFixed(2) + type;
 })

@@ -23,10 +23,10 @@
                 <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
             </span>
             <ul class="filters">
-                <li><a href="#/all" @click="proxy">All</a></li>
-                <li><a href="#/all" :class="{ selected: visibility == 'all' }">All</a></li>
-                <li><a href="#/active" :class="{ selected: visibility == 'active' }">Active</a></li>
-                <li><a href="#/completed" :class="{ selected: visibility == 'completed' }">Completed</a></li>
+                <!-- <li><a href="#/all" @click="proxy">All</a></li> -->
+                <li><a :class="{ selected: visibility == 'all' }" @click="visibility = 'all'">All</a></li>
+                <li><a :class="{ selected: visibility == 'active'}" @click="visibility = 'active'">Active</a></li>
+                <li><a :class="{ selected: visibility == 'completed' }" @click="visibility = 'completed'">Completed</a></li>
             </ul>
             <button class="clear-completed" @click="removeCompleted" v-show="todos.length > remaining">
                 Clear completed
@@ -151,19 +151,19 @@ export default {
 
     removeCompleted: function () {
       this.todos = filters.active(this.todos)
-    },
-
-    proxy: function () {
-      var xhr = new XMLHttpRequest()
-      var url = '/api/hello'
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText)
-        }
-      }
-      xhr.open('GET', url, true)
-      xhr.send(null)
     }
+
+    // proxy: function () {
+    //   var xhr = new XMLHttpRequest()
+    //   var url = '/api/hello'
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //       console.log(xhr.responseText)
+    //     }
+    //   }
+    //   xhr.open('GET', url, true)
+    //   xhr.send(null)
+    // }
   },
   directives: {
     'todo-focus': function (el, binding) {

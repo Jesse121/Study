@@ -16,12 +16,21 @@
       <my-component></my-component>
     </div>
     <script type="text/javascript">
-        Vue.component('my-component', {
-          template: '<div>A custom component!</div>'
+        Vue.component('child', {
+            props:['message'],
+          template: '<div>{{message}}</div>'
         })
         // 创建根实例
         new Vue({
-          el: '#example'
+          el: '#example',
+          data:{
+            parentMsg:'1'
+          },
+          template: `<div>
+                      <input v-model="parentMsg">
+                      <br>
+                      <child :message="parentMsg"></child>
+                    </div>`
         })
     </script>
 </body>

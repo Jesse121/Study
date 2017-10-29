@@ -39,9 +39,7 @@
         <label for="checkbox">basketball</label>
         <!-- <input v-model.number="age" type="number"> -->
         <br>
-        <button v-on:click="show = !show">
-            Toggle
-        </button>
+        <button v-on:click="show = !show">Toggle</button>
         <transition name="fade">
             <p v-if="show">hello</p>
         </transition>

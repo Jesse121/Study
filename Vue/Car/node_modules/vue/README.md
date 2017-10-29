@@ -111,7 +111,23 @@ Funds donated via Patreon goes directly to support Evan You's full-time work on 
         <a href="https://www.xfive.co/" target="_blank">
           <img width="80px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/xfive.png">
         </a>
-     </tr>
+      </td>
+      <td align="center" valign="middle">
+        <a href="http://www.frontenddevelopermeetups.com/" target="_blank">
+          <img width="160px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/frontend-meetups.png">
+        </a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://onsen.io/vue/" target="_blank">
+          <img width="130px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/onsen-ui.png">
+        </a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="http://tooltwist.com" target="_blank">
+          <img width="140px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/tooltwist.png">
+        </a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -125,6 +141,7 @@ Funds donated via Patreon goes directly to support Evan You's full-time work on 
 <h4 align="center">Gold</h4>
 
 <a href="https://opencollective.com/vuejs/goldsponsor/0/website" target="_blank"><img src="https://opencollective.com/vuejs/goldsponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/vuejs/bronzesponsor/1/website" target="_blank"><img src="https://opencollective.com/vuejs/bronzesponsor/1/avatar.svg"></a>
 <a href="https://opencollective.com/vuejs/goldsponsor/1/website" target="_blank"><img src="https://opencollective.com/vuejs/goldsponsor/1/avatar.svg"></a>
 <a href="https://opencollective.com/vuejs/goldsponsor/2/website" target="_blank"><img src="https://opencollective.com/vuejs/goldsponsor/2/avatar.svg"></a>
 <a href="https://opencollective.com/vuejs/goldsponsor/3/website" target="_blank"><img src="https://opencollective.com/vuejs/goldsponsor/3/avatar.svg"></a>

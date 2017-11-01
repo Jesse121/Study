@@ -17,3 +17,29 @@ flexible
 
 editorcinfig
 eslint
+
+
+### Linux常用命令
+chmod -R 777 *  表示对当前目录及目录下所有的文件赋予可读可写可执行权限。
+
+### xshell常用命令
+打开会话：alt+o
+切换会话：shift+tab
+减小字号：ctrl+shift+alt+[
+增大字号：ctrl+shift+alt+]
+
+复制：ctrl+insert
+粘贴：shift+insert
+查找：ctrl+e+f
+撤销：Ctrl+x+u
+
+
+
+### vim 常用命令
+ctrl 
+
+#### 快速命令
+正常模式下：
+u （Undo）
+U 撤销对整行的操作
+Ctrl + r 重做

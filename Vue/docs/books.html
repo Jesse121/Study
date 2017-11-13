@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Books</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+    table {
+        width: 300px;
+        margin: 30px auto;
+        text-align: center;
+    }
+
+    table,
+    tr,
+    th,
+    td {
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+    }
+
+    fieldset {
+        width: 300px;
+        margin: 0 auto;
+    }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in books" :key="index">
+                    <td>{{item.name}}</td>
+                    <td>{{item.author}}</td>
+                    <td>
+                        <button @click="del(index)">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <fieldset>
+            <legend>添加新书</legend>
+            <p>书名：
+                <input type="text" v-model="newBook.name">
+            </p>
+            <p>作者：
+                <input type="text" v-model="newBook.author">
+            </p>
+            <p>
+                <button @click="add">添加</button>
+            </p>
+        </fieldset>
+    </div>
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+            books: [
+                { id: 0, name: '123', author: 'jesse' },
+                { id: 1, name: '1234', author: 'jesse2' },
+                { id: 2, name: '1235', author: 'jesse3' }
+            ],
+            newBook: {
+                id: 0,
+                name: '',
+                author: ''
+            }
+        },
+        methods: {
+            del: function(index) {
+                return this.books.splice(index, 1)
+            },
+            add: function() {
+                var maxId = 0;
+                for(var i = 0;i < this.books.length;i++){
+                    if(maxId < this.books[i].id){
+                        maxId = this.books[i].id
+                    }
+                }
+                this.newBook.id = maxId + 1;
+                console.log(this.newBook)
+                this.books.push(this.newBook);
+                this.newBook = {};
+            }
+        }
+
+    })
+    </script>
+</body>
+
+</html>

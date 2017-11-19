@@ -1,9 +1,9 @@
 ---
 title: vue学习记录
 date: 2017-09-28 10:08:36
-tags: 
-- Vue
 categories: 
+- Vue
+tags: 
 - Vue
 ---
 

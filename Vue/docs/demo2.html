@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>demo2</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="js/vue.js"></script>
+    <style>
+    .box {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+    }
+    .hide{
+        opacity:0;
+        transition: opacity 0.5s linear;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="hide = !hide">按钮</button>
+        <div class="box" :class="{'hide':hide}"></div>
+    </div>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+            hide:false
+        },
+        methods:{
+
+        }
+    })
+    </script>
+</body>
+
+</html>

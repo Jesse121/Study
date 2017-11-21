@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
 
-let url = 'http://rap.taobao.org/mockjsdata/11037/slide/listSlides.do'
+
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */

@@ -8,12 +8,28 @@ express nodejs
 lodash
 flexible
 
+vue做榜单切换
+
 如何学习源码
 
 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 
 editorcinfig
 eslint
+
+
+三色背景渐变
+
+停止追踪指定文件，但该文件会保留在工作区
+$ git rm –cached [file]
+
+$ git rm -r -–cached [file]
+
+追加远程分支
+git remote add <主机名> <网址>
+删除远程分支
+git remote rm <主机名>
+
 
 ### xshell常用命令  
 打开会话：alt+o  

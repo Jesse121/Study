@@ -17,10 +17,7 @@ vue做榜单切换
 editorcinfig
 eslint
 
-
-三色背景渐变
-
-
+line-height:initial; 所有IE都不兼容
 
 
 

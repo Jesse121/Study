@@ -19,7 +19,39 @@ eslint
 
 line-height:initial; 所有IE都不兼容
 
+.fontDpr(@fontSize){
+    font-size: @fontSize;
+    [data-dpr="2"] & {
+        font-size: @fontSize*2;
+    }
+    [data-dpr="3"] & {
+        font-size: @fontSize*3;
+    }
+}
 
+.list {
+    width: 1040/@bf;
+    margin: 0 auto;
+    height: 1000/@bf;
+    border-radius: 20/@bf;
+    background-color: #ff233f;
+    background: -webkit-repeating-linear-gradient(45deg, #ffc9d0, #ffc9d0 10px, #ff233f 10px, #ff233f 40px);
+    overflow: hidden;
+    .list_content {
+        width: 1012/@bf;
+        margin: 14/@bf auto;
+        background-color: #f8f4ef;
+        height: 900/@bf;
+        border-radius: 20/@bf;
+    }
+}
+<section class="list">
+    <div class="list_content">
+        
+    </div>
+</section>
+
+-webkit-text-stroke: 1px red;
 
 
 

@@ -28,11 +28,42 @@ eslint
         font-size: @fontSize*3;
     }
 }
+
+
+.time{
+    text-align:center;
+    margin-top:400/@bf;
+    font-size:18px;
+    font-weight: bold;
+    color: #fde2ba;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fffaf3), to(#fbc677));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 ```
 
 
 
 #### 工作中用到的特殊的css样式总结
+##### chrome滚动条样式
+```css
+.scrollBox{
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        width: 10px;
+    }
+    &::-webkit-scrollbar-button{
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-track{
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: #fe2545;
+        border-radius: 5px;
+    }
+}
+```
 ##### 镂空字体1 
 <p style="-webkit-text-stroke: 1px red;color:transparent;font-size:28px;font-weight:bold;">Jesse</p>
 关键css:    

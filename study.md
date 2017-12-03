@@ -29,17 +29,6 @@ eslint
     }
 }
 
-
-.time{
-    text-align:center;
-    margin-top:400/@bf;
-    font-size:18px;
-    font-weight: bold;
-    color: #fde2ba;
-    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fffaf3), to(#fbc677));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 ```
 
 
@@ -64,6 +53,7 @@ eslint
     }
 }
 ```
+
 ##### 镂空字体1 
 <p style="-webkit-text-stroke: 1px red;color:transparent;font-size:28px;font-weight:bold;">Jesse</p>
 关键css:    
@@ -75,7 +65,7 @@ chrome 需要加-webkit-前缀
 android 4+ 需要加-webkit-前缀  
 ios 需要加-webkit-前缀  
 
-##### 镂空字体2
+##### 镂空字体2 
 背景是图片
 <div style="background: url('http://o8l2fza1x.bkt.clouddn.com/bg.jpg');-webkit-background-clip:text;"><p style="font-size: 40px;font-weight: bold;-webkit-text-fill-color:transparent;">Jesse</p></div>
 关键css:  
@@ -85,6 +75,25 @@ ios 需要加-webkit-前缀
 ```
 兼容性：
 Firefox, Chrome and Safari support the unofficial -webkit-background-clip: text (only with prefix)  
+
+##### 渐变字体
+背景是渐变色
+<p style="font-size: 40px;
+    color: #fde2ba;
+    font-weight:bold;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fffaf3), to(#fbc677));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">Jesse</p>
+```
+.text{
+    font-size:40px;
+    font-weight:bold;
+    color: #fde2ba;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fffaf3), to(#fbc677));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+```
 
 ##### 3D镂空字体
 <div style="text-align: center;

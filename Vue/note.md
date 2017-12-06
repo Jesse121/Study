@@ -1,9 +1,9 @@
 ---
 title: vue学习记录
 date: 2017-09-28 10:08:36
-tags: 
-- Vue
 categories: 
+- Vue
+tags: 
 - Vue
 ---
 
@@ -51,10 +51,11 @@ Vue.component('todo-item', {
 
 #### 生命周期详解
 ##### beforeCreate  
-在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
+在**实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前**被调用。
 ##### created
-在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。  
-一般用于异步数据的请求和初始化  
+在实例创建完成后被立即调用。  
+在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。然而，**挂载阶段还没开始，$el 属性目前不可见**。  
+**一般用于异步数据的请求和初始化 ** 
 ##### beforeMount
 在挂载开始之前被调用：相关的 render 函数首次被调用。  
 #### mounted 挂载
@@ -76,10 +77,12 @@ mounted: function () {
 对数据更新做统一处理
 当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用计算属性或 watcher 取而代之。
 注意 updated 不会承诺所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以用 vm.$nextTick 替换掉 updated
+实例中所有的数据变化做统一处理
 #### beforeDestory
 实例销毁之前调用。在这一步，实例仍然完全可用。
 #### destroyed 销毁
 Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
+
 ### filter(), concat() 和 slice()
 这些非变异方法不会改变原始数组，总是生成一个新数组  
 如果需要视图更新需要使用新数组替换旧数组
@@ -94,3 +97,6 @@ new vue({
     methods ,
     directives: 
 })
+
+#### watch
+针对某一个数据变化的更新

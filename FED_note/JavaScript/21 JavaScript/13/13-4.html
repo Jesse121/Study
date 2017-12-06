@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>13-4</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+<script>
+	function check(){
+		if(form1.name.value==""||form1.age.value==""||form1.mail.value==""){
+			alert("您的资料不完整，请重新填写！");
+		}else{
+			var str=form1.mail.value;
+			var n=str.indexOf("@",1);
+			if((n==-1)||(n==(str.length-1))){
+				alert("您的email不合法，请重新输入");
+				return false;
+			}
+			alert("验证成功！！")
+
+		}
+	}
+</script>
+</head>
+<body>
+<form action="" id="form1" name="form1" method="post" >
+	姓名：
+	<input type="text" name="name">
+	<p></p>
+	年龄：
+	<input type="text" name="age">
+	<p></p>
+	mail:
+	<input type="text" name="mail">
+	<p></p>
+	<input type="submit" name="Submit" value="提交" onclick="check()">
+	&nbsp;
+	<input type="reset" name="Reset" value="重置">
+
+</form>
+    
+</body>
+</html>

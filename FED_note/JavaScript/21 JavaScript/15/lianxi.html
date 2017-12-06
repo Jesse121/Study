@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>lianxi</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+<script>
+	function CreateLinks(url){
+		var xmlDom=new ActiveXObject("Microsoft.XMLDOM");
+		if(xmlDom==null){
+			alert("创建XMLDOM失败！");
+			return;
+		}
+		xmlDom.async=false;
+		xmlDom.load(url);
+		links=xmlDom.documentElement;
+		for(n=0;n!=links.childNodes.length;n++){
+			a=document.createElement("<a>");
+			a.setAttribute("href",links.childNodes[n].getAttribute("href"));
+			l=document.createTextNode("@");
+			t=document.createTextNode(links.childNodes[n].getAttribute("title"));
+			r=document.createElement("<br>");
+			a.appendChild(l);
+			a.appendChild(t);
+			a.appendChild(r);
+			document.getElementById("DocBody").appendChild(a);
+
+		}
+	}
+</script>
+</head>
+<body id="DocBody" onload="CreateLinks('links.xml')">
+    
+</body>
+</html>

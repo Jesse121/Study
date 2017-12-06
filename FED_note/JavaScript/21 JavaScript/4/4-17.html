@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>4-17</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script> 
+     var actTotal=1109.7;
+     var payTotal=123.45;
+     document.write("您的支付宝余额为："+actTotal+"元"+"<br>");
+     document.write("<input id=\"Btpay\" type=\"button\" value=\"确认支付\" onclick=\"return Btpay_onclick()\" /><br>");
+     if(payTotal>actTotal)
+     {
+        document.write("信息：<font color=red>您的余额不足，无法完成支付！</font>");
+        Btpay.disabled=true;
+     }
+     function Btpay_onclick()
+     {
+        //Todo;            //在此添加发送数据到服务器的代码
+        document.write("<font color=red>已经完成支付</font><br>");
+        document.write("您的支付宝余额为："+(actTotal-payTotal)+"元");
+     }
+     </script>
+
+</body>
+</html>

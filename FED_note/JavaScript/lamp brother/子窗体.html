@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>子窗体</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+<script src="js/ " type="text/javascript"></script>
+</head>
+<body onunload="closeit()">
+<script>
+	var subwin=window.open("event.html","_blank","top=300px,left=300px,width=200px,height=200px");
+	function show(obj)
+	{
+		subwin.document.bgColor=obj.value;
+	}
+	function closeit()
+	{
+	   if(!subwin.closed)
+	   {
+		subwin.close();
+	   }
+	}
+	var num=0;
+	var dir=1;
+	setInterval(function(){
+		if(num>100||num<0)
+		{
+			dir=-1*dir;
+		}
+		num+=dir;
+		var space="";
+		for(var i=0;i<num;i++)
+		{
+			space+=" ";
+		}
+		window.status=space+"www.baidu.com";
+	},100);
+</script>
+<input type="button" onclick="show(this)" value="red"><br>
+<input type="button" onclick="show(this)" value="green"><br>
+<input type="button" onclick="show(this)" value="blue"><br>
+<input type="button" onclick="show(this)" value="yellow"><br>
+    
+</body>
+</html>

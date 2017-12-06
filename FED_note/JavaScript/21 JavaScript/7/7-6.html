@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>7-6</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+<script src="js/ " type="text/javascript"></script>
+</head>
+<body>
+<h1>售票模拟窗口</h1>
+<script>
+	var queue=new Array();
+	function client(name)
+	{
+		this.name=name;
+		this.ticket=NaN;
+	}
+	queue.push(new client("Lily"),new client("Peter"),new client("Jesse"),new client("Jackson"));
+	tickets=4;
+	for( ;((queue.length!=0)&&(tickets!=0));tickets--)
+	{
+		var current=queue.shift();   //队首已买到票的人离队	
+		current.ticket=tickets;
+		document.write("<br>已售罄："+current.name+"流水账号为："+tickets);
+		
+	}
+	alert("销售停止，目前队里有"+queue.length+"人，和"+tickets+"张票！");
+</script>
+    
+</body>
+</html>

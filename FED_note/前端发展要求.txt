@@ -1,0 +1,8 @@
+1.对浏览器兼容性有良好的兼容能力  css
+2.能设计优秀的用户体验和人机互动  有较强的页面制作功底
+3.熟练使用javascript jquery bootstrap angularjs nodejs
+4.精通HTML5 CSS3
+5.canvas    网页实例
+6.gulp	    实例开发中用到
+7.angularjs 网页实例
+8.reactjs   网页实例

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>HTML DOM change CSS</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+<h1 id="id1">my heading 1 </h1>
+<button type="button" onclick="document.getElementById('id1').style.color='red'">
+	click here
+</button>
+<br>
+<script>
+	function displayDate()
+	{
+		document.getElementById("demo").innerHTML=Date();
+	}
+	function myFunction()
+	{
+		var x=document.getElementById("frame");
+		x.value=x.value.toUpperCase();
+	}
+	function mOver(obj)
+	{
+		obj.innerHTML="Thank you!"
+	}
+	function mOut(obj)
+	{
+		obj.innerHTML="把鼠标移上来"
+	}
+	function mDown(obj)
+	{
+		obj.style.backgroundColor="blue";
+		obj.innerHTML="请释放鼠标按钮"
+	}
+	function mUp(obj)
+	{
+		obj.style.backgroundColor="green";
+		obj.innerHTML="请按下鼠标按钮"
+	}
+	var para=document.createElement("p");
+	var node=document.createTextNode("这是新段落。");
+	para.appendChild(node);
+	var element=document.getElementById("div1");
+	element.appendChild(para);
+</script>
+    <button onclick=displayDate()>点击这里</button>
+    <p id="demo"></p>
+    <hr>
+    please type in string:
+    <input type="text" id="frame" onchange="myFunction()">
+    <p>当您离开输入框时，会触发将输入文本转化为大写字符</p>
+    <hr>
+    <div style="background-color:green;width:120px;height:20px;padding:40px;color:#fff;" onmouseover="mOver(this)" onmouseout="mOut(this)" onmousedown="mDown(this)" onmouseup="mUp(this)">把鼠标移上来</div>
+    <hr>
+    <div style="background-color:green;width:120px;height:20px;padding:40px;color:#fff;"  onmousedown="mDown(this)" onmouseup="mUp(this)">把鼠标移上来</div>
+    <hr>
+    <div id="div1">
+    	<p id="p1">这是一个段落</p>
+    	<p id="p2">这是一个段落</p>
+    </div>
+</body>
+</html>

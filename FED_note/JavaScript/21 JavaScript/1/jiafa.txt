@@ -1,0 +1,6 @@
+<script type="text/javascript">
+x=2
+y=3
+var z=x+y
+document.write("z="var)
+</script>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>55 表单</title>
+ </head>
+ <body>
+  <div>在用户注册，在线报名等场合时<br />需要把用户的信息填写并提交，这时要用表单了收集信息</div>
+  <form action="http:www.baidu.com" method="post">
+  <p>用户名：<input type="text" name="username" value="张三"/></p>
+  <p>密码：<input type="password" name="password" /></p>
+  <p>性别：男<input type="radio" name="gender" value="male" checked="checked"/>
+           女<input type="radio" name="gender" value="female" /></p>
+  <p>爱好：篮球<input type="checkbox" name="hobby" value="basketball" checked="checked"/>
+           足球<input type="checkbox" name="hobby" value="football" />
+           棒球<input type="checkbox" name="hobby" value="baseball" />
+           台球<input type="checkbox" name="hobby" value="billiards" /></p>
+  <p>
+  <select name="educational background">
+  <option value="college" selected="selected">大学</option>
+  <option value="senior middle school">高中</option>
+  <option value="junior middle school">初中</option>
+  </select></p>
+  <p><textarea name="intro" width="500px" height="500px"></textarea></p>
+  <p>上传头像：<input type="file" name="portrait"/></p>
+  <p>隐藏域：你看不见<input type="hidden" name="ip" value="192.168.1.200"/></p>
+  <p><input type="submit" value="submit" /></p>
+
+ </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> CSS font</title>
+<style type="text/css">
+#b {
+	padding:20px;
+	line-height:1px;
+	
+}
+</style>
+</head>
+
+<body>
+<div id="a">除了各种特定的字体系列外，CSS 定义了 5 种通用字体系列：
+  <ul>
+    <li>Serif 字体</li>
+    <li>Sans-serif 字体</li>
+    <li>Monospace 字体</li>
+    <li>Cursive 字体</li>
+    <li>Fantasy 字体</li>
+  </ul>
+</div>
+<div id="b">
+  <p>因此，我们建议在所有 font-family 规则中都提供一个通用字体系列。这样就提供了一条后路，在用户代理无法提供与规则匹配的特定字体时，就可以选择一个候选字体。</p>
+  <pre>h1 {font-family: Georgia, <code>serif</code>;}</pre>
+  <p>只有当字体名中有一个或多个空格（比如 New York），或者如果字体名包括 # 或 $ 之类的符号，才需要在 font-family 声明中加引号。</p>
+  <pre>p {font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;}</pre>
+</div>
+<p>字体变形</p>
+font-variant 属性可以设定小型大写字母。<br />小型大写字母不是一般的大写字母，也不是小写字母，这种字母采用不同大小的大写字母。
+<br />16 等于父元素的默认字体大小，假设父元素的 font-size 为 20px，那么公式需改为：<em>pixels/20=em</em>
+border-collapse 属性设置是否将表格边框折叠为单一边框
+<br />在 CSS 中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。
+<p>由于 border-style 的默认值是 none，如果没有声明样式，就相当于 border-style: none。<strong>因此，如果您希望边框出现，就必须声明一个边框样式。</strong></p>
+简单地说，外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。
+</body>
+</html>

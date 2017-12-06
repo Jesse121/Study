@@ -1,0 +1,8 @@
+<script>
+var str1="1,回车换行符\n";
+var str2="2,回车符\r";
+var str3="3,使用：\t制表符\n";
+var str4="4,使用\"双引号\"";
+var str=str1+str2+str3+str4;
+alert(str)
+</script>

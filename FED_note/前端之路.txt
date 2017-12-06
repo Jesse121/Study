@@ -1,0 +1,97 @@
+浏览器渲染页面过程详解，浏览器内核 如何渲染 性能影响  HTTP  TCP/IP
+
+重点：
+css样式  性能优化方法
+
+node.js
+
+1、 php 
+2、编程思想及常用方法
+
+4、JS高级  尽量用原生JS开发
+5、jQuery源码分析
+6、jQuery组件开发
+7、正则表达式
+
+需要转义的字符
+* + ( ) $ / \ ? [ ] ^ { }
+
+
+开发眼中的前端交互 讲师 潘佳韩  
+移动端和PC端开发的不同
+meta标签 设备分辨率 交互优化 性能优化
+性能优化  更快
+压缩代码 ，切实改变响应速度
+交互优化 更好用
+提升用户感知度
+
+移动端click事件有300ms延迟
+解决办法：
+引入移动端框架zepto，用tap事件代替click
+
+tap不是原生事件，touchstart touchmove touchend
+ 
+点击态：给用户明确的点击反馈，提升用户体验
+方案1：使用active伪类
+缺点：滚动的时候也会触发样式
+方案2：
+//点击事件带点击态
+$(element).on('tap',function(e){
+    vat $target = $(e.target);
+    $(target).addClass('active');
+    setTimeout(function(){
+    $target.removeClass('active');
+    });
+})
+
+全局滚动 滚动条在body节点或更顶层
+局部滚动 滚动条在body下的某一个dom节点上
+
+常见弹性滚动效果
+ios  全局滚动：默认支持
+     局部滚动：默认没有滚动条，滑动起来干涩
+ios 局部滚动使用弹性滚动效果
+body{
+    -webkit-overflow-scrolling: touch;
+}
+/*局部滚动的dom节点*/
+.scroll-el{
+    overflow:auto;
+}
+建议将属性挂在body上，可以避免可能出现的bug
+
+安卓 默认没有弹性滚动效果
+-webkit-overflow-scrolling默认浏览器不支持
+建议也加上
+
+什么情况下会触发出界？
+iOS 全局滚动：滚动到页面顶部或底部，继续划，就会出现
+    局部滚动：滚动到页面顶部或底部，手指离开停下，再继续划，就会出现
+ios解决方案： 
+局部滚动： 使用ScrollFix
+页面的固定区域禁止touchmove默认事件
+
+安卓下建议只是用全局滚动
+
+流畅滚动的N条军规
+1.body上加上-webkit-overflow-scrolling:touch
+2.ios尽量使用局部滚动
+3.ios引进ScrollFix避免全局滚动
+4.安卓下尽量使用全局滚动
+  尽量不用overflow:auto
+  使用min-height:100%代替height:100%
+IOS下带有滚动条且position:absoulete的节点不要设置背景色
+
+移动端键盘定制  ios基本支持
+配置input 的 type属性
+type="tel"       纯数字 电话
+type="number"    数字+符号
+type="search"    搜索   用form包围，在Onsubmit事件12306里阻止默认行为
+
+input配置属性
+autocapitalize="off"  关闭哈搜字母大写
+autocorrect="off"     自动纠错
+
+
+移动WEB首屏优化实践  郭碧青
+

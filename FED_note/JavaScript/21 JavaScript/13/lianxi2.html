@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>lianxi2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+<script>
+	var r=Math.floor(Math.random()*10)+20;
+	var n=5;
+	function Select(){
+		num.focus();
+		num.select();
+	}
+	function checkresult(){
+		if(num.value==r){
+			if(confirm("猜中了，您真棒！\n您还有继续吗？")){
+				document.location.reload();
+			}else{
+				self.close();
+			}
+		}else{
+			if(n==1){
+				if(confirm("对不起，您的竞猜失败！\n您还有继续吗？")){
+				    document.location.reload();
+			    }else{
+				    self.close();
+			    }
+			}
+			if(num.value>r){
+				n--;
+				alert("您猜大了一些！您还有"+n+"次机会")；
+			}else{
+				n--;
+				alert("您猜小了一些！您还有"+n+"次机会")；
+			}
+		}
+	}
+</script>
+</head>
+<body>
+ <p>猜数字（20-30）</p>
+ <p>
+ 	<input type="text" name="num" onmousemove="Select()"/>
+ 	<label id="msg">您一共有5次机会</label>
+ </p>
+  <p>
+  	<input type="submit" name="Submit" value="确定" onclick="checkresult()">
+  </p>
+</body>
+</html>

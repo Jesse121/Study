@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>2-7</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+<script>
+	var a=NaN;
+	var b="123";
+	var c=123;
+	var d="1.23";
+	document.write("<b>Global对象的isNaN方法</b><br>");
+	var ta=isNaN(a);
+	document.write("a的值是否是NaN: "+ta+"<br />");
+	var tb=isNaN(b);
+	document.write("b的值是否是NaN: "+tb+"<br />");
+	var tc=isNaN(c);
+    document.write("c的值是否是NaN: "+tc+"<br />");
+    document.write("<b>Global对象的parseInt方法</b><br />");
+    var ib=parseInt(b);
+    if(ib==c)
+    {
+    	document.write("b解析为数值："+ib+"<br />");
+    }
+    document.write("<b>Global对象的parseFloat方法</b><br />");
+    var id=parseFloat(d)
+    if(id==1.23)
+    {
+    	document.write("b解析为数值："+id+"<br />");
+    }
+</script>
+    
+</body>
+</html>

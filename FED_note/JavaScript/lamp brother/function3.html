@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function3</title>
+</head>
+<body>
+	<script>
+     function table(start,end,check)//1.用这个函数在（10,500）中取出3的倍数。2.在（-200,200）中取出负数
+     {                                    
+     	for(var i=start;i<end;i++)
+     	{
+     		if(check(i))
+     		{
+     			document.write(i+"、");
+     		}
+     	}
+     }
+     function test1(num)
+     {
+     	if(num%3==0)
+     	{
+     		return true;
+     	}
+     	else
+     	{
+     		return false;
+     	}
+     }
+     function test2(num)
+     {
+     	if(num<0)
+     		return true;
+     	else
+     		return false;
+     }
+     table(10,500,test1)
+     document.write("<hr />")
+     table(-200,200,test2)
+	</script>
+	
+</body>
+</html>

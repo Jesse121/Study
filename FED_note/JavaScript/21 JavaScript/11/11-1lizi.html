@@ -1,0 +1,15 @@
+<html>
+<head><title>范例11-1</title></head><!--文档头和标题-->
+<body ><p>    
+<form name="first" >				<!--第一个表单-->
+    	文本框1：
+		<!--用表单名引用表单及元素-->
+    	<input type="text" onKeyPress="document.second.elements[0].value=this.value;"value="在这里输入内容" >
+</form>
+<form name="second">				<!--第二个表单-->
+    	文本框2：
+		<!--用第二种方式引用表单及元素-->
+		<input type=text  onKeyPress="document.forms[0].elements[0].value=this.value;" value="在这里输入内容"  >
+</form>
+</body>
+</html>

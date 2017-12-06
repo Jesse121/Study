@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>3.16 CSS positioning</title>
+<style type="text/css">
+div.container {
+	width: 100%;
+	margin: 0px;
+	border: 1px solid gray;
+	line-height: 150%;
+}
+div.header, div.footer {
+	padding: 0.5em;
+	color: white;
+	background-color: gray;
+	clear: left;
+}
+h1.header {
+	padding: 0;
+	margin: 0;
+}
+div.left {
+	float: left;
+	width: 160px;
+	margin: 0;
+	padding: 1em;
+}
+div.right {
+	margin-left: 190px;
+	border-left: 1px solid gray;
+	padding: 1em;
+}
+#color {
+	color: red;
+}
+</style>
+</head>
+
+<body>
+<h4>CSS position 属性</h4>
+<ol type="i">
+  <li><em>position:relative;left:-20px;</em>表示相对于正常位置向左移动</li>
+  <li>overflow 设置当元素的内容溢出时发生的事情<em>overflow:auto;</em>&nbsp <em>overflow:hidden;</em>&nbsp <em>overflow:scroll;</em></li>
+  <li>clip 属性剪裁绝对定位元素
+    <pre>img {position:absolute;clip:rect(0px 500px 200px 0px)}</pre>
+  </li>
+  <li>z-index 设置元素的堆叠顺序，z-index:-1位于当前元素的底部，z-index默认值为0，z-index：1在当前元素上部</li>
+  <li><em>a:hover {background-color:#ff33ff}</em></li>
+  <li>li {display:inline}将列表转为行内元素</li>
+  <li>CSS属性选择器<pre>a[href] {color:red;}</pre>
+  <li>与简单属性选择器类似，可以把多个属性-值选择器链接在一起来选择一个文档。请注意，这种格式要求必须与属性值完全匹配
+  <pre>a[href="http://www.w3school.com.cn/"][title="W3School"] {color: red;}</pre>
+  <li>如果需要根据属性值中的词列表的某个词进行选择，则需要使用波浪号（~）。<br />假设您想选择 class 属性中包含 important 的元素，可以用下面这个选择器做到这一点：
+  <pre>p[class~="important"] {color: red;}</pre></li>
+</ol>
+<p>下表是对这些选择器的简单总结：</p>
+
+<table class="dataintable">
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+
+<tr>
+<td>[abc^=&quot;def&quot;]</td>
+<td>选择 abc 属性值以 &quot;def&quot; 开头的所有元素</td>
+</tr>
+
+<tr>
+<td>[abc$=&quot;def&quot;]</td>
+<td>选择 abc 属性值以 &quot;def&quot; 结尾的所有元素</td>
+</tr>
+
+<tr>
+<td>[abc*=&quot;def&quot;]</td>
+<td>选择 abc 属性值中包含子串 &quot;def&quot; 的所有元素</td>
+</tr>
+</table>
+<div>
+<h2>CSS 选择器参考手册</h2>
+
+<table class="dataintable">
+<tr>
+<th style="width:30%;">选择器</th>
+<th>描述</th>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute.asp" title="CSS [attribute] 选择器">[<i>attribute</i>]</a></td>
+<td>用于选取带有指定属性的元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute_value.asp" title="CSS [attribute=value] 选择器">[<i>attribute</i>=<i>value</i>]</a></td>
+<td>用于选取带有指定属性和值的元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute_value_contain.asp" title="CSS [attribute~=value] 选择器">[<i>attribute</i>~=<i>value</i>]</a></td>
+<td>用于选取属性值中包含指定词汇的元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attribute_value_start.asp" title="CSS [attribute|=value] 选择器">[<i>attribute</i>|=<i>value</i>]</a></td>
+<td>用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attr_begin.asp" title="CSS [attribute^=value] 选择器">[<i>attribute</i>^=<i>value</i>]</a></td>
+<td>匹配属性值以指定值开头的每个元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attr_end.asp" title="CSS [attribute$=value] 选择器">[<i>attribute</i>$=<i>value</i>]</a></td>
+<td>匹配属性值以指定值结尾的每个元素。</td>
+</tr>
+
+<tr>
+<td><a href="/cssref/selector_attr_contain.asp" title="CSS [attribute*=value] 选择器">[<i>attribute</i>*=<i>value</i>]</a></td>
+<td>匹配属性值中包含指定值的每个元素。</td>
+</tr>
+</table>
+</div>
+<div class="container">
+  <div class="header">
+    <h1 class="header">W3School.com.cn</h1>
+  </div>
+  <div class="left">
+    <p>"Never increase, beyond what is necessary, the number of entities required to explain anything." William of Ockham (1285-1349)</p>
+  </div>
+  <div class="right">
+    <h2>Free Web Building Tutorials</h2>
+    <p>At W3School.com.cn you will find all the Web-building tutorials you need,from basic HTML and XHTML to advanced XML, XSL, Multimedia and WAP.</p>
+    <p>W3School.com.cn - The Largest Web Developers Site On The Net!</p>
+  </div>
+  <div class="footer">Copyright 2015 by JESSE Investment.</div>
+</div>
+<a id="color">请注意，类选择器和 ID 选择器可能是区分大小写的。这取决于文档的语言。HTML 和 XHTML 将类和 ID 值定义为区分大小写，所以类和 ID 值的大小写必须与文档中的相应值匹配。</a>
+<div>
+<h3>后代选择器</h3>
+<ol type="1">
+<li>有关后代选择器有一个易被忽视的方面，即两个元素之间的层次间隔可以是无限的。</li>
+</ol>
+</div>
+<div>
+<h3>Child seceltors</h3>
+<ol type="1">
+<li>如果您不希望选择任意的后代元素，而是希望缩小范围，只选择某个元素的子元素，请使用子元素选择器（Child selector）。</li>
+<li>子选择器使用了大于号（子结合符）。子结合符两边可以有空白符，这是可选的。因此，以下写法都没有问题：
+<pre>h1 > strong
+h1> strong
+h1 >strong
+h1>strong</pre></li>
+</ol>
+</div>
+<div>
+<h3>相邻兄弟选择器（Adjacent sibling selector）</h3>
+<ol type="1">
+<li>如果需要选择紧接在另一个元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器</li>
+<li>相邻兄弟选择器使用了加号（+），即相邻兄弟结合符（Adjacent sibling combinator）。</li>
+<pre>h1 + p {margin-top:50px;}</pre>
+<li>用一个结合符只能选择两个相邻兄弟中的第二个元素</li>
+</ol>
+</div>
+<div>
+<h3>锚伪类</h3>
+<ol type="1">
+<li><pre>a:link {color: #FF0000}		/* 未访问的链接 */
+a:visited {color: #00FF00}	/* 已访问的链接 */
+a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+a:active {color: #0000FF}	/* 选定的链接 */</pre></li>
+<li>在 CSS 定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。</li>
+<li>在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。</li>
+<li><b>最常见的错误是认为 p:first-child 之类的选择器会选择 p 元素的第一个子元素.</b></li>
+</ol>
+</div>
+<div>
+<h3>伪元素</h3>
+<ol type="1">
+<li>"first-line" 伪元素用于向文本的首行设置特殊样式。</li>
+<li>first-line" 伪元素只能用于块级元素。</li>
+<li>:first-letter 伪元素元素用于向文本的首字母设置特殊样式</li>
+<li>":before" 伪元素可以在元素的内容前面插入新内容。</li>
+<li>":after" 伪元素可以在元素的内容之后插入新内容。</li>
+</ol>
+</div>
+
+</body>
+</html>

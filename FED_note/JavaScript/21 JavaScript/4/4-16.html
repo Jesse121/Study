@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>4-16</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style type="text/css" media="all">
+    div{
+        width:500px;
+        height:200px;
+        border:1px solid red;
+        margin:10px auto;
+    }
+</style>
+</head>
+<body>
+<div>
+    <h1>游戏点卡销售系统</h1>
+    <p>您确认购买的张数：<input type="text" id="Text1" value=" "/>张(最多不超过5张)</p>
+    <input type="button" name="" value="确认支付" onclick="return Button1_onclick()"/>
+
+</div>
+<script>
+    function Button1_onclick()
+    {
+      if(Text1.value<1||isNaN(Text1.value))
+      {
+        alert("您的输入不正确，请重新输入");
+        Text1.value=" ";
+      }
+      else
+      {
+        alert("您确认支付："+Text1.value*4.5+"元");
+      }
+    }
+</script>
+    
+</body>
+</html>

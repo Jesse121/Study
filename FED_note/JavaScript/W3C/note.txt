@@ -1,0 +1,369 @@
+15:01 2015/4/8
+JavaScript 输出
+1.
+<script>
+document.getElementById("*").innerHTML="***";
+</script>
+如果在文档已加载后执行document.write整个网页将被覆盖
+写到文档输出
+2.
+<script>
+document.write("<p>my first javascript</p>");
+</script>
+
+Javascript 语句
+分号用于分割Javascript语句，分号是可选的，最好写上。
+Javascript对大小写敏感
+
+Javascript 注释   提高代码的可读性
+单行注释以//开头
+注释可用于阻止其中代码或代码块的执行（用于调试）
+例：
+//输出标题：
+document.getElementById("myh1").innerHTML="welcome to \    my homepage";
+多行注释以/*开始，以*/结尾
+
+Javascript 变量
+变量是存储数据的容器
+1.变量必须以字母开头
+2.变量也能以$和_开头（不推荐）
+3.变量名称对大小写敏感
+ 
+声明（创建）Javascropt变量
+var carname="Volvo"
+一条语句多个变量
+var name="Gates",age="25",job="CEO"
+Value=undefined 在计算机程序中经常会出现声明无值变量。
+
+JavaScript 数据类型
+JavaScript字符串
+字符串是存储字符的变量，可以是引号中的任意文本，可以是单引号或双引号
+JavaScript数字
+JavaScript只有一种数字类型，数字可以带小数点，也可不带。数字也可用科学计数法来写
+JavaScript布尔
+布尔只能有两个值：true 或false
+JavaScript数组
+var cars=new Arry("Audi","BMW","Volco");
+数组下标是基于0 ，所以第一个项目是[0]
+JavaScript对象
+对象有花括号分隔。在括号内部，对象的属性以名称和值对的形式（name:value）来定义，属性有逗号分隔
+var person={firstname:"Bill",lastname:"Gates",id:5566};
+对象属性有两种寻址方式：
+name=person.lastname;
+name=person["lastname"];
+Undefined or Null
+Undefined 表示变量不含有值 可以将变量的值设置为null来清空变量
+声明变量类型
+var carname=new String;
+var x=      new Number;
+var y=      new Boolean;
+var cars=   new Array;
+var person= new Object;
+
+11:49 2015/4/9
+JavaScript对象
+对象是拥有属性和方法的数据
+属性是与对象相关的值，方法是能够在对象上执行的动作
+
+JavaScript 函数
+函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。
+function functionname()
+{
+这里是要执行的代码
+}
+调用带参数的函数 需把参数作为变量来声明
+function myFunction(var1,var2)
+{
+这里是要执行的代码
+}
+带有返回值的函数
+通过使用return语句实现
+在Javascript函数内部声明的变量是局部变量   只能在函数内部访问它  会在函数运行后删除
+在函数外生命的变量是全局变量    网页上的所有脚本和函数都能访问它   会在网页关闭后删除。
+
+Javascript运算符
+如需把两个或多个字符串连接起来，请用+运算符
+
+如果把数字与字符串相加，其结果将成为字符串
+&&   and
+||   or 
+!    not
+=== 全等
+==   等于
+！=  不等于
+
+JavaScript IF Else语句
+If 语句   只有当条件为true时，该语句才会执行代码
+if(条件)
+{
+只有当条件为true时执行的代码
+}
+
+if  else 语句
+if（条件）
+{
+当条件为true时执行的代码
+}
+else
+{
+当条件不为true时执行的代码
+}
+
+if   else if   else语句
+if（条件）
+{
+当条件1为true时执行的代码
+}
+else if (条件2)
+{
+当条件2为true时执行的代码
+}
+else
+{
+当条件1和条件2都不为true时执行的代码
+}
+
+JavaScript Switch语句
+switch(n)
+{
+case 1:
+执行代码块1
+break；
+case2:
+执行代码块2
+break；
+default:
+n与case1 和case2不同时执行的代码
+}
+工作原理:首先设置表达式n。随后表达式的值会与结构中的每个case的值作比较。如果存在匹配，则与该case关联的代码块会被执行。用break来阻止代码块自动向下一个case运行。
+default:关键词用来规定匹配不存在时做的事情。
+
+JavaScript循环
+for      循环代码块一定的次数
+for/in   循环遍历对象的属性
+while    当指定的条件为true时循环指定的代码块
+do/while 当指定的条件true时循环指定的代码块
+
+for 循环
+for (语句1；语句2；语句3)
+{
+被执行的代码块
+}
+语句1 在循环开始前执行   
+初始化循环中所用任意多个变量（可选）
+语句2 定义运行循环的条件  
+用于评估初始变量的条件（可选），省略后必须在循环内提供break,否则循环无法停下来
+语句3 在循环已被执行后执行
+语句3会增加初始变量的值（可选），增量可为负值
+
+JavaScript while循环
+do/while循环至少会执行一次，即使条件为false，隐藏代码会在条件被测试前执行。
+
+JavaScript break 和continue
+break语句用于跳出循环    只能用在循环或switch中
+continue用于跳过循环中的一个迭代   只能用于循环中
+
+JavaScript 错误
+try语句测试代码块的错误
+允许我们定义在执行时进行错误测试的代码块
+catch语句处理错误
+允许当try代码块发生错误时所执行的代码块   try和catch总是成对出现
+throw语句创建自定义错误
+
+
+17:19 2015/4/9
+JS HTML DOM
+查找html
+通过id找到html元素
+var x=document.getElementById("demo");
+通过标签名找到html元素     该方法在IE5678中无效
+var x=document.getElementById("main");
+var y=x.getElementByTagName("p");
+
+改变html
+1.改变html输出流
+document.write()可用于直接向HTML输出流中写内容。
+2.改变HTML内容
+document.getElementById(id).innerHTML= new html
+3.改变HTML属性
+document.getElementById(id).attribute=new value
+通过类名找到html元素
+
+改变CSS
+改变HTML样式
+document.getElementById(id).style.property=new style
+
+html事件的例子
+当用户点击鼠标时
+当网页已加载时
+当图像已加载时
+当鼠标移动到元素上时
+当输入字段被改变时
+当提交HTML表单时
+当用户出发按键时
+
+onload和onunload事件
+onload和onnuload事件会在用户进入或离开页面是被触发
+onload事件可用于检测访问者的浏览器类型和版本，基于这些信息来加载网页
+onload和onnuload事件和用于处理cookie.
+onchange事件长结合对输入字段的验证来使用
+onmouseover和onmouseout事件可用于在用户的鼠标移至HTML元素上方或者移出元素时触发的函数
+
+按下鼠标会触发onmousedown事件
+释放鼠标会触发onmouseup事件
+完成鼠标点击时会触发onclick事件
+当获得焦点是会触发onfocus
+
+Javascript对象
+javascript中所有的事物都是对象：字符串、数组、函数等
+对象只是带有属性和方法的特殊数据类型
+javascript for in循环
+javascript for in语句循环遍历对象的属性，将针对代码块中每个属性执行一次。
+
+Javascript数字对象
+如果前缀为0则是八进制
+如果前缀为0x则是十六进制
+绝不要在数字前面写0，除非要进行八进制
+
+Javascript string对象
+indexOf()用来定位字符串中某个指定的字符首次出现的位置
+match()方法用来查找字符串中特定的字符，并且如果找到则返回这个字符     注意区分字符的带小写
+replace()方法用来在字符串中用某些字符替换另一些字符
+
+Javascript Date对象
+Date()方法用来获得当日的日期
+getTime()方法用来返回从1970年1月1日至今的毫秒数
+setFullYear()用来设置具体的日期
+toUTCString()用来将当前日期转换为字符串
+使用getDay()和数组来显示星期，而不仅仅是数字
+
+Javascript Array
+concat()用来合并两个数组
+join()用来将数组中所有的元素组成一个字符串
+sort()用来从字面上和数值上对数组进行排序
+
+Javascript Boolean对象
+如果逻辑值对象无初始值或者其值为0、-0、null、""、false、undefinied或者NaN,那么对象的值为false.否则其值为true
+
+JavaScript Math 对象
+round()方法将元素四舍五入
+random()方法用来返回0到1之间的随机数
+max()来返回两个给定数中的较大数
+min()来返回两个给定数中的较小数
+Math()对象的作用是：执行普通的算数任务
+
+JavaScript Regular Expression  正则表达式
+RegExp对象有3个方法：test()、exec()以及compile()
+test()方法检索字符串的指定值，返回值是true或false
+exec()方法检索字符串中的指定值。返回值是被找到的值，如果没找到，则返回null。
+
+可以向RegExp对象添加第二个参数。例如如果需要找到所有某个字符的所有存在，则可以使用"g"(global)参数
+
+compile()方法用于改变RegExp，既可以改变检索模式，也可以推荐价或删除第二个参数。
+
+Javascript Window
+window尺寸
+var w=window.innerWidth
+||document.documentElement.clientWidth
+||document.body.clientWidth;
+var h=window.innerHeight
+||document.documentElement.clientHeight
+||document.body.clientHeight
+
+window location href
+location.hostname返回主机的域名
+location.pathname返回当前页面的路劲和文件名
+location.port返回web主机端口
+location.protocol返回做使用的web协议
+location.href返回当前页面的url
+location.pathname返回url的路径名
+location.asign()方法加载新文档。
+
+JavaScript Window History
+history.back()在与浏览器点击后退按钮相同
+histroy.forward()在与浏览器中点击按钮向前相同
+
+JavaScript 消息框
+警告框    用于确保用户可以得到某些信息
+alert("文本")
+确认框    用于使用户可以验证或者接受某些信息
+confirm("文本")
+提示框    用于提示用户在进入页面前输入某个值
+prompt("文本","默认值")
+
+Js Timing
+setTimeout()   未来的某时执行的代码
+var t=setTimeout("javascript语句",毫秒)
+clearTimeout()   取消setTimeout()
+
+JavaScript  错误
+tr语句允许我们定义在执行时进行错误测试的代码块
+catch语句允许我们定义在try代码块发生错误时所执行的代码块
+try和catch是成对出现
+throw语句创建或抛出异常
+
+ECMAscript 引用类型
+Number 对象
+toFixed(）方法返回的是具有指定位数小数的字符串   
+var Number=new Number(68);
+alert(Number.toFixed(2));     //输出68.00   对于处理货币应用程序非常有用
+toExponential()方法返回的是用科学计数法表示的数字的字符串形式
+var Number=new Number(68);
+alert(Number.toExponential(2));   //输出6.8e+2
+toPrecision()方法返回数字的预定形式或指数形式
+var Number=new Number(68);
+alert(Number.toPrecision(3));    //输出68.0 不够的位用0补充
+
+String对象
+charAt()方法返回的是包含指定位置的字符的字符串
+charCodeAt()方法返回的是包含指定位置的字符的字符串ascii码
+contact()方法用于把一个或多个字符串连接到string对象的原始值上，且保持原String对象的原始值不变
+indexOf()和lastIndexOf()方法用于查找某个字符串中是否存在某个字符，返回值为该字符在字符串中的位置数
+indexOf()从头开始检索
+lastIndexOf()从尾开始检索
+var oStringObject = new String("hello world!");
+alert(oStringObject.indexOf("o"));		输出 "4"
+alert(oStringObject.lastIndexOf("o"));	输出 "7"
+localeCompare()方法按字母顺序排序
+如果 String 对象按照字母顺序排在参数中的字符串之前，返回负数。
+如果 String 对象等于参数中的字符串，返回 0
+如果 String 对象按照字母顺序排在参数中的字符串之后，返回正数。
+var oStringObject = new String("yellow");
+alert(oStringObject.localeCompare("brick")); //输出 "1"
+alert(oStringObject.localeCompare("yellow"));//输出 "0"
+alert(oStringObject.localeCompare("zoo"));   //输出 "-1"
+
+ECMAscript 运算符
+delete运算符删除对以前定义的对象或属性或方法的引用
+void运算符对于任何值返回undefined。该运算符通常用于避免输出不应该输出的值
+
+前增量运算符
+++iNuM 相当于iNuM=iNuM+1
+与前置运算符不同的是，后置运算符是在计算过包含他们的表达式后才进行增量减量运算的。
+
+一元加、减法会把字符串转化为数字  与parseInt()相似
+var sNum="20";
+var iNum=+sNum;
+alert(typeof iNum);     //输出number
+
+关系运算符
+字符串的比较时会先将字符串转化为ASCII码在进行比较，大写字母的ASCII永远小于小写字母
+字符串与数字相比较时会将字符串转化为数值类型在进行比较，如果不能转化为有意义的数字即NaN，则结果为false
+
+条件运算符
+variable=boolean_expression?true_value:false_value;
+如果boolean_expression为true则把true_value赋给变量
+
+赋值运算符
+iNum +=10;   //相当于iNum=iNum+10
+
+arguments对象
+使用特殊对象arguments,开发者无需指明参数名就能访问他们
+还可以用arguments对象检测函数的参数个数，引用属性arguments.length
+
+HTML DOM
+创建新的HTML元素appendChild()  insertBefore()
+删除已有的HTML元素 
+parent.removeChild(child);
+替换HTML元素
+replaceChild(para，child)

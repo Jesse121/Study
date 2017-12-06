@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>exercise1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    body,div,img,p{
+    	margin:0;
+    	padding:0;
+    }
+	span{
+		position:absolute;
+		top:356px;
+		left:0px;
+		width:683px;
+		height:28px;
+		background-color:rgba(50,50,50,0.5);
+	}
+	p{
+		float:right;
+	}
+</style>
+<script>
+  //轮播图片
+ //    var i=1;
+ //    var n=1;
+	// var pic=new Array();
+	// for(i=1;i<=15;i++){
+	//     pic.push("images/0 ("+i+").jpg");
+ //    }
+ //    function change(){
+ //       pict.src=pic[n];
+ //       n+=1;
+ //    if(n==pict.length){
+	// 	    n=0;
+	//     }	      
+ //    }
+ //     setInterval("change()",3000);
+ //     按钮调图片
+    var i=1;
+    var n=1;
+	var pic=new Array();
+	for(i=1;i<=15;i++){
+	    pic.push("images/0 ("+i+").jpg");
+    }
+    function down(){
+        pict.src=pic[n];
+        n++;
+        if(n==15)
+        	n=0;
+    }
+    function up(){
+    	pict.src=pic[n];
+    	n--;
+    	if(n==0)
+    		n=14;
+    }
+</script>
+</head>
+<body>
+<div>
+	<img name="pict" src="images/0 (1).jpg" title="This is SNSD" style="width:683px;height:384px" >
+	<span>
+	<p>
+	<input type="button" onclick="down()" value="下一张">
+	&nbsp;
+	<input type="button" value="上一张" onclick="up()">
+	</p>
+	</span>
+</div>
+    
+</body>
+</html>

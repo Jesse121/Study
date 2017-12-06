@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>event</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="one"></div>
+<script>
+	var one=document.getElementById("one");
+	document.onmousemove=function test(e)
+	{   
+        var event=e||window.event
+		var cx=event.clientX;
+		var cy=event.clientY;
+		var sx=event.screenX;
+		var sy=event.screenY;
+		var str="clientX="+cx+",clientY="+cy+",screenX="+sx+",screenY="+sy;
+		one.innerHTML=str;
+		window.status=str;
+	}
+</script>
+    
+</body>
+</html>

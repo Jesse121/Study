@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>lianxi1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/ " rel="stylesheet" type="text/css">
+<script>
+	function writeCookie(name,value,day){
+		var expire="";
+		expire=new Date((new Date()).getTime()+day*86400000);
+		expire=";expires="+expire.toGMTString();
+		document.cookie=name+"="+escape(value)+";"+expire;
+	}
+	function readCookie(name){
+		var allcookies=document.cookie;
+		var value="";
+		var searchs=name+"=";
+		if(allcookies.length>0){
+			var offset=allcookies.indexOf(searchs);
+			if(offset!=-1){
+				offset+=searchs.length;
+				var end=allcookies.indexOf(";",offset);
+				if(end==-1)
+					end=allcookies.length;				
+				value=unescape(allcookies.substring(offset,end));
+		    }           
+		}
+		return value;		
+	}
+</script>
+</head>
+<body>
+<script>
+	var name="";
+	var count=0;
+	var newName=prompt("请输入您的姓名","");
+	if(newName!=""){
+       name=readCookie("name");
+       if(name!=newName){
+       	    writeCookie("name",newName,30);
+       	    writeCookie("count",1,30);
+       }else{
+            count=readCookie("count");
+            count++;
+            writeCookie("count",count,30);
+       }
+       document.write("您好！"+readCookie("name")+"您是第"+readCookie("count")+"次光临本店");	
+	}else{
+		alert("您没有输入姓名，您不能访问网页！");
+		window.close();
+	}
+
+</script>
+ 
+</body>
+</html>

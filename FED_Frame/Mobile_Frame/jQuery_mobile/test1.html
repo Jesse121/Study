@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery Mobile 深入浅出</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+</head>
+
+<body>
+    <div data-role="page" id="main">
+        <div data-role="header">
+            <h1> 专有链接</h1>
+        </div>
+        <div data-role="content">
+            <p> 点击下面的按钮测试移动设备专有链接的行为。</p>
+            <p>
+                <a href="tel:+1800229933" data-role="button">呼叫白宫</a>
+                <a href="sms:+1800229933" data-role="button">给白宫发短消息</a>
+                <a href="sms:+1800229933?body=Hello!" data-role="button">带正文的短消息</a>
+                <a href="mailto:info@mobilexweb.com?subject=Sent%20from%20the%20web" data-role="button">给我发邮件</a>
+                <a href="skype:maximiliano.firtman?call" data-role="button">用 Skype 联系我</a>
+                <a href="facetime:+1800229933" data-role="button">用 Facetime 呼叫我</a> （仅限带摄像头的 iOS 设备）
+            </p>
+        </div>
+        <div data-role="footer">
+            <h4>www.mobilexweb.com</h4>
+        </div>
+    </div>
+</body>
+
+</html>

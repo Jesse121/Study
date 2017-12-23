@@ -78,7 +78,6 @@
             _ele.addEventListener('scroll', function() {
                 var scrollHeight = this.scrollHeight;
                 var scrollTop = this.scrollTop;
-                console.log(scrollTop)    
                 if (scrollHeight - cliHeight - scrollTop < bH) {
                     callback();
                 }

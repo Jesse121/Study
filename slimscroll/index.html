@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>2</title>
+    <title>test1</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <script src="jquery.min.js"></script>
@@ -70,7 +70,7 @@
             });
         }
         initScroll();
-        var lock = false;
+        // var lock = false;
         function scrollLoad(ele, bottomHeight, callback) {
             var _ele = document.querySelector(ele),
                 cliHeight = _ele.clientHeight,
@@ -78,6 +78,7 @@
             _ele.addEventListener('scroll', function() {
                 var scrollHeight = this.scrollHeight;
                 var scrollTop = this.scrollTop;
+                console.log(scrollTop);
                 if (scrollHeight - cliHeight - scrollTop < bH) {
                     callback();
                 }
@@ -85,8 +86,8 @@
         }
 
         scrollLoad('.slimscroll',100,function(){
-            if(lock)return ;
-            lock = true;
+            // if(lock)return ;
+            // lock = true;
             load();
         })
 

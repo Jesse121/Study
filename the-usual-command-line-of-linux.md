@@ -44,5 +44,13 @@ date -s 设置日期时间
 
 cal 输出当前日历
 
+#### Mac OS 终端起动、关闭、重启apache的方法
+
+重启apache：sudo /usr/sbin/apachectl restart
+
+关闭apache：sudo /usr/sbin/apachectl stop
+
+开启apache：sudo /usr/sbin/apachectl start
+
 
 

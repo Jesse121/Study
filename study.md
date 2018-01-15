@@ -137,6 +137,12 @@ ios 5.1 需要-webkit-
 
 line-height:initial; 所有IE都不兼容  
 
+#### ios中激活active伪类
+在iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
+```js
+document.body.addEventListener('touchstart', function () {});  
+```
+
 ### xshell常用命令  
 打开会话：alt+o  
 切换会话：shift+tab    

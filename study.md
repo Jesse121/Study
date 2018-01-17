@@ -140,8 +140,29 @@ line-height:initial; 所有IE都不兼容
 #### ios中激活active伪类
 在iOS系统的移动设备中，需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。
 ```js
+//ios中激活active伪类
 document.body.addEventListener('touchstart', function () {});  
 ```
+
+####  属性控制元素在IOS设备上是否使用滚动回弹效果.
+从前端开发的角度讲，只需要知道CSS的属性-webkit-overflow-scrolling是真的创建了带有硬件加速的系统级控件，所以效率很高。但是这相对是耗更多内存的，最好在产生了非常大面积的overflow时才应用。
+```css
+/**/
+body {
+    -webkit-overflow-scrolling: touch;
+}
+```
+
+#### css波浪下划线
+<div style="text-decoration-style:wavy;text-decoration-color: red;text-decoration-line:underline;">this is a test</div>
+```css
+text-decoration-style:wavy;  
+text-decoration-color: red;
+text-decoration-line:underline;
+```
+具体参考：
+[text-decoration](https://www.w3.org/TR/css-text-decor-3/#text-decoration-skip-property)
+[兼容](https://www.jianshu.com/p/8570433e3669)
 
 ### xshell常用命令  
 打开会话：alt+o  

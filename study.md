@@ -29,6 +29,19 @@ sprite-loader
 
 ### ios上overflow:hidden失效
 
+#### 移动端禁止页面长按复制
+```css
+body{
+    -webkit-user-select:none;
+}
+```
+user-select：none | text | all | element   
+none：文本不能被选择  
+text：可以选择文本  
+all：当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。  
+element：可以选择文本，但选择范围受元素边界的约束  
+详细可参考[user-select](http://www.css88.com/book/css/properties/user-interface/user-select.htm)
+
 
 #### 工作中用到的特殊的css样式总结
 ##### chrome滚动条样式

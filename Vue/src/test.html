@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>test</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script type="text/javascript">
+        function cached(fn) {
+            var cache = Object.create(null);
+            return (function cachedFn(str) {
+                var hit = cache[str];
+                return hit || (cache[str] = fn(str))
+            })
+        }
+
+        /**
+         * Camelize a hyphen-delimited string.驼峰化一个连字符连接的字符串
+         */
+        var camelizeRE = /-(\w)/g;
+        var camelize = cached(function(str) {
+        	
+            return str.replace(camelizeRE, function(_, c) {
+                return c ? c.toUpperCase() : '';
+            })
+        });
+        console.log(camelize('jess-e'));
+    </script>
+</body>
+
+</html>

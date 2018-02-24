@@ -30,6 +30,8 @@ sprite-loader
 ### ios上overflow:hidden失效
 
 
+
+
 #### 工作中用到的特殊的css样式总结
 ##### chrome滚动条样式
 ```css
@@ -161,7 +163,8 @@ text-decoration-line:underline;
 [text-decoration](https://www.w3.org/TR/css-text-decor-3/#text-decoration-skip-property)
 [兼容](https://www.jianshu.com/p/8570433e3669)
 
-### xshell常用命令  
+
+#### xshell常用命令  
 打开会话：alt+o  
 切换会话：shift+tab    
 减小字号：ctrl+shift+alt+[  

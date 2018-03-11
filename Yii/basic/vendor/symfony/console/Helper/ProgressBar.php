@@ -23,7 +23,6 @@ use Symfony\Component\Console\Exception\LogicException;
  */
 class ProgressBar
 {
-    // options
     private $barWidth = 28;
     private $barChar;
     private $emptyBarChar = '-';
@@ -31,10 +30,6 @@ class ProgressBar
     private $format;
     private $internalFormat;
     private $redrawFreq = 1;
-
-    /**
-     * @var OutputInterface
-     */
     private $output;
     private $step = 0;
     private $max;
@@ -50,8 +45,6 @@ class ProgressBar
     private static $formats;
 
     /**
-     * Constructor.
-     *
      * @param OutputInterface $output An OutputInterface instance
      * @param int             $max    Maximum steps (0 if unknown)
      */
@@ -83,7 +76,7 @@ class ProgressBar
      * @param string   $name     The placeholder name (including the delimiter char like %)
      * @param callable $callable A PHP callable
      */
-    public static function setPlaceholderFormatterDefinition($name, callable $callable)
+    public static function setPlaceholderFormatterDefinition($name, $callable)
     {
         if (!self::$formatters) {
             self::$formatters = self::initPlaceholderFormatters();
@@ -182,6 +175,20 @@ class ProgressBar
     }
 
     /**
+     * Gets the progress bar step.
+     *
+     * @deprecated since version 2.6, to be removed in 3.0. Use {@link getProgress()} instead.
+     *
+     * @return int The progress bar step
+     */
+    public function getStep()
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since Symfony 2.6 and will be removed in 3.0. Use the getProgress() method instead.', E_USER_DEPRECATED);
+
+        return $this->getProgress();
+    }
+
+    /**
      * Gets the current step position.
      *
      * @return int The progress bar step
@@ -194,9 +201,11 @@ class ProgressBar
     /**
      * Gets the progress bar step width.
      *
+     * @internal This method is public for PHP 5.3 compatibility, it should not be used.
+     *
      * @return int The progress bar step width
      */
-    private function getStepWidth()
+    public function getStepWidth()
     {
         return $this->stepWidth;
     }
@@ -347,6 +356,22 @@ class ProgressBar
     }
 
     /**
+     * Sets the current progress.
+     *
+     * @deprecated since version 2.6, to be removed in 3.0. Use {@link setProgress()} instead.
+     *
+     * @param int $step The current progress
+     *
+     * @throws LogicException
+     */
+    public function setCurrent($step)
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since Symfony 2.6 and will be removed in 3.0. Use the setProgress() method instead.', E_USER_DEPRECATED);
+
+        $this->setProgress($step);
+    }
+
+    /**
      * Sets whether to overwrite the progressbar, false for new line.
      *
      * @param bool $overwrite
@@ -413,11 +438,15 @@ class ProgressBar
             $this->setRealFormat($this->internalFormat ?: $this->determineBestFormat());
         }
 
-        $this->overwrite(preg_replace_callback("{%([a-z\-_]+)(?:\:([^%]+))?%}i", function ($matches) {
-            if ($formatter = $this::getPlaceholderFormatterDefinition($matches[1])) {
-                $text = call_user_func($formatter, $this, $this->output);
-            } elseif (isset($this->messages[$matches[1]])) {
-                $text = $this->messages[$matches[1]];
+        // these 3 variables can be removed in favor of using $this in the closure when support for PHP 5.3 will be dropped.
+        $self = $this;
+        $output = $this->output;
+        $messages = $this->messages;
+        $this->overwrite(preg_replace_callback("{%([a-z\-_]+)(?:\:([^%]+))?%}i", function ($matches) use ($self, $output, $messages) {
+            if ($formatter = $self::getPlaceholderFormatterDefinition($matches[1])) {
+                $text = call_user_func($formatter, $self, $output);
+            } elseif (isset($messages[$matches[1]])) {
+                $text = $messages[$matches[1]];
             } else {
                 return $matches[0];
             }

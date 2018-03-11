@@ -11,11 +11,10 @@
 
 namespace Symfony\Component\Yaml\Tests;
 
-use Symfony\Bridge\PhpUnit\ErrorAssert;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Inline;
-use Symfony\Component\Yaml\Yaml;
 
-class InlineTest extends \PHPUnit_Framework_TestCase
+class InlineTest extends TestCase
 {
     /**
      * @dataProvider getTestsForParse
@@ -29,17 +28,6 @@ class InlineTest extends \PHPUnit_Framework_TestCase
      * @dataProvider getTestsForParseWithMapObjects
      */
     public function testParseWithMapObjects($yaml, $value)
-    {
-        $actual = Inline::parse($yaml, Yaml::PARSE_OBJECT_FOR_MAP);
-
-        $this->assertSame(serialize($value), serialize($actual));
-    }
-
-    /**
-     * @group legacy
-     * @dataProvider getTestsForParseWithMapObjects
-     */
-    public function testParseWithMapObjectsPassingTrue($yaml, $value)
     {
         $actual = Inline::parse($yaml, false, false, true);
 
@@ -71,8 +59,10 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 
             $this->assertEquals('1.2', Inline::dump(1.2));
             $this->assertContains('fr', strtolower(setlocale(LC_NUMERIC, 0)));
-        } finally {
             setlocale(LC_NUMERIC, $locale);
+        } catch (\Exception $e) {
+            setlocale(LC_NUMERIC, $locale);
+            throw $e;
         }
     }
 
@@ -84,12 +74,12 @@ class InlineTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException        \Symfony\Component\Yaml\Exception\ParseException
-     * @expectedExceptionMessage Found unknown escape character "\V".
+     * @group legacy
+     * throws \Symfony\Component\Yaml\Exception\ParseException in 3.0
      */
     public function testParseScalarWithNonEscapedBlackslashShouldThrowException()
     {
-        Inline::parse('"Foo\Var"');
+        $this->assertSame('Foo\Var', Inline::parse('"Foo\Var"'));
     }
 
     /**
@@ -156,15 +146,6 @@ class InlineTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseReferences($yaml, $expected)
     {
-        $this->assertSame($expected, Inline::parse($yaml, 0, array('var' => 'var-value')));
-    }
-
-    /**
-     * @group legacy
-     * @dataProvider getDataForParseReferences
-     */
-    public function testParseReferencesAsFifthArgument($yaml, $expected)
-    {
         $this->assertSame($expected, Inline::parse($yaml, false, false, false, array('var' => 'var-value')));
     }
 
@@ -183,19 +164,6 @@ class InlineTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testParseMapReferenceInSequence()
-    {
-        $foo = array(
-            'a' => 'Steve',
-            'b' => 'Clark',
-            'c' => 'Brian',
-        );
-        $this->assertSame(array($foo), Inline::parse('[*foo]', 0, array('foo' => $foo)));
-    }
-
-    /**
-     * @group legacy
-     */
-    public function testParseMapReferenceInSequenceAsFifthArgument()
     {
         $foo = array(
             'a' => 'Steve',
@@ -224,45 +192,48 @@ class InlineTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getReservedIndicators
-     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
-     * @expectedExceptionMessage cannot start a plain scalar; you need to quote the scalar.
+     * @group legacy
+     * @expectedDeprecation Not quoting the scalar "@foo " starting with "@" is deprecated since Symfony 2.8 and will throw a ParseException in 3.0.
+     * throws \Symfony\Component\Yaml\Exception\ParseException in 3.0
      */
-    public function testParseUnquotedScalarStartingWithReservedIndicator($indicator)
+    public function testParseUnquotedScalarStartingWithReservedAtIndicator()
     {
-        Inline::parse(sprintf('{ foo: %sfoo }', $indicator));
-    }
-
-    public function getReservedIndicators()
-    {
-        return array(array('@'), array('`'));
+        Inline::parse('{ foo: @foo }');
     }
 
     /**
-     * @dataProvider getScalarIndicators
-     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
-     * @expectedExceptionMessage cannot start a plain scalar; you need to quote the scalar.
+     * @group legacy
+     * @expectedDeprecation Not quoting the scalar "`foo " starting with "`" is deprecated since Symfony 2.8 and will throw a ParseException in 3.0.
+     * throws \Symfony\Component\Yaml\Exception\ParseException in 3.0
      */
-    public function testParseUnquotedScalarStartingWithScalarIndicator($indicator)
+    public function testParseUnquotedScalarStartingWithReservedBacktickIndicator()
     {
-        Inline::parse(sprintf('{ foo: %sfoo }', $indicator));
+        Inline::parse('{ foo: `foo }');
+    }
+
+    /**
+     * @group legacy
+     * @expectedDeprecation Not quoting the scalar "|foo " starting with "|" is deprecated since Symfony 2.8 and will throw a ParseException in 3.0.
+     * throws \Symfony\Component\Yaml\Exception\ParseException in 3.0
+     */
+    public function testParseUnquotedScalarStartingWithLiteralStyleIndicator()
+    {
+        Inline::parse('{ foo: |foo }');
+    }
+
+    /**
+     * @group legacy
+     * @expectedDeprecation Not quoting the scalar ">foo " starting with ">" is deprecated since Symfony 2.8 and will throw a ParseException in 3.0.
+     * throws \Symfony\Component\Yaml\Exception\ParseException in 3.0
+     */
+    public function testParseUnquotedScalarStartingWithFoldedStyleIndicator()
+    {
+        Inline::parse('{ foo: >foo }');
     }
 
     public function getScalarIndicators()
     {
         return array(array('|'), array('>'));
-    }
-
-    /**
-     * @group legacy
-     * @requires function Symfony\Bridge\PhpUnit\ErrorAssert::assertDeprecationsAreTriggered
-     * throws \Symfony\Component\Yaml\Exception\ParseException in 4.0
-     */
-    public function testParseUnquotedScalarStartingWithPercentCharacter()
-    {
-        ErrorAssert::assertDeprecationsAreTriggered('Not quoting the scalar "%foo " starting with the "%" indicator character is deprecated since Symfony 3.1 and will throw a ParseException in 4.0.', function () {
-            Inline::parse('{ foo: %foo }');
-        });
     }
 
     /**
@@ -495,107 +466,32 @@ class InlineTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider getTimestampTests
+     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
+     * @expectedExceptionMessage Malformed inline YAML string: {this, is not, supported}.
      */
-    public function testParseTimestampAsUnixTimestampByDefault($yaml, $year, $month, $day, $hour, $minute, $second)
+    public function testNotSupportedMissingValue()
     {
-        $this->assertSame(gmmktime($hour, $minute, $second, $month, $day, $year), Inline::parse($yaml));
+        Inline::parse('{this, is not, supported}');
     }
 
-    /**
-     * @dataProvider getTimestampTests
-     */
-    public function testParseTimestampAsDateTimeObject($yaml, $year, $month, $day, $hour, $minute, $second)
+    public function testVeryLongQuotedStrings()
     {
-        $expected = new \DateTime($yaml);
-        $expected->setTimeZone(new \DateTimeZone('UTC'));
-        $expected->setDate($year, $month, $day);
-        $expected->setTime($hour, $minute, $second);
+        $longStringWithQuotes = str_repeat("x\r\n\\\"x\"x", 1000);
 
-        $this->assertEquals($expected, Inline::parse($yaml, Yaml::PARSE_DATETIME));
+        $yamlString = Inline::dump(array('longStringWithQuotes' => $longStringWithQuotes));
+        $arrayFromYaml = Inline::parse($yamlString);
+
+        $this->assertEquals($longStringWithQuotes, $arrayFromYaml['longStringWithQuotes']);
     }
 
-    public function getTimestampTests()
+    public function testBooleanMappingKeysAreConvertedToStrings()
     {
-        return array(
-            'canonical' => array('2001-12-15T02:59:43.1Z', 2001, 12, 15, 2, 59, 43),
-            'ISO-8601' => array('2001-12-15t21:59:43.10-05:00', 2001, 12, 16, 2, 59, 43),
-            'spaced' => array('2001-12-15 21:59:43.10 -5', 2001, 12, 16, 2, 59, 43),
-            'date' => array('2001-12-15', 2001, 12, 15, 0, 0, 0),
-        );
+        $this->assertSame(array('false' => 'foo'), Inline::parse('{false: foo}'));
+        $this->assertSame(array('true' => 'foo'), Inline::parse('{true: foo}'));
     }
 
-    /**
-     * @dataProvider getTimestampTests
-     */
-    public function testParseNestedTimestampListAsDateTimeObject($yaml, $year, $month, $day, $hour, $minute, $second)
+    public function testTheEmptyStringIsAValidMappingKey()
     {
-        $expected = new \DateTime($yaml);
-        $expected->setTimeZone(new \DateTimeZone('UTC'));
-        $expected->setDate($year, $month, $day);
-        $expected->setTime($hour, $minute, $second);
-
-        $expectedNested = array('nested' => array($expected));
-        $yamlNested = "{nested: [$yaml]}";
-
-        $this->assertEquals($expectedNested, Inline::parse($yamlNested, Yaml::PARSE_DATETIME));
-    }
-
-    /**
-     * @dataProvider getDateTimeDumpTests
-     */
-    public function testDumpDateTime($dateTime, $expected)
-    {
-        $this->assertSame($expected, Inline::dump($dateTime));
-    }
-
-    public function getDateTimeDumpTests()
-    {
-        $tests = array();
-
-        $dateTime = new \DateTime('2001-12-15 21:59:43', new \DateTimeZone('UTC'));
-        $tests['date-time-utc'] = array($dateTime, '2001-12-15T21:59:43+00:00');
-
-        $dateTime = new \DateTimeImmutable('2001-07-15 21:59:43', new \DateTimeZone('Europe/Berlin'));
-        $tests['immutable-date-time-europe-berlin'] = array($dateTime, '2001-07-15T21:59:43+02:00');
-
-        return $tests;
-    }
-
-    /**
-     * @dataProvider getBinaryData
-     */
-    public function testParseBinaryData($data)
-    {
-        $this->assertSame('Hello world', Inline::parse($data));
-    }
-
-    public function getBinaryData()
-    {
-        return array(
-            'enclosed with double quotes' => array('!!binary "SGVsbG8gd29ybGQ="'),
-            'enclosed with single quotes' => array("!!binary 'SGVsbG8gd29ybGQ='"),
-            'containing spaces' => array('!!binary  "SGVs bG8gd 29ybGQ="'),
-        );
-    }
-
-    /**
-     * @dataProvider getInvalidBinaryData
-     */
-    public function testParseInvalidBinaryData($data, $expectedMessage)
-    {
-        $this->setExpectedExceptionRegExp('\Symfony\Component\Yaml\Exception\ParseException', $expectedMessage);
-
-        Inline::parse($data);
-    }
-
-    public function getInvalidBinaryData()
-    {
-        return array(
-            'length not a multiple of four' => array('!!binary "SGVsbG8d29ybGQ="', '/The normalized base64 encoded data \(data without whitespace characters\) length must be a multiple of four \(\d+ bytes given\)/'),
-            'invalid characters' => array('!!binary "SGVsbG8#d29ybGQ="', '/The base64 encoded data \(.*\) contains invalid characters/'),
-            'too many equals characters' => array('!!binary "SGVsbG8gd29yb==="', '/The base64 encoded data \(.*\) contains invalid characters/'),
-            'misplaced equals character' => array('!!binary "SGVsbG8gd29ybG=Q"', '/The base64 encoded data \(.*\) contains invalid characters/'),
-        );
+        $this->assertSame(array('' => 'foo'), Inline::parse('{ "": foo }'));
     }
 }

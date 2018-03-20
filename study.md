@@ -19,6 +19,15 @@ python
 
 #### ios上overflow:hidden失效
 
+#### Date.parse()获取时间戳IOS不兼容的问题
+前端同事在做微信小程序时发现IOS获取的时间戳为空的问题，后来通过跟踪发现，原来是因为IOS系统不支持2017-01-01格式的时间导致的，
+下面用正则替换2017-01-01日期格式为2017/01/01后问题解决(代码如下)
+```
+var mydata = '2017-01-01 11:00:00';
+mydata=data.replace(/-/g, '/');
+console.log("返回时间：" + mydata);
+var time = Date.parse(new Date(mydata)) / 1000;
+```
 #### 移动端禁止页面长按复制
 ```css
 body{

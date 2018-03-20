@@ -42,13 +42,13 @@ class CountrySearch extends Country
     public function search($params)
     {
         $query = Country::find();
-
+        // var_dump($query);exit;
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        // var_dump($dataProvider);exit;
         $this->load($params);
 
         if (!$this->validate()) {

@@ -3,8 +3,10 @@
 namespace app\controllers;
 
 use Yii;
+
 use app\models\Country;
 use app\models\CountrySearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,6 +18,8 @@ class CountryController extends Controller
 {
     /**
      * @inheritdoc
+     * 过滤器 默认应用到该类的所有动作
+     * VerbFilter检查请求动作的HTTP请求方式是否允许执行
      */
     public function behaviors()
     {

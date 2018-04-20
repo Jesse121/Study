@@ -8,10 +8,19 @@ lodash
 php
 nodejs
 
+lamp/lnmp的安装与配置
+php扩展的安装
+redis
+websocket
+
 TypeScript
 React
 python
 
+移动端页面调试工具
+fiddler
+eruda.js
+spy-debugger
 
 如何学习源码
 

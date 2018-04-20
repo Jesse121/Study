@@ -1,9 +1,9 @@
 ---
 title: 工作中常用的Linux命令行
 date: 2017-10-18 07:05:49
-categories: 
+categories:
 - Linux
-tags: 
+tags:
 - Linux
 ---
 
@@ -35,22 +35,15 @@ tags:
 |more、less | 分页显示文本文件内容|
 |head、tail |   显示文件头、尾内容|
 
-改变文件所有权限
+#### 改变文件所有权限
 chmod -R 777 *
 
-date 输出日期时间  
-date -s 设置日期时间  
+#### date 输出日期时间
+date -s 设置日期时间
 例如：date -s "2017/11/11 00:00:00"
 
-cal 输出当前日历
+#### cal 输出当前日历
 
-#### Mac OS 终端起动、关闭、重启apache的方法
-
-重启apache：sudo /usr/sbin/apachectl restart
-
-关闭apache：sudo /usr/sbin/apachectl stop
-
-开启apache：sudo /usr/sbin/apachectl start
 
 
 

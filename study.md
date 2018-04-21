@@ -8,7 +8,6 @@ lodash
 php
 nodejs
 
-lamp/lnmp的安装与配置
 php扩展的安装
 redis
 websocket
@@ -21,6 +20,8 @@ python
 fiddler
 eruda.js
 spy-debugger
+
+前端开发环境一键安装
 
 如何学习源码
 

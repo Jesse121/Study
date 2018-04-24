@@ -7,6 +7,7 @@ lodash
 
 php
 nodejs
+nginx
 
 php扩展的安装
 redis
@@ -16,17 +17,24 @@ TypeScript
 React
 python
 
-移动端页面调试工具
-fiddler
-eruda.js
-spy-debugger
-
-前端开发环境一键安装
 
 如何学习源码
 
 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 
+
+### spy-debugger
+#### 安装
+npm install spy-debugger -g  
+#### 使用方法
+
+1. 手机和PC保持在同一网络下（比如同时连到一个Wi-Fi下）
+2. 命令行输入spy-debugger，按命令行提示用浏览器打开相应地址。
+3. 设置手机的HTTP代理，代理IP地址设置为PC的IP地址，端口为spy-debugger的启动端口(默认端口：9888)。
+Android设置代理步骤：设置 - WLAN - 长按选中网络 - 修改网络 - 高级 - 代理设置 - 手动
+iOS设置代理步骤：设置 - 无线局域网 - 选中网络 - HTTP代理手动
+4. 手机安装证书。注：手机必须先设置完代理后再通过(非微信)手机浏览器访问s.xxx 安装证书（手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。
+5. 用手机浏览器访问你要调试的页面即可。 
 
 
 ### xshell常用命令

@@ -43,48 +43,31 @@
  *          }
  *      }
  *  });
- * 
+ *
  */
 
  const os = (function(){
-      var ua = navigator.userAgent,  
-      isWindowsPhone = /(?:Windows Phone)/.test(ua),  
-      isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,   
-      isAndroid = /(?:Android)/.test(ua),   
-      isFireFox = /(?:Firefox)/.test(ua),   
-      isChrome = /(?:Chrome|CriOS)/.test(ua),  
-      isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),  
-      isPhone = /(?:iPhone)/.test(ua) && !isTablet,  
-      isPc = !isPhone && !isAndroid && !isSymbian;  
-      return {  
-           isTablet: isTablet,  
-           isPhone: isPhone,  
-           isAndroid : isAndroid,  
-           isPc : isPc  
-      };  
+      var ua = navigator.userAgent,
+      isWindowsPhone = /(?:Windows Phone)/.test(ua),
+      isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+      isAndroid = /(?:Android)/.test(ua),
+      isFireFox = /(?:Firefox)/.test(ua),
+      isChrome = /(?:Chrome|CriOS)/.test(ua),
+      isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+      isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+      isPc = !isPhone && !isAndroid && !isSymbian;
+      return {
+           isTablet: isTablet,
+           isPhone: isPhone,
+           isAndroid : isAndroid,
+           isPc : isPc
+      };
  }());
 
 export default class PolyfillScroll{
-    constructor({
-        scrollWrap, 
-        scrollContent, 
-        cb, 
-        bar:{width="10px",height="40px",background="#000",right="2px"} = {}
-    }){
-        this.portTouch = {
-            sx: 0,
-            sy: 0,
-            ex: 0,
-            ey: 0
-        };
-        this.pointSE = {
-            sx: 0,
-            sy: 0,
-            ex: 0,
-            ey: 0,
-            st: 0,
-            et: 0
-        };
+    constructor({scrollWrap, scrollContent, cb, bar:{width="10px",height="40px",background="#000",right="2px"} = {}}){
+        this.portTouch = {sx: 0,sy: 0,ex: 0,ey: 0};
+        this.pointSE = {sx: 0,sy: 0,ex: 0,ey: 0,st: 0,et: 0};
         this.moveDistance = 0;
         this.transitionEndStatus = true;
         this.scrollWrap = document.querySelector(scrollWrap);
@@ -318,6 +301,6 @@ export default class PolyfillScroll{
             this.translateMove(dist,true);
         }else{
             this.translateMove(dist);
-        } 
+        }
     }
 }

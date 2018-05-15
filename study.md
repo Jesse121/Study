@@ -23,6 +23,13 @@ python
 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 
 
+设置防火墙允许http服务
+firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
+
+### MVC设计模式
+
+
 ### spy-debugger
 #### 安装
 npm install spy-debugger -g  

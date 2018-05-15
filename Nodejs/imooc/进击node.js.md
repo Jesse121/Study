@@ -1,4 +1,4 @@
-### 进击Node.js基础（一）
+### 进击Node.js基础
 #### Linux(centos)下安装node.js
 查看发行版本 cat /etc/redhat-release
 查看gcc rpm -q gcc rpm -q gcc-c++

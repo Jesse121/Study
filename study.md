@@ -1,33 +1,26 @@
-picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
-
-ES6  原生js
-vue element
-express
-lodash
-
-php
-nodejs
-nginx
-
-php扩展的安装
-redis
-websocket
+webapck es6 
+vue源码 vue-router vuex weex 
+nodejs express
+websocket redis https
+前端性能优化 独立架构网站前端
 
 TypeScript
 React
+
+http2.0 monogoidb  tcp/ip 小程序
+nginx
+php
 python
 
 
-如何学习源码
 
+
+
+picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 
 
-设置防火墙允许http服务
-firewall-cmd --add-service=http --permanent
-firewall-cmd --reload
 
-### MVC设计模式
 
 
 ### spy-debugger

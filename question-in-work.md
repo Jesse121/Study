@@ -1,5 +1,5 @@
 ---
-title: 工作中遇到的细节问题总结
+title: 工作中遇到的细节问题总结(一)
 date: 2018-04-11 18:13:05
 categories: 
 - HTML-CSS
@@ -11,7 +11,127 @@ tags:
 <!-- more -->
 #### ios上overflow:hidden失效
 
-#### css3
+#### 用css3播放逐帧动画
+动效设计师给了我们11张(300*300)帧动画图片，现需要用css3以动画的形式播放这些图片  
+第一个想到的办法就是通过animation改变DOM元素的背景图片
+```less
+.boom-2{
+    position: fixed;
+    width:300px;
+    height:300px;
+    transform:translate(-50%,-50%);
+    pointer-events: none;
+    animation: boom-2 1s forwards;
+}
+@keyframes boom-2{
+    0%{
+        background-image: url("../hit/0.png");
+    }
+    10%{
+        background-image: url("../hit/1.png");
+    }
+    20%{
+        background-image: url("../hit/2.png");
+    }
+    30%{
+        background-image: url("../hit/3.png");
+    }
+    40%{
+        background-image: url("../hit/4.png");
+    }
+    50%{
+        background-image: url("../hit/5.png");
+    }
+    60%{
+        background-image: url("../hit/6.png");
+    }
+    70%{
+        background-image: url("../hit/7.png");
+    }
+    80%{
+        background-image: url("../hit/8.png");
+    }
+    90%{
+        background-image: url("../hit/9.png");
+    }
+    100%{
+        background-image: url("../hit/10.png");
+    }
+}
+```
+结果在chrome firefox上运行良好，可是在IE上看不到效果,在网上搜一下发现  
+[background-image不支持动画](https://www.w3.org/TR/css-backgrounds-3/#the-background-image)
+既然不行那就在想想办法。
+
+第二种办法就是通过动画改变background-position,在加上已帧动画的形式播放,关键点：`animation-timing-function:steps(11)`;
+```less
+.boom-2{
+    position: fixed;
+    width:300px;
+    height:300px;
+    transform:translate(-50%,-50%) scale(0.5);
+    pointer-events: none;
+    animation: boomSvg 0.4s steps(11) forwards;
+    background-image: url("./boom.png");
+}
+@keyframes boomSvg{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 0 -1100%;
+    }
+}
+```
+至此完美解决帧动画播放问题。  
+通过这个问题发现自己对css3动画不是非常了解，就顺便在延展下  
+
+animation 属性是一个简写属性，用于设置8个动画属性：
+ 
+* animation-name  //规定需要绑定到选择器的 keyframe 名称
+* animation-duration //规定完成动画所花费的时间，以秒或毫秒计。
+* animation-timing-function  //规定动画的速度曲线
+* animation-delay  //规定在动画开始之前的延迟。
+* animation-iteration-count  //规定动画应该播放的次数
+* animation-direction  //规定是否应该轮流反向播放动画
+* animation-fill-mode  //属性规定动画在播放之前或之后，其动画效果是否可见
+* animation-play-state //属性规定动画正在运行还是暂停
+
+**animation-fill-mode**  
+
+|值       |  描述 |
+|---------|-------|
+|none     |不改变默认行为。|
+|forwards |当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。|
+|backwards|在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。|
+|both     |向前和向后填充模式都被应用。|
+
+**animation-play-state**  
+
+|值       |  描述 |
+|---------|-------|
+|paused   |规定动画已暂停|
+|running  |规定动画正在播放|
+
+**animation-timing-function** 
+
+|值          |  描述 |
+|------------|-----------|
+|linear      |动画从头到尾的速度是相同的| 
+|ease        |默认。动画以低速开始，然后加快，在结束前变慢。|
+|ease-in     |动画以低速开始。   |
+|ease-out    |动画以低速结束。   |
+|ease-in-out |动画以低速开始和结束。|
+|cubic-bezier(n,n,n,n)|   在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。|
+
+以上animation-timing-function的值都是实现线性变化（两个状态之间是逐渐变化过去），其实animation-timing-function还可以实现帧动画（两个状态之间是直接跳跃变化）
+
+steps(11,start)
+第一个参数 number 为指定的间隔数，即把两关键帧分为 n 步阶段性展示    
+第二个参数可选，接受 start 和 end 两个值，指定在每个间隔的起点或是终点发生阶跃变化，默认为 end  
+
+* start在变化过程中，都是以下一帧的显示效果来填充间隔动画，  
+* end与上面相反，都是以上一帧的显示效果来填充间隔动画，  
 
 #### line-height属性再探究
 ```

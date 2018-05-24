@@ -9,6 +9,12 @@ tags:
 在前端开发工作中总会遇到各种各样的坑，今天这篇博文就是为了记录下踩过的坑，分析后发现容易掉坑里的地方一般是自己不熟悉的知识点或者是易忽略的知识点。故作此文，谨以自勉。
 
 <!-- more -->
+#### 取消ios上select,input,button的默认样式
+```css
+select,input,button{
+    -webkit-appearance: none;
+}
+```
 #### ios上overflow:hidden失效
 
 #### 用css3播放逐帧动画

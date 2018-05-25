@@ -4,10 +4,13 @@ nodejs express
 websocket redis https
 前端性能优化 独立架构网站前端
 
+
+
+
 TypeScript
 React
 
-http2.0 monogoidb  tcp/ip 小程序
+http2.0 monogodb  tcp/ip 小程序
 nginx
 php
 python
@@ -33,7 +36,7 @@ npm install spy-debugger -g
 3. 设置手机的HTTP代理，代理IP地址设置为PC的IP地址，端口为spy-debugger的启动端口(默认端口：9888)。
 Android设置代理步骤：设置 - WLAN - 长按选中网络 - 修改网络 - 高级 - 代理设置 - 手动
 iOS设置代理步骤：设置 - 无线局域网 - 选中网络 - HTTP代理手动
-4. 手机安装证书。注：手机必须先设置完代理后再通过(非微信)手机浏览器访问s.xxx 安装证书（手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。
+4. 手机安装证书。注：手机必须先设置完代理后再通过(非微信)手机浏览器访问s.xxx 安装证书(手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。
 5. 用手机浏览器访问你要调试的页面即可。 
 
 

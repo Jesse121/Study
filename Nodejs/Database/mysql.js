@@ -7,7 +7,13 @@ var connection = mysql.createConnection({
     database: 'node'
 });
 
-connection.connect();
+connection.connect(function(err){
+    if(err){
+        console.log('[query]-:'+err);
+        return ;
+    }
+    console.log('connected success!');
+});
 //增加
 function add() {
     var addSql = 'INSERT INTO websites(Id,name,url,alexa,country) VALUES(0,?,?,?,?)';
@@ -62,4 +68,9 @@ query();
 
 
 
-connection.end();
+connection.end(function(err){
+    if(err){
+        return ;
+    }
+    console.log('connected end!');
+});

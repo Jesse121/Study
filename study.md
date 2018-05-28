@@ -1,24 +1,23 @@
-webapck es6 
-vue源码 vue-router vuex weex 
 nodejs express
-websocket  https nginx  tcp/ip 小程序
-前端性能优化 独立架构网站前端
+webapck 
+es6 
+vue源码 vue-router vuex weex 
+
+http/https
+tcp/ip 
+websocket
+nginx
+小程序
+前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
+独立架构网站前端
 
 TypeScript
 React
 
 
-
-
-
 http2.0 monogoidb  
 redis
 python
-
-php学习路线
-yii2
-留言板 博客 新闻站 商城
-
 
 
 
@@ -27,7 +26,6 @@ yii2
 
 
 picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
-编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 
 
 

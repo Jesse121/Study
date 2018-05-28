@@ -69,3 +69,19 @@ Ctrl+w 剪切光标所在处之前的一个词（以空格、标点等为分隔�
 Ctrl+（x u） 按住Ctrl的同时再先后按x和u，撤销刚才的操作  
 Ctrl+s 锁住终端  
 Ctrl+q 解锁终端 
+
+
+
+
+vagrant常用命令
+vagrant box list 查看目前已有的box
+vagrant box add 新增加一个box
+vagrant box remove
+vagrant inti 初始化配置vagrantfile
+vagrant up 启动虚拟机
+vagrant ssh ssh登录虚拟机
+vagrant suspend 挂起虚拟机
+vagrant reload 重启虚拟机
+vagrant halt 关闭虚拟机
+vagrant status 查看虚拟机
+vagrant destory 删除虚拟机

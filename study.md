@@ -1,21 +1,21 @@
-nodejs express
-webapck 
-es6 
-vue源码 vue-router vuex weex 
+http/https tcp/ip 
+vue源码 vue-router vuex
+webapck vue-cli
+React
 
-http/https
-tcp/ip 
-websocket
+nodejs express
+es6 
 nginx
-小程序
 前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
+TypeScript
+
+websocket
+小程序
 独立架构网站前端
 
 
+Linux公社
 
-
-TypeScript
-React
 
 
 http2.0 monogoidb  
@@ -24,12 +24,9 @@ php
 python
 
 
-
-
-
-
-
 picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
+
+### wireshark使用教程
 
 
 

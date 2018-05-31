@@ -23,12 +23,6 @@ redis
 php
 python
 
-
-
-
-
-
-
 picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
 
 
@@ -45,7 +39,7 @@ npm install spy-debugger -g
 3. 设置手机的HTTP代理，代理IP地址设置为PC的IP地址，端口为spy-debugger的启动端口(默认端口：9888)。
 Android设置代理步骤：设置 - WLAN - 长按选中网络 - 修改网络 - 高级 - 代理设置 - 手动
 iOS设置代理步骤：设置 - 无线局域网 - 选中网络 - HTTP代理手动
-4. 手机安装证书。注：手机必须先设置完代理后再通过(非微信)手机浏览器访问s.xxx 安装证书(手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。
+4. 手机安装证书。注：手机必须先设置完代理后再通过(非微信)手机浏览器访问http://spydebugger.com/cert安装证书(手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。
 5. 用手机浏览器访问你要调试的页面即可。 
 
 
@@ -82,7 +76,7 @@ Ctrl+q 解锁终端
 
 
 
-vagrant常用命令
+### vagrant常用命令
 vagrant box list 查看目前已有的box
 vagrant box add 新增加一个box
 vagrant box remove

@@ -1,6 +1,5 @@
-http/https tcp/ip 
-vue源码 vue-router vuex
 webapck vue-cli
+vue源码 vue-router vuex
 React
 
 nodejs express
@@ -13,12 +12,25 @@ websocket
 小程序
 独立架构网站前端
 
+#### 网络TCP建立连接为什么需要三次握手而结束要四次？
+已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。
+
+#### 四次挥手是有谁发起的？一定要四次吗？
+断开tcp连接可以是客户端也可以是服务端,不一定是四次挥手
+https://blog.csdn.net/kkgbn/article/details/77859881
+被断开的一端没有数据要发送直接发送了ACK和FIN。这种情况通过抓包发现很常见。也就是四个过程也变为了三次握手。
+
+#### tcp链接keep-alive保持连接多久？
+/proc/sys/net/ipv4/tcp_keepalive_time 开始首次KeepAlive探测前的TCP空闭时间 默认7200
+/proc/sys/net/ipv4/tcp_keepalive_intvl 两次KeepAlive探测间的时间间隔  默认75
+/proc/sys/net/ipv4/tcp_keepalive_probes 判定断开前的KeepAlive探测次数 默认9
+对于一个已经建立的tcp连接。如果在keepalive_time时间内双方没有任何的数据包传输，则开启keepalive功能的一端将发送 keepalive数据包，若没有收到应答，则每隔keepalive_intvl时间再发送该数据包，发送keepalive_probes次。一直没有 收到应答，则发送rst包关闭连接。若收到应答，则将计时器清零。
+
+#### 网关如何获取远程ip的mac地址？
+
 
 Linux公社
-
-
-
-http2.0 monogoidb  
+http2.0 monogodb  
 redis
 php
 python
@@ -26,6 +38,16 @@ python
 picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
 
 ### wireshark使用教程
+#### 7层OSI参考模型各个层次上的典型网络协议
+|层次|协议|
+|----|----|
+|应用层|HTTP SMTP FTP Telnet|
+|表示层|ASCII MPEG JPEG MIDI|
+|会话层|NetBIOS SAP SDP NWLink|
+|传输层|TCP UDP SPX|
+|网络层|IP IPX|
+|数据链路层|Ethernet|
+
 
 
 

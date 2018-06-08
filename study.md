@@ -1,16 +1,17 @@
 webapck vue-cli
 vue源码 vue-router vuex
 React
+小程序
 
 nodejs express
 es6 
 nginx
 前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 TypeScript
-
 websocket
-小程序
 独立架构网站前端
+https://www.cnblogs.com/weihanli/p/localGitServer.html
+
 
 #### 网络TCP建立连接为什么需要三次握手而结束要四次？
 已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。
@@ -50,7 +51,11 @@ picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设�
 
 
 
+### 如何调试nodejs
 
+1. npm install -g node-inspector
+2. node --debug-brk ***.js
+3. 在另一个命令行中 node-inspector
 
 
 ### spy-debugger

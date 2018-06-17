@@ -1,14 +1,3 @@
----
-title: vue学习记录
-date: 2017-09-28 10:08:36
-categories: 
-- Vue
-tags: 
-- Vue
----
-
-
-<!-- more -->
 ### 指令
 指令 (Directives) 是带有 v- 前缀的特殊属性。指令属性的值预期是单个 JavaScript 表达式 
 #### v-bind

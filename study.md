@@ -1,15 +1,15 @@
 webpack vue-cli
 vue源码 vue-router vuex
 React
-小程序
+小程序  
+nginx
 
 
 nodejs express
 es6 
-nginx
 前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 TypeScript
-websocket
+websocket  
 独立架构网站前端
 
 

@@ -17,7 +17,7 @@ def getpic(html): #获取图片地址并下载
     all_img=soup.find_all('img')
     for img in all_img:
         img_url=img['src']
-        root='D:/pic/'
+        root='./pic/'
         path = root + img_url.split('/')[-1].split('?')[0]
         try:                              #创建或判断路径图片是否存在并下载
             if not os.path.exists(root):

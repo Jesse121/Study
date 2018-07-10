@@ -185,7 +185,7 @@ export default class PolyfillScroll{
 
         this.scrollWrap.addEventListener("mousewheel",wheel,false);
         this.scrollWrap.addEventListener("DOMMouseScroll",wheel,false);
-
+        return wheel;
     }
 
     //移动滚动条

@@ -3,6 +3,7 @@ vue源码 vue-router vuex
 React
 小程序  
 nginx
+gitlab jeakins
 
 
 nodejs express
@@ -71,6 +72,12 @@ iOS设置代理步骤：设置 - 无线局域网 - 选中网络 - HTTP代理手�
 4. 手机安装证书。注：手机必须先设置完代理后再通过(非微信)手机浏览器访问http://spydebugger.com/cert安装证书(手机首次调试需要安装证书，已安装了证书的手机无需重复安装)。
 5. 用手机浏览器访问你要调试的页面即可。 
 
+
+### 查询80端口被哪个程序占用
+```
+netstat -aon|findstr "80" //查询出pid
+tasklist|findstr "2720" //根据pid查询出程序名
+```
 
 ### xshell常用命令
 打开会话：alt+o  

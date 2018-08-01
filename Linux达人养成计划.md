@@ -20,5 +20,15 @@ find 【搜索范围】 【搜索条件】
 压缩目录及文件 zip -r 压缩文件名 源文件名
 
 解压文件 unzip 压缩文件名
-### 快捷键
-ctrl+l 清屏
+
+### mount 挂载
+
+mount 挂载光盘  
+mount /dev/sr0 /mnt/cdrom/
+mount 卸载光盘  
+unmount /mnt/cdrom/
+
+mount 挂载U盘  
+mount -t vfat /dev/sdb1 /mnt/usb/
+
+ctrl+l 清屏   

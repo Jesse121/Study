@@ -111,49 +111,95 @@ Ctrl+q 解锁终端
 
 
 
+### yum针对软件包操作常用命令： 
+1.使用YUM查找软件包 
+命令：yum search 
+2.列出所有可安装的软件包 
+命令：yum list 
+3.列出所有可更新的软件包 
+命令：yum list updates 
+4.列出所有已安装的软件包 
+命令：yum list installed 
+5.列出所有已安装但不在 Yum Repository 内的软件包 
+命令：yum list extras 
+6.列出所有软件包的信息 
+命令：yum info 
+7.列出所有可更新的软件包信息 
+命令：yum info updates 
+8.列出软件包提供哪些文件 
+命令：yum provides
 
 
 
 
-### 本地搭建gitlab服务器
-首先需要服务器的内存至少为4G，不然会出现502错误
-#### 安装依赖软件包
-sudo yum -y install curl policycoreutils openssh-server openssh-clients postfix
-
-##### 将SSH服务设置成开机自启动，并启动
-sudo systemctl enable sshd  
-sudo systemctl start sshd
-
-##### 设置postfix开机自启，并启动，postfix支持gitlab发信功能
-sudo systemctl enable postfix  
-sudo systemctl start postfix
-
-##### 打开系统防火墙HTTP
-sudo firewall-cmd --permanent --add-service=http  
-sudo systemctl reload firewalld
 
 
-#### 添加GitLab镜像源并安装
-vim /etc/yum.repos.d/gitlab_gitlab-ce.repo  
-修改内容如下：  
-```
-[gitlab-ce]
-name=gitlab-ce
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7
-repo_gpgcheck=0
-gpgcheck=0
-enabled=1
-gpgkey=https://packages.gitlab.com/gpg.key
-```
-##### 安装gitlab
-sudo yum install gitlab-ce
+ jesse:113a4c0708529d527b4a0ca706e600d7f8
 
-#### 配置gitlab-ce
-vim /etc/gitlab/gitlab.rb
-```
-external_url 'http://192.168.10.11' //服务器ip地址
-```
 
-gitlab-ctl 
 
-管理员的用户名为root，初始密码为5iveL!fe。重置密码后，新密码即为刚输入的密码
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDOnURcqSt/ZQT6tYtEzj85BWOFdgm9rP4NzqutQnU/NofbTboQNuT0qGkLgIio1WhZuPy1bG1KmpMSVen0es6Ua7XDpMKULItW9FzBUYG9JID+3msaJOD08FbWck5xXH7Du5PGJDjvTTbYgPthdRbBRlup3no5rUx7Wz02LIb7Sur8hUnBS9pD3CMqYaBG0RHABWY+moUFiHfQrAK8DD/45xiYNS1vK87wRTvCxUeC7k3xsV7pvsoCPMySRrXkFIBfHlH+aiDSfjpXxM1/dPwP9Q/rJE+gtuiUAUDhPDWrwfWuutKPKOxUt7Wgkf8ZwmfUZCcF4TTCSAZaWw8JOboIYck3qON0l5fmFXxDynT9uJaXyJ7B/675/0XJ9ju8lyDJEab0rQYDMM9YwTonWAuMKfPsjdBDB0j2PRXo8m+voCVQp1N9Xm1V4/y/SsluPPL4BUjvvR212rnGwk9+50lQtORdoL2QhvtNpKjEMS4iC5+tjtLI8CkWZHOD8F06hlvfQ5MXKrIUjdv6Jj7nIob+0KW2OWj6bK8qG2jZbaNqQ2BPHkFeEMAuJoLHazKjmNXuZUDYoancI21lvnppjdEWIeQrI4m3/DbA3aKWT/zX1tO4a6zl8+anw02wE9hR9SOswDzqjJjyX/pT+nVDX8W6V2YforNnZ3cm7FUpkC2hxQ== jesse152@163.com
+
+
+
+-----BEGIN RSA PRIVATE KEY-----
+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
+-----END RSA PRIVATE KEY-----
+
+
+
+rm -rf /home/vagrant/guojiang/overseas2/overseas/src/;
+rm -rf /home/vagrant/guojiang/overseas2/overseas/html/src/;
+
+cp -rf dist/** /home/vagrant/overseas/dist/;
+cp -rf html/dist/** /home/vagrant/overseas/html/dist/;

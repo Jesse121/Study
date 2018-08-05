@@ -1,11 +1,10 @@
-webpack vue-cli
-vue源码 vue-router vuex
 React
 小程序  
+webpack vue-cli
+
+
 nginx
-gitlab jeakins
-
-
+vue源码 vue-router vuex
 nodejs express
 es6 
 前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
@@ -111,7 +110,25 @@ Ctrl+q 解锁终端
 
 
 
+### yum针对软件包操作常用命令： 
+1.使用YUM查找软件包 
+命令：yum search 
+2.列出所有可安装的软件包 
+命令：yum list 
+3.列出所有可更新的软件包 
+命令：yum list updates 
+4.列出所有已安装的软件包 
+命令：yum list installed 
+5.列出所有已安装但不在 Yum Repository 内的软件包 
+命令：yum list extras 
+6.列出所有软件包的信息 
+命令：yum info 
+7.列出所有可更新的软件包信息 
+命令：yum info updates 
+8.列出软件包提供哪些文件 
+命令：yum provides
 
+<<<<<<< HEAD
 
 
 
@@ -158,3 +175,5 @@ gitlab-ctl reconfigure
 gitlab-ctl restart 
 
 管理员的用户名为root，初始密码为5iveL!fe。重置密码后，新密码即为刚输入的密码
+=======
+>>>>>>> dc6aa3f18f99e2b0e5bd1fdfca30c211ab318460

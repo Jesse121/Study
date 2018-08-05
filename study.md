@@ -132,7 +132,6 @@ sudo systemctl start postfix
 sudo firewall-cmd --permanent --add-service=http  
 sudo systemctl reload firewalld
 
-
 #### 添加GitLab镜像源并安装
 vim /etc/yum.repos.d/gitlab_gitlab-ce.repo  
 修改内容如下：  
@@ -154,6 +153,8 @@ vim /etc/gitlab/gitlab.rb
 external_url 'http://192.168.10.11' //服务器ip地址
 ```
 
-gitlab-ctl 
+gitlab-ctl reconfigure
+
+gitlab-ctl restart 
 
 管理员的用户名为root，初始密码为5iveL!fe。重置密码后，新密码即为刚输入的密码

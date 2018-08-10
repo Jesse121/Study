@@ -1,17 +1,24 @@
-React
 小程序  
-webpack vue-cli
 
-
-nginx
+TypeScript
+es6 nginx
+React react-router redux
 vue源码 vue-router vuex
 nodejs express
-es6 
 前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
-TypeScript
 websocket  
 独立架构网站前端
 
+
+### redux
+
+
+### react中注意事项
+
+* class属性改为className for属性改为htmlFor
+* react声明组件时，组件名称第一个字母必须大写
+* 所有的标签必须闭合 input img等
+* 解析html代码 dangerouslySetInnerHTML={{ __html:htmlString }}
 
 #### 网络TCP建立连接为什么需要三次握手而结束要四次？
 已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。
@@ -128,3 +135,15 @@ Ctrl+q 解锁终端
 8.列出软件包提供哪些文件 
 命令：yum provides
 
+
+### github上fork的仓库如何保持更新？
+1. 配置当前当前fork的仓库的原仓库地址  
+git remote add upstream <原仓库github地址>
+2. 查看当前仓库的远程仓库地址和原仓库地址  
+git remote -v
+3. 获取原仓库的更新。使用fetch更新，fetch后会被存储在一个本地分支upstream/master上  
+git fetch upstream
+4. 合并到本地分支。切换到本地master分支，合并upstream/master分支。  
+git merge upstream/master
+5. 如果需要自己github上的fork的仓库需要保持同步更新，执行git push进行推送  
+git push origin master

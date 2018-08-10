@@ -15,7 +15,7 @@ export default {
   name: 'App',
   methods: {
     go () {
-      this.$router.push({name: 'user', params: { id: 'foo' }})
+    this.$router.push({name: 'user', params: { id: "foo" }})
     }
   }
 }

@@ -1,4 +1,7 @@
 {
+  "backgroundColor": "#000",
+  "backgroundTextStyle": "dark",
+  "debug":true,
   "pages":[
     "pages/index/index",
     "pages/about/about"
@@ -11,6 +14,8 @@
     "enablePullDownRefresh":true
   },
   "tabBar": {
+    "color":"#2c2c2c",
+    "selectedColor":"#1aad19",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -25,7 +30,5 @@
         "selectedIconPath": "res/image/me-active.png"
       }
     ]
-  },
-  "backgroundColor": "#000",
-  "backgroundTextStyle": "dark"
+  }
 }

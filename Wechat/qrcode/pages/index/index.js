@@ -22,8 +22,7 @@ Page({
     return size;
   },
   createQRcode(url,canvasId,canvasW,canvasH){
-    console.log(QR)
-    // QR.api.draw(url, canvasId, canvasW, canvasH)
+    QR.api.draw(url, canvasId, canvasW, canvasH)
   },
   fromSubmit(e){
     let url=e.detail.value.url || this.data.url;

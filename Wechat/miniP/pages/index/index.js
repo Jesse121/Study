@@ -7,8 +7,10 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    array: [1, 2, 3, 4, 5]
   },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({

@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <p class="rank-title"></p>
+    <ul class="tab">
+        <li v-for="(item,index) in 2" :class="['tab-'+index,{active:selected==index}]"  @click="exchangeTab(index)"><span></span></li>
+    </ul>
     <div class="scroll-box" ref="scrollBox" @scroll="scrollLoad()">
     <ul class="prev-list">
         <li :class="'no'+(index+1)" v-for="(item,index) in prevList(rankList)" :key="index">
@@ -36,11 +40,6 @@
 import HelloWorld from './components/HelloWorld'
 
 export default {
-  data:function(){
-    return {
-      date:'123'
-    }
-  },
   name: 'App',
   components: {
     HelloWorld

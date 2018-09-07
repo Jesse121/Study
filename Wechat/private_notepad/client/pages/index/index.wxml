@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+    <scroll-view scroll-y class="scroll-view">
+      <view wx:for="{{msgList}}" class="msg-item" wx:key="index">
+        <text class="content">{{item.content}}</text>
+        <view>
+          <text class="time">{{item.time}}</text>
+          <text class="del" data-id="{{item.id}}" bindtap='delete'>删除</text>
+          <text class="modified" data-id="{{item.id}}" bindtap='modified'>修改</text>
+        </view>
+    </view>
+    </scroll-view>
+    <navigator class="add-btn" url="../add/add">添加记事</navigator>
+</view>

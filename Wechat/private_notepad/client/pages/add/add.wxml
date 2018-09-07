@@ -1,0 +1,10 @@
+<!--pages/add/add.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <textarea placeholder='点此输入您的内容' name="textarea" value="{{msg}}"></textarea>
+    <view class="submit-btn">
+      <button type="warn" class="cancel" bindtap="cancel">取消</button>
+      <button formType="submit" type="primary" class="sure">确定</button>
+    </view>
+  </form>
+</view>

@@ -1,6 +1,6 @@
 React
-小程序  
 webpack vue-cli
+小程序  
 
 
 nginx
@@ -128,52 +128,3 @@ Ctrl+q 解锁终端
 8.列出软件包提供哪些文件 
 命令：yum provides
 
-<<<<<<< HEAD
-
-
-
-### 本地搭建gitlab服务器
-首先需要服务器的内存至少为4G，不然会出现502错误
-#### 安装依赖软件包
-sudo yum -y install curl policycoreutils openssh-server openssh-clients postfix
-
-##### 将SSH服务设置成开机自启动，并启动
-sudo systemctl enable sshd  
-sudo systemctl start sshd
-
-##### 设置postfix开机自启，并启动，postfix支持gitlab发信功能
-sudo systemctl enable postfix  
-sudo systemctl start postfix
-
-##### 打开系统防火墙HTTP
-sudo firewall-cmd --permanent --add-service=http  
-sudo systemctl reload firewalld
-
-#### 添加GitLab镜像源并安装
-vim /etc/yum.repos.d/gitlab_gitlab-ce.repo  
-修改内容如下：  
-```
-[gitlab-ce]
-name=gitlab-ce
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7
-repo_gpgcheck=0
-gpgcheck=0
-enabled=1
-gpgkey=https://packages.gitlab.com/gpg.key
-```
-##### 安装gitlab
-sudo yum install gitlab-ce
-
-#### 配置gitlab-ce
-vim /etc/gitlab/gitlab.rb
-```
-external_url 'http://192.168.10.11' //服务器ip地址
-```
-
-gitlab-ctl reconfigure
-
-gitlab-ctl restart 
-
-管理员的用户名为root，初始密码为5iveL!fe。重置密码后，新密码即为刚输入的密码
-=======
->>>>>>> dc6aa3f18f99e2b0e5bd1fdfca30c211ab318460

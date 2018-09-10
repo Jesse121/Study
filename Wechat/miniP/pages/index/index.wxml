@@ -11,4 +11,5 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+  <view wx:for="{{array}}" wx:key="{{index}}"> {{item}} </view>
 </view>

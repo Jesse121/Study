@@ -1,16 +1,18 @@
-React
-webpack vue-cli
 小程序  
 
 
-nginx
+es6 nginx
+React react-router redux
 vue源码 vue-router vuex
+
 nodejs express
-es6 
-前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
-TypeScript
+
 websocket  
+前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 独立架构网站前端
+TypeScript
+
+
 
 
 #### 网络TCP建立连接为什么需要三次握手而结束要四次？
@@ -128,3 +130,28 @@ Ctrl+q 解锁终端
 8.列出软件包提供哪些文件 
 命令：yum provides
 
+
+### github上fork的仓库如何保持更新？
+1. 配置当前当前fork的仓库的原仓库地址  
+git remote add upstream <原仓库github地址>
+2. 查看当前仓库的远程仓库地址和原仓库地址  
+git remote -v
+3. 获取原仓库的更新。使用fetch更新，fetch后会被存储在一个本地分支upstream/master上  
+git fetch upstream
+4. 合并到本地分支。切换到本地master分支，合并upstream/master分支。  
+git merge upstream/master
+5. 如果需要自己github上的fork的仓库需要保持同步更新，执行git push进行推送  
+git push origin master
+
+### 小程序开发中注意点
+
+`wx:key="*this"` 
+保留关键字”*this”代表在 for 循环中的 item 本身，
+这种表示需要 item 本身是一个唯一的字符串或者数字
+用于组件仅需要一个属性，且属性值唯一。
+
+
+
+
+### 工作收获
+linux  nginx vue react webpack gitlab+jenkins php+mysql

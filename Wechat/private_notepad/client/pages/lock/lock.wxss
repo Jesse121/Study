@@ -1,0 +1,17 @@
+page{
+  background-color: #f0f0f2;
+}
+.container{
+  position: relative;
+}
+.info{
+  display: block;
+  text-align: center;
+  margin:50rpx auto;
+}
+.canvas1,.canvas2{
+  position: absolute;
+}
+.canvas2{
+  z-index: -1;
+}

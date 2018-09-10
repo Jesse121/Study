@@ -1,0 +1,27 @@
+/* pages/add/add.wxss */
+page{
+  background-color: #f6f6f6;
+  height: 100%;
+}
+textarea{
+  display: block;
+  height: 950rpx;
+  padding:50rpx;
+  width:100%;
+  box-sizing:border-box;
+  background-color: #fff;
+}
+.submit-btn{
+  width:100%;
+  margin:50rpx 0;
+}
+button{
+  margin:0 60rpx;
+  width:260rpx;
+}
+.sure{
+  float:right;
+}
+.cancel{
+  float: left;
+}

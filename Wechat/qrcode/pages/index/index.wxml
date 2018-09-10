@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="img-box">
+    <canvas style="width:600rpx;height:600rpx;background-color:#f1f1f1;margin:0 auto;" canvas-id='mycanvas'></canvas>
+    <cover-view class="avatar">
+      <cover-image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></cover-image>
+    </cover-view>
+  </view>
+  
+  <form bindsubmit="fromSubmit">
+    <view class="input-row">
+      <label>网址</label>
+      <input name="url" type="text" maxlength="255" placeholder='{{url}}'></input>
+    </view>
+    <button form-type="submit" class="mybtn" type="primary">生成二维码</button>
+    <button class="mybtn" type="primary" bindtap='save'>保存二维码</button>
+  </form>
+</view>

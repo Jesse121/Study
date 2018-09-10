@@ -1,0 +1,5 @@
+<view class="container">
+  <text class="info {{}}">{{title}}</text>
+  <canvas canvas-id="canvas1" class="canvas1" style='width:{{canvasWidth}}px; height:{{canvasWidth}}px' bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"></canvas>
+  <canvas canvas-id="canvas2" class="canvas2" style='width:{{canvasWidth}}px; height:{{canvasWidth}}px'></canvas>
+</view>

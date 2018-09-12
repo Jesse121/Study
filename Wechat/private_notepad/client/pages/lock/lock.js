@@ -18,6 +18,7 @@ Page({
     touchFlag:false, // 用于判断是否 touch 到 circle
     reDraw:false, //表示是否需要重绘
     setPassword:{},
+    showWarning:false,
   },
 
   /**
@@ -48,7 +49,7 @@ Page({
   createCircles: function () {
     var n = 3; //大圆的个数
     // 盒子的宽度 = (n+1)个空白间隔区域的宽度 + n个圆的宽度
-    // this.width = (n+1)*2/3*2*r + n*2*r
+    // this.data.canvasWidth = (n+1)*2/3*2*r + n*2*r
     this.setData({
       R : 3 * this.data.canvasWidth / (4 + 10 * n)
     })
@@ -87,7 +88,6 @@ Page({
     wx.getStorage({
       key: 'HandLockPassword',
       success: (res)=>{
-        console.log(res)
         this.setData({
           setPassword:{
             model:3,
@@ -105,18 +105,18 @@ Page({
     })
   },
   updateInfo: function () { // 根据当前模式，更新info
-    // if (this.data.showWarning) { //如果已存在红色提示信息，则将其设置为黑色
-    //   this.setData({
-    //     showWarning: false
-    //   })
-    // }
+    if (this.data.showWarning) { //如果已存在红色提示信息，则将其设置为黑色
+      this.setData({
+        showWarning: false
+      })
+    }
     if (this.data.setPassword.model === 1) { // 1 表示初始化设置密码
       this.setData({
         title: '请设置手势密码'
       })
     } else if (this.data.setPassword.model === 2) { // 2 表示确认密码
       this.setData({
-        title: '再次输入以确认'
+        title: '请再次输入以确认密码'
       })
     } else if (this.data.setPassword.model === 3) { // 3 表示验证密码
       this.setData({
@@ -147,6 +147,9 @@ Page({
       this.data.restCircles = this.data.restCircles.concat(this.data.touchCircles.splice(0)); // 将resetCircles,touchCircles初始化
       var timer = setTimeout(()=>{
         this.reset();
+        this.setData({
+          showWarning:false
+        })
         clearTimeout(timer);
       }, 400);
     }
@@ -214,6 +217,7 @@ Page({
     if (model === 1) { // 设置密码
       if (tc.length < 5) { // 验证密码长度
         this.setData({
+          showWarning:true,
           title:'至少连接5个点，请重新绘制'
         })
       } else {
@@ -236,7 +240,11 @@ Page({
           data: text.join('-')
         })
 
-        //this.showMessage('手势密码设置成功');
+        wx.showToast({
+          title: '手势密码设置成功',
+          icon: 'success',
+          duration: 500
+        })
         this.setData({
           setPassword: {
             model: 3,
@@ -245,7 +253,11 @@ Page({
         })
         this.updateInfo();
       } else {
-        //this.showInfo('密码不一致，请重新设置');
+        wx.showToast({
+          title: '密码不一致，请重新设置',
+          icon: 'none',
+          duration: 500
+        })
         this.setData({ // 由于密码不正确，回到 model 
           setPassword: {
             model: 1,
@@ -256,25 +268,35 @@ Page({
     } else if (model === 3) { // 验证密码
       check();
       if (success) {
-        // this.showMessage('恭喜你，验证通过', function () {
-        //   this.message.style.display = 'none';
-        //   win.location = "http://www.jesse131.cn/blog/index.html"; //成功后跳转
-        // }.bind(this));
-        wx.redirectTo({
-          url: '/pages/index/index'
+        wx.showToast({
+          title: '恭喜你，验证通过',
+          icon: 'success',
+          duration: 500,
+          success:function(){
+            wx.redirectTo({
+              url: '/pages/index/index'
+            })
+          }
         })
+        
       } else {
-        // this.showMessage('很遗憾，密码错误');
+        wx.showToast({
+          title: '很遗憾，密码错误',
+          icon: 'none',
+          duration: 500
+        })
       }
     }
   },
   reset: function () { // 重置 canvas
     this.data.canvas2.clearRect(0, 0, this.data.canvasWidth, this.data.canvasWidth);
+    this.data.canvas2.draw();
     this.data.canvas1.clearRect(0, 0, this.data.canvasWidth, this.data.canvasWidth); // 清空画布，为了防止设置密码时重复画
+    this.data.canvas1.draw();
     this.drawCircles();
   },
   update: function (p) { // 更新 touchmove
-    //this.drawLine2TouchPos(p); //在canvas2画折线
+    this.drawLine2TouchPos(p); //在canvas2画折线
     this.judgePos(p); //判断下一点是否在圆内
     if (this.data.reDraw) {
       this.setData({
@@ -289,6 +311,7 @@ Page({
       ctx2 = this.data.canvas2;
     if (len >= 1) {
       ctx2.clearRect(0, 0, this.data.canvasWidth, this.data.canvasWidth); // 先清空
+      ctx2.draw();
       ctx2.setStrokeStyle(this.data.color)
       ctx2.beginPath();
       ctx2.setLineWidth(3);
@@ -296,7 +319,7 @@ Page({
       ctx2.lineTo(p.x, p.y);
       ctx2.stroke();
       ctx2.closePath();
-      ctx2.draw();
+      ctx2.draw(true);
     }
   },
   drawPoints: function () { // 画实心圆点
@@ -308,7 +331,7 @@ Page({
       ctx1.arc(this.data.touchCircles[i].x, this.data.touchCircles[i].y, this.data.R / 3, 0, Math.PI * 2, true);
       ctx1.closePath();
       ctx1.fill();
-      ctx1.draw();
+      ctx1.draw(true);
     }
   },
   drawLine: function () { // 画折线
@@ -344,7 +367,7 @@ Page({
       ctx1.lineTo(xn2, yn2);
       ctx1.stroke();
       ctx1.closePath();
-      ctx1.draw();
+      ctx1.draw(true);//若reserver参数为true，则保留当前画布上的内容
     }
   },
 

@@ -4,7 +4,7 @@ page{
 .container{
   position: relative;
 }
-.info{
+#info{
   display: block;
   text-align: center;
   margin:50rpx auto;
@@ -14,4 +14,13 @@ page{
 }
 .canvas2{
   z-index: -1;
+}
+.showWarning{
+  color: red;
+  animation:shake 1s forwards; 
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  10%,30%,50%,70%,90%{transform:translateX(-10rpx)}
+  20%,40%,60%,80%{transform:translateX(10rpx)}
 }

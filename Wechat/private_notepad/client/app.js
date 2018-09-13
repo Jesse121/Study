@@ -7,8 +7,17 @@ App({
         qcloud.setLoginUrl(config.service.loginUrl)
     },
     onShow:function(){
+        if(!this.globalData.firstLaunch){
+          console.log('a')
+          wx.reLaunch({
+            url: "../../pages/lock/lock"
+          })
+        }
         // wx.reLaunch({
         //   url: "../../pages/lock/lock"
         // })
+    },
+    globalData: {
+      firstLaunch: true
     }
 })

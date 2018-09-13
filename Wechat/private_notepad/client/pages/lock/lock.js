@@ -1,4 +1,5 @@
 // pages/lock/lock.js
+const app = getApp()
 Page({
 
   /**
@@ -10,7 +11,7 @@ Page({
     bgColor:'#f0f0f2',//背景色
     canvasWidth:0,
     canvas1:'',//用来画上面的大圆
-    canvas2:'',
+    canvas2:'',//用两个canvas是因为需要画折线，并且画后面的折线时要清空之前的画的无用的折线
     R:0,//大圆的半径
     circles:[], // 用来存储 n*n 个 circle 的位置
     touchCircles:[], // 用来存储已经触摸到的所有 circle
@@ -45,6 +46,7 @@ Page({
     this.data.canvas2 = wx.createCanvasContext('canvas2')
     this.createCircles()
     this.initPassword()
+    app.globalData.firstLaunch = false      
   },
   createCircles: function () {
     var n = 3; //大圆的个数
@@ -76,7 +78,7 @@ Page({
   drawCircle: function (x, y) { // 画圆
     const ctx = this.data.canvas1
     ctx.setStrokeStyle(this.data.color);
-    ctx.setFillStyle(this.data.bgColor);//给圆填充背景色，遮盖canvas2上的折线
+    ctx.setFillStyle('transparent');//给圆填充背景色，遮盖canvas2上的折线
     ctx.setLineWidth(1);
     ctx.beginPath();
     ctx.arc(x, y, this.data.R, 0, Math.PI * 2, true); //0~2PI顺时针画圆弧
@@ -129,14 +131,14 @@ Page({
     this.judgePos(p);
   },
   touchMove:function(e){
-    // return (this.throttle(function (e) {
+    return (this.throttle(function (e) {
       var p = this.getTouchPosition(e);
       if (this.data.touchFlag) {
         this.update(p);
       } else {
         this.judgePos(p);
       }
-    // }, 16, 16))
+    }, 16, 16))(e)
   },
   touchEnd:function(){
     if (this.data.touchFlag) {
@@ -145,8 +147,8 @@ Page({
       })
       this.checkPassword();
       this.data.restCircles = this.data.restCircles.concat(this.data.touchCircles.splice(0)); // 将resetCircles,touchCircles初始化
+      this.reset();
       var timer = setTimeout(()=>{
-        this.reset();
         this.setData({
           showWarning:false
         })
@@ -310,16 +312,45 @@ Page({
     var len = this.data.touchCircles.length,
       ctx2 = this.data.canvas2;
     if (len >= 1) {
-      ctx2.clearRect(0, 0, this.data.canvasWidth, this.data.canvasWidth); // 先清空
-      ctx2.draw();
+      var x1 = this.data.touchCircles[len - 1].x;
+      var x2 = p.x;
+      var y1 = this.data.touchCircles[len - 1].y;
+      var y2 = p.y;
+      var o;
+      if (y1 >= y2) {
+        if (x2 >= x1) { //左上半部分
+          o = Math.atan((y1 - y2) / (x2 - x1));
+        } else {
+          o = Math.PI + Math.atan((y1 - y2) / (x2 - x1));
+        }
+      } else {
+        if (x2 >= x1) { //左下半部分
+          o = -Math.atan((y2 - y1) / (x2 - x1));
+        } else {
+          o = Math.PI - Math.atan((y2 - y1) / (x2 - x1));
+        }
+      }
+      var xn1 = x1 + this.data.R * Math.cos(o);
+      var yn1 = y1 - this.data.R * Math.sin(o);
+      var xn2 = 0;
+      var yn2 = 0;
+      if(Math.pow((x2-x1),2)+Math.pow((y2-y1),2)< Math.pow(this.data.R,2)){
+          xn2 = xn1;
+          yn2 = yn1;
+      }else{
+        xn2 = x2;
+        yn2 = y2;
+      }
+      // ctx2.clearRect(0, 0, this.data.canvasWidth, this.data.canvasWidth); // 先清空
+      // ctx2.draw();
       ctx2.setStrokeStyle(this.data.color)
       ctx2.beginPath();
-      ctx2.setLineWidth(3);
-      ctx2.moveTo(this.data.touchCircles[len - 1].x, this.data.touchCircles[len - 1].y);
-      ctx2.lineTo(p.x, p.y);
+      ctx2.setLineWidth(4);
+      ctx2.moveTo(xn1, yn1);
+      ctx2.lineTo(xn2, yn2);
       ctx2.stroke();
       ctx2.closePath();
-      ctx2.draw(true);
+      ctx2.draw();
     }
   },
   drawPoints: function () { // 画实心圆点
@@ -362,13 +393,20 @@ Page({
       var yn2 = y2 + this.data.R * Math.sin(o);
       ctx1.beginPath();
       ctx1.setStrokeStyle(this.data.color);
-      ctx1.setLineWidth(3);
+      ctx1.setLineWidth(4);
       ctx1.moveTo(xn1, yn1);
       ctx1.lineTo(xn2, yn2);
       ctx1.stroke();
       ctx1.closePath();
       ctx1.draw(true);//若reserver参数为true，则保留当前画布上的内容
     }
+  },
+
+  modifiedPassword:function(){
+    wx.clearStorage('HandLockPassword')
+    wx.redirectTo({
+      url: '/pages/lock/lock',
+    })
   },
 
 

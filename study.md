@@ -1,3 +1,6 @@
+优化webpack工具 
+移动端dll中去掉其他多余的内容。按需加载
+
 es6 nginx
 React react-router redux
 vue源码 vue-router vuex

@@ -51,6 +51,14 @@ picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设�
 |网络层|IP IPX|
 |数据链路层|Ethernet|
 
+### 重启php-fmp
+先查看php-fpm的master进程号
+ps aux|grep php-fpm
+
+重启php-fmp
+kill -USR2 ***
+
+
 
 
 ### 如何调试nodejs

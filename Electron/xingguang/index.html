@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Hello World!</title>
+    </head>
+    <body>
+      <h1>xingguangApp demo</h1>
+      <div id="btn">打开主页 </div>
+      <script>
+          const {shell} = require('electron')
+          const protocolHandlerBtn = document.getElementById('btn')
+
+          protocolHandlerBtn.addEventListener('click', () => {
+              const pagePath = 'https://www.kuaishouvideo.com'
+              shell.openExternal(pagePath)
+          })
+      </script>
+    </body>
+  </html>

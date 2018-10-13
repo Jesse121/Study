@@ -1,17 +1,26 @@
 优化webpack工具 
 移动端dll中去掉其他多余的内容。按需加载
 
-es6 nginx
-React react-router redux
-vue源码 vue-router vuex
+
 
 nodejs express
+es6 nginx
+React react-router redux react-native
+vue源码 vue-router vuex weex
+
 websocket  
 
 前端性能优化 编写页面性能提升方案，通过自动化测试从时间上直接体现优化结果
 独立架构网站前端
 TypeScript
 
+Linux公社
+http2.0 monogodb  
+redis
+php
+python
+
+picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
 
 
 
@@ -32,13 +41,7 @@ https://blog.csdn.net/kkgbn/article/details/77859881
 #### 网关如何获取远程ip的mac地址？
 
 
-Linux公社
-http2.0 monogodb  
-redis
-php
-python
 
-picturefill提供了针对picture标签和srcset属性的兼容 这俩支持设备分辨率不同加载不同图片
 
 ### wireshark使用教程
 #### 7层OSI参考模型各个层次上的典型网络协议
@@ -61,14 +64,7 @@ kill -USR2 ***
 
 
 
-### 如何调试nodejs
-
-1. npm install -g node-inspector
-2. node --debug-brk ***.js
-3. 在另一个命令行中 node-inspector
-
-
-### spy-debugger
+### 移动端调试工具spy-debugger
 #### 安装
 npm install spy-debugger -g  
 #### 使用方法
@@ -90,15 +86,21 @@ tasklist|findstr "2720" //根据pid查询出程序名
 
 ### xshell常用命令
 打开会话：alt+o  
-切换会话：shift+tab  
+切换会话：ctrl+tab  
 减小字号：ctrl+shift+alt+[  
 增大字号：ctrl+shift+alt+]  
-
+Ctrl+s 锁住终端  
+Ctrl+q 解锁终端 
 复制：ctrl+insert  
 粘贴：shift+insert  
+
+快速复制粘贴设置
+工具->键盘和鼠标->鼠标->向右按钮  设置为 粘贴内容
+
+
+
 查找：ctrl+e+f  
 撤销：Ctrl+x+u  
-
 Ctrl + a/Home 切换到命令行开始  
 Ctrl + e/End 切换到命令行末尾  
 Ctrl + l 清除屏幕内容，效果等同于clear  
@@ -115,8 +117,6 @@ Alt + t 交换当前与以前单词的位置
 Alt + d 剪切光标之后的词  
 Ctrl+w 剪切光标所在处之前的一个词（以空格、标点等为分隔符）  
 Ctrl+（x u） 按住Ctrl的同时再先后按x和u，撤销刚才的操作  
-Ctrl+s 锁住终端  
-Ctrl+q 解锁终端 
 
 
 
@@ -150,6 +150,8 @@ git fetch upstream
 git merge upstream/master
 5. 如果需要自己github上的fork的仓库需要保持同步更新，执行git push进行推送  
 git push origin master
+
+
 
 ### 小程序开发中注意点
 

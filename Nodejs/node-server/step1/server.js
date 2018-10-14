@@ -1,68 +1,71 @@
-var http = require('http')
-var path = require('path')
-var fs = require('fs')
-var url = require('url')
+var http = require("http");
+var path = require("path");
+var fs = require("fs");
+var url = require("url");
+var mime = require("./mime").types;
+var config = require("./config");
 
-
-function staticRoot(staticPath, req, res) {
-    console.log(staticPath)
-
-    console.log(req.url)
-    var pathObj = url.parse(req.url, true)
-    console.log(pathObj)
-
-
-    if (pathObj.pathname === '/') {
-        pathObj.pathname += 'index.html'
-    }
-
-    var postfix = pathObj.pathname.split('.')[1]
-    var contentType = '';
-    switch(postfix){
-        case 'css':
-        contentType = 'text/css'
-        break;
-        case 'js':
-        contentType = 'text/js'
-        break;
-        case 'html':
-        contentType = 'text/html'
-        break;
-        case 'png':
-        contentType = 'image/apng'
-        break;
-
-    }
-
-    var filePath = path.join(staticPath, pathObj.pathname)
-
-    // var fileContent = fs.readFileSync(filePath,'binary')
-    // res.write(fileContent, 'binary')
-    // res.end()
-
-
-    fs.readFile(filePath, 'binary', function(err, fileContent) {
-        if (err) {
-            console.log('404')
-            res.writeHead(404, 'not found')
-            res.end('<h1>404 Not Found</h1>')
+var server = http.createServer(function(request, response) {
+    var pathname = url.parse(request.url).pathname;
+    var realPath = "static" + pathname;
+    //判断静态文件是否存在磁盘上
+    fs.exists(realPath, function(exists) {
+        if (!exists) {
+            response.writeHead(404, {
+                "Content-Type": "text/plain"
+            });
+            response.write(
+                "This request URL " +
+                    pathname +
+                    " was not found on this server."
+            );
+            response.end();
         } else {
-            console.log('ok')
-            res.setHeader('Content-Type',contentType)
-            res.writeHead(200, 'OK')
-            res.write(fileContent, 'binary')
-            res.end()
+            var ext = path.extname(realPath); //获取文件的后缀名
+            ext = ext ? ext.slice(1) : "unknown";
+            //确定mime类型
+            var contentType = mime[ext] || "text/plain";
+            //添加缓存控制
+            if (ext.match(config.Expires.fileMatch)) {
+                var expires = new Date();
+                expires.setTime(
+                    expires.getTime() + config.Expires.maxAge * 1000
+                );
+                response.setHeader("Expires", expires.toUTCString());
+                response.setHeader(
+                    "Cache-Control",
+                    "max-age=" + config.Expires.maxAge
+                );
+            }
+            //添加Last-Modified头 读取文件的最后修改时间是通过fs模块的fs.stat()方法来实现
+            var lastModified
+            fs.stat(realPath, function(err, stat) {
+                lastModified = stat.mtime.toUTCString();
+                response.setHeader("Last-Modified", lastModified);
+            });
+
+
+            fs.readFile(realPath, "binary", function(err, file) {
+                if (err) {
+                    response.writeHead(500, {
+                        "Content-Type": "text/plain"
+                    });
+                    response.end(err);
+                } else {
+                    console.log(request.headers)
+                    if (request.headers["if-modified-since"] && lastModified == request.headers["if-modified-since"]) {
+                        response.writeHead(304, "Not Modified");
+                    }else{
+                        response.writeHead(200, {
+                            "Content-Type": contentType
+                        });
+                        response.write(file, "binary");
+                    }
+                    response.end();
+                }
+            });
         }
-    })
+    });
+});
 
-
-}
-
-console.log(path.join(__dirname, 'static'))
-
-var server = http.createServer(function(req, res) {
-    staticRoot(path.join(__dirname, 'static'), req, res)
-})
-
-server.listen(8080)
-console.log('visit http://localhost:8080')
+server.listen(8080);

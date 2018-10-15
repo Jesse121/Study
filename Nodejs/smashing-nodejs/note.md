@@ -8,7 +8,8 @@ process.nextTick()可以将一个函数的执行时间规划到下一个事件�
 process.nextTick(function(){
     console.log('a')
 })
-```
+```up
+
 相当于setTimeout(fn,1)
 
 ##### 事件

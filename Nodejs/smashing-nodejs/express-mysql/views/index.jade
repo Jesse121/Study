@@ -1,0 +1,23 @@
+extends layout
+block body
+    h2 all items
+    if(items.length)
+        ul
+            each item in items
+                li
+                    h3: a(href="/item/#{item.id}")= item.title
+                    = item.description
+    else
+        p no items to show
+
+    h2 create news item
+
+    form(action="/crete",method="post")
+        p
+            label title
+            input(type="text",name="title")
+        p
+            label Description
+            textarea(name="description")
+        p
+            button submit

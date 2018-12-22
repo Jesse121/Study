@@ -156,13 +156,66 @@ git push origin master
 
 ### 小程序开发中注意点
 
+#### 列表渲染中
 `wx:key="*this"` 
 保留关键字”*this”代表在 for 循环中的 item 本身，
 这种表示需要 item 本身是一个唯一的字符串或者数字
 用于组件仅需要一个属性，且属性值唯一。
 
+#### 背景图片
+背景图片只能用base64或绝对地址
+```
+background: url('//static.guojiang.tv/src/miniapp/guessSongs/images/index/task-btn.png');
+```
+
+
+#### 动态类名
+```
+<view class="task-item {{item.limitTask?'hasLimitTask':''}}"</view>
+```
+
+#### 事件传参
+通过data属性来传递参数，在事件函数中可通过currentTarget.dataset来获取
+```
+<view wx:for="{{pools}}" wx:key="*this" bindtap='select' data-item="{{item}}">{{item}}</view>
+```
+
+
+#### wx:if vs hidden
+一般来说，wx:if 有更高的切换消耗而 hidden 有更高的初始渲染消耗。因此，如果需要频繁切换的情景下，用 hidden 更好，如果在运行时条件不大可能改变则 wx:if 较好。
+```
+<view class="ready" hidden="{{!showReady}}"></view>
+<view class="go" hidden="{{showReady}}"></view>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 ### 工作收获
-linux  nginx vue react webpack gitlab+jenkins php+mysql
+linux  nginx vue react webpack gitlab+jenkins php+mysql 小程序

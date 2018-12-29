@@ -1,2 +1,4 @@
-var timer = require('./test.js')
-// console.log(require.resolve("./test.js"));
+var fs = require('fs')
+var path = require('path')
+var myPath = path.normalize('.//a//b//c/e')
+console.log(myPath)

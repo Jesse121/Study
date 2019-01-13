@@ -11,7 +11,7 @@ function resolve (dir) {
 
 
 module.exports = {
-  context: path.resolve(__dirname, "../"),  
+  context: path.resolve(__dirname, "../"),
   entry: {
     app: "./src/main.ts"
   },
@@ -33,18 +33,11 @@ module.exports = {
   module: {
     rules: [
       {
-      test: /\.ts$/,
-      exclude: /node_modules/,
-      enforce: 'pre',
-      loader: 'tslint-loader',
-      options:{
-        fix:true
-      }
-    },
-      {
-        test: /\.vue$/,
-        loader: "vue-loader",
-        options: vueLoaderConfig
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        enforce: "pre",
+        loader: "tslint-loader",
+        options: { fix: true }
       },
       {
         test: /\.tsx?$/,
@@ -53,6 +46,11 @@ module.exports = {
         options: {
           appendTsSuffixTo: [/\.vue$/]
         }
+      },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        options: vueLoaderConfig
       },
       {
         test: /\.js$/,

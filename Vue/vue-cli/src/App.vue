@@ -2,7 +2,7 @@
   <div id="app">
     <p class="rank-title"></p>
     <ul class="tab">
-        <li v-for="(item,index) in 2" :class="['tab-'+index,{active:selected==index}]"  @click="exchangeTab(index)"><span></span></li>
+        <li v-for="(item,index) in 2" :key ={index} :class="['tab-'+index,{active:selected==index}]"  @click="exchangeTab(index)"><span></span></li>
     </ul>
     <div class="scroll-box" ref="scrollBox" @scroll="scrollLoad()">
     <ul class="prev-list">

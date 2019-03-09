@@ -5,25 +5,55 @@
     <meta charset="UTF-8">
     <title>星光直播</title>
     <style>
-        body{
-            padding:0;
-            margin:0;
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height :100vh;
+            overflow: hidden;
         }
-        #btn,img{
-            display: block;
-            width: 100%;
-            height:100%;
+        button{
+            border:none;
+            width: 20px;
+            height: 20px;
+            margin:0 5px;
+            cursor: pointer;
+        }
+        #back{
+            background-image: url(./img/back.png);
+            background-size:cover;
+        }
+        #forward{
+            background-image: url(./img/forward.png);
+            background-size:cover;
+        }
+        webview {
+            width: 100vw;
+            height :100vh;
         }
     </style>
 </head>
 
 <body>
-    <div id="btn">
-        <img src="http://static.guojiang.tv/pc/img/PCSetup/xingguang.jpg" alt="星光直播">
+    <div style="width:100%;display:flex;flex-direction:row;background-color: #dedddd;">
+        <button id="back" onclick="goBackWebView()"></button>
+        <button id="forward" onclick="goForwardWebView()"></button>
     </div>
+    <webview src="https://www.kuaishouvideo.com/user/goLogin2?channel=pc-baizhu-7"></webview>
     <script>
-    const { shell } = require('electron')
-    shell.openExternal('https://www.xingguangzhibo.cn/user/goLogin2?channel=pc-ahmas-7')
+        var webview =
+            onload = () => {
+                webview = document.querySelector('webview')
+
+            }
+
+        function goBackWebView() {
+            webview.goBack()
+        }
+
+        function goForwardWebView() {
+            webview.goForward()
+        }
     </script>
 </body>
 

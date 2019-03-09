@@ -1,13 +1,11 @@
 if(require('electron-squirrel-startup')) return;
 const { app, BrowserWindow } = require('electron')
 
-let win
-
 function createWindow() {
-    win = new BrowserWindow({ width: 800, height: 600 })
-
+    let win
+    win = new BrowserWindow({ width:1920,height:1080 })
+    win.maximize()
     win.loadFile('index.html')
-
     // win.webContents.openDevTools()
     win.on('closed', () => {
         win = null

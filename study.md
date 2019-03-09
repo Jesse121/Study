@@ -219,3 +219,5 @@ background: url('//static.guojiang.tv/src/miniapp/guessSongs/images/index/task-b
 
 ### 工作收获
 linux  nginx vue react webpack gitlab+jenkins php+mysql 小程序
+
+

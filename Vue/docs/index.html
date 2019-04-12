@@ -36,7 +36,7 @@
         <button v-bind:disabled="isButtonDisabled">Button</button>
         <h1 v-show="isShow">Hello!</h1>
         <ul>
-            <li v-for="(item,index) in evenNumbers" :class="'no'+(index+1)" :key="index">{{item}}</li>
+            <li v-for="(item,index) in evenNumbers" :class="'no'+(index+1)">{{item}}</li>
         </ul>
         <textarea v-model="message" placeholder="add multiple lines"></textarea>
         <p style="white-space: pre-line;">{{ message }}</p>
@@ -85,7 +85,7 @@
         },
         computed: {
             evenNumbers: function() {
-                return this.numbers.splice(0,3); 
+                return this.numbers.splice(0,3);
             },
             classObject: function() {
                 return {
@@ -93,6 +93,11 @@
                     'text-danger': this.error && this.error.type === 'fatal'
                 }
             }
+        },
+        mounted:function(){
+            setTimeout(()=>{
+                this.numbers = [3,2,1,4,5]
+            },2000)
         },
         methods: {
             doThis: function() {

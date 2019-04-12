@@ -1,7 +1,8 @@
-function myVue(options) {
+
+function MyVue(options) {
     this._init(options);
 }
-myVue.prototype._init = function (options) {
+MyVue.prototype._init = function (options) {
     this.$options = options; // options 为上面使用时传入的结构体，包括el,data,methods
     this.$el = document.querySelector(options.el);
     this.$data = options.data;
@@ -10,7 +11,7 @@ myVue.prototype._init = function (options) {
     this._obverse(this.$data);
     this._complie(this.$el);
 }
-myVue.prototype._obverse = function (obj) {
+MyVue.prototype._obverse = function (obj) {
     var value;
     for (key in obj) {
         if (obj.hasOwnProperty(key)) {
@@ -43,7 +44,7 @@ myVue.prototype._obverse = function (obj) {
         }
     }
 }
-myVue.prototype._complie = function (root) {
+MyVue.prototype._complie = function (root) {
     var _this = this;
     var nodes = root.children;
     for (var i = 0; i < nodes.length; i++) {
@@ -79,7 +80,7 @@ myVue.prototype._complie = function (root) {
 function Watcher(name, el, vm, exp, attr) {
     this.name = name; //指令名称，例如文本节点，该值设为 "text"
     this.el = el; //指令对应的DOM元素
-    this.vm = vm; //指令所属myVue实例
+    this.vm = vm; //指令所属MyVue实例
     this.exp = exp; //指令对应的值，本例如 "number"
     this.attr = attr; //绑定的属性值，本例为 "innerHTML"
     this.update();
@@ -87,3 +88,5 @@ function Watcher(name, el, vm, exp, attr) {
 Watcher.prototype.update = function () {
     this.el[this.attr] = this.vm.$data[this.exp];
 }
+
+

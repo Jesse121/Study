@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>index</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0
+    }
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id='example-3'>
+        <input v-model="msg" placeholder="what you want to do">
+        <p>{{msg}}</p>
+        <p v-once>this is what you want: {{ msg + " name" }}</p>
+        <div v-html="rawHtml"></div>
+        <!-- <button v-on="{ mousedown: doThis, mouseup: doThat }">点击一下</button> -->
+        <button v-on:click="doThat('hello', $event)">点击一下</button>
+        <div v-bind:id="dynamicId">123</div>
+        <div v-bind:class="[activeClass,errorClass]">test</div>
+        <div v-bind:style="[baseStyles, overridingStyles]">test</div>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <h1 v-show="isShow">Hello!</h1>
+        <ul>
+            <li v-for="(item,index) in evenNumbers" :class="'no'+(index+1)" :key="index">{{item}}</li>
+        </ul>
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        <p style="white-space: pre-line;">{{ message }}</p>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+        <br>
+        <input v-model.number="age" type="number">
+        <br>
+        <div v-bind:class="classObject">class</div>
+        <button v-on:click="show = !show">Toggle</button>
+        <!-- <transition name="fade">
+            <p v-if="show">hello</p>
+        </transition> -->
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#example-3',
+        data: {
+            msg: "test",
+            message: "",
+            checked: false,
+            rawHtml: '<p>this is a test</p>',
+            dynamicId: 'test',
+            activeClass: 'active',
+            errorClass: 'error',
+            isButtonDisabled: true,
+            baseStyles: {
+                'color': 'red'
+            },
+            overridingStyles: {
+                'font-size': '14px'
+            },
+            isShow: true,
+            numbers: [1, 2, 3, 4, 5],
+            checkedNames: [],
+            age: 0,
+            isActive: true,
+            error: null,
+            show: true
+        },
+        computed: {
+            evenNumbers: function() {
+                return this.numbers
+            },
+            classObject: function() {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        },
+        beforeCreate(){
+            console.log('beforeCreate')
+        },
+        created(){
+            console.log('created')
+        },
+        beforeMount(){
+            console.log('beforeMount')
+        },
+        mounted(){
+            console.log('mounted')
+            setTimeout(()=>{
+                console.log('change')
+                this.numbers[1] = 10
+            },1000)
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+        },
+        updated(){
+            console.log('updated')
+        },
+        destoryed(){
+            console.log('destoryed')
+        },
+        methods: {
+            doThis: function() {
+                console.log('mousedown')
+            },
+            doThat: function(str, event) {
+                console.log(str);
+                console.log(event);
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

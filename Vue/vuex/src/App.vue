@@ -2,12 +2,24 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+    <p>{{count}}</p>
+    <div @click="inc">增加</div>
+    <div @click="dec">减少</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  props: ['count'],
+  methods:{
+    inc() {
+      this.$emit('increment')
+    },
+    dec(){
+      this.$emit('decrement')
+    }
+  }
 }
 </script>
 

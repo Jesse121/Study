@@ -36,5 +36,5 @@ new Vue({
     }
   },
   components: { App },
-  template: '<App/>'
+  template: '<App :count="count" @increment="increment" @decrement="decrement"/>'
 })

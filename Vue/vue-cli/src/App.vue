@@ -8,10 +8,14 @@
 <script>
 import HelloWorld from './components/HelloWorld'
 
+import {func1} from './function'
 export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  created () {
+    func1()
   }
 }
 </script>

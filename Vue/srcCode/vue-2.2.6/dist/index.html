@@ -9,15 +9,15 @@
     <meta name="keywords" content="">
     <link href="" rel="stylesheet">
     <style type="text/css">
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity .5s
-    }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s
+        }
 
-    .fade-enter,
-    .fade-leave-to {
-        opacity: 0
-    }
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0
+        }
     </style>
     <script src="vue.js"></script>
 </head>
@@ -58,77 +58,93 @@
         </transition> -->
     </div>
     <script type="text/javascript">
-    var vm = new Vue({
-        el: '#example-3',
-        data: {
-            msg: "test",
-            message: "",
-            checked: false,
-            rawHtml: '<p>this is a test</p>',
-            dynamicId: 'test',
-            activeClass: 'active',
-            errorClass: 'error',
-            isButtonDisabled: true,
-            baseStyles: {
-                'color': 'red'
+        // 定义一个混入对象
+        var mixin = {
+            created: function () {
+                this.hello()
             },
-            overridingStyles: {
-                'font-size': '14px'
-            },
-            isShow: true,
-            numbers: [1, 2, 3, 4, 5],
-            checkedNames: [],
-            age: 0,
-            isActive: true,
-            error: null,
-            show: true
-        },
-        computed: {
-            evenNumbers: function() {
-                return this.numbers
-            },
-            classObject: function() {
-                return {
-                    active: this.isActive && !this.error,
-                    'text-danger': this.error && this.error.type === 'fatal'
+            methods: {
+                hello: function () {
+                    console.log('hello from mixin!')
                 }
             }
-        },
-        beforeCreate(){
-            console.log('beforeCreate')
-        },
-        created(){
-            console.log('created')
-        },
-        beforeMount(){
-            console.log('beforeMount')
-        },
-        mounted(){
-            console.log('mounted')
-            setTimeout(()=>{
-                console.log('change')
-                this.numbers[1] = 10
-            },1000)
-        },
-        beforeUpdate(){
-            console.log('beforeUpdate')
-        },
-        updated(){
-            console.log('updated')
-        },
-        destoryed(){
-            console.log('destoryed')
-        },
-        methods: {
-            doThis: function() {
-                console.log('mousedown')
-            },
-            doThat: function(str, event) {
-                console.log(str);
-                console.log(event);
-            }
         }
-    })
+        var vm = new Vue({
+            mixins: [mixin],
+            el: '#example-3',
+            data: {
+                msg: "test",
+                message: "",
+                checked: false,
+                rawHtml: '<p>this is a test</p>',
+                dynamicId: 'test',
+                activeClass: 'active',
+                errorClass: 'error',
+                isButtonDisabled: true,
+                baseStyles: {
+                    'color': 'red'
+                },
+                overridingStyles: {
+                    'font-size': '14px'
+                },
+                isShow: true,
+                numbers: [1, 2, 3, 4, 5],
+                checkedNames: [],
+                age: 0,
+                isActive: true,
+                error: null,
+                show: true
+            },
+            computed: {
+                evenNumbers: function () {
+                    return this.numbers
+                },
+                classObject: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+            },
+            beforeCreate() {
+
+                console.log('beforeCreate')
+            },
+            created() {
+                console.log('created')
+            },
+            beforeMount() {
+                console.log('beforeMount')
+            },
+            mounted() {
+                console.log('mounted')
+                Vue.set(this.baseStyles,'test',123)
+
+                setTimeout(() => {
+                    console.log('change')
+                    this.numbers[1] = 10
+                }, 1000)
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate')
+            },
+            updated() {
+                console.log('updated')
+            },
+            destoryed() {
+                console.log('destoryed')
+            },
+            methods: {
+                doThis: function () {
+                    console.log('mousedown')
+                    
+                },
+                doThat: function (str, event) {
+                    console.log(str);
+                    console.log(event);
+                }
+            }
+        })
     </script>
 </body>
 

@@ -134,7 +134,7 @@ function genConfig (opts) {
     external: opts.external,
     format: opts.format,
     banner: opts.banner,
-    sourceMap:true,
+    sourceMap: true,
     moduleName: 'Vue',
     plugins: [
       replace({

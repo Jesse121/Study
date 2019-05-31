@@ -49,6 +49,7 @@
         <br>
         <span>Checked names: {{ checkedNames }}</span>
         <br>
+        <tab/>
         <input v-model.number="age" type="number">
         <br>
         <div v-bind:class="classObject">class</div>
@@ -63,10 +64,30 @@
             created: function () {
                 this.hello()
             },
+            mounted:function(){
+                console.log('mixin mount')
+            },
             methods: {
                 hello: function () {
                     console.log('hello from mixin!')
                 }
+            }
+        }
+
+        const tab = {
+            name:'tab',
+            template:`<div>test</div>`,
+            beforeCreate() {
+                console.log('child-beforeCreate')
+            },
+            created() {
+                console.log('child-created')
+            },
+            beforeMount() {
+                console.log('child-beforeMount')
+            },
+            mounted(){
+                console.log('child-mounted')
             }
         }
         var vm = new Vue({
@@ -105,6 +126,9 @@
                         'text-danger': this.error && this.error.type === 'fatal'
                     }
                 }
+            },
+            components:{
+                'tab':tab
             },
             beforeCreate() {
 

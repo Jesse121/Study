@@ -12,11 +12,11 @@
 export default {
   name: 'App',
   props: ['count'],
-  methods:{
-    inc() {
+  methods: {
+    inc () {
       this.$emit('increment')
     },
-    dec(){
+    dec () {
       this.$emit('decrement')
     }
   }

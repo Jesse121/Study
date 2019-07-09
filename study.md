@@ -204,6 +204,75 @@ pm2 startup
 git checkout -b test origin/test
 
 
+#### 数组中不会改变原数组且生成新数组的方法
+concat()
+`var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])`
+filter()
+`var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])`
+map()
+```js
+var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+ // Return element for new_array 
+}[, thisArg])
+```
+slice()
+`arr.slice(begin, end)`
+
+flat()方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+`var newArray = arr.flat(depth)`
+
+
+#### 牛客网js训练营暴露出的薄弱知识点
+1. arguments 是一个对应于传递给函数的参数的类数组对象。所以不能直接使用数组的方法
+
+2. [call和apply的第一个参数是null/undefined时函数内的的this指向window或global](https://www.cnblogs.com/snandy/archive/2012/03/01/2373243.html)
+
+3. 
+```
+var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+ // Return element for new_array 
+}[, thisArg])
+```
+array可选 callback  map 方法被调用的数组。
+thisArg可选，执行 callback 函数时使用的this 值
+
+4. numObj.toString([radix])
+radix 指定要用于数字到字符串的转换的基数(从2到36)。如果未指定 radix 参数，则默认值为 10。
+RangeError 如果 toString() 的 radix 参数不在 2 到 36 之间，将会抛出一个 RangeError
+
+5. str.slice(beginSlice[, endSlice])
+beginSlice
+从该索引（以 0 为基数）处开始提取原字符串中的字符。如果值为负数，会被当做 sourceLength + beginSlice 看待，这里的sourceLength 是字符串的长度 (例如， 如果beginSlice 是 -3 则看作是: sourceLength - 3)
+endSlice
+可选。在该索引（以 0 为基数）处结束提取字符串。如果省略该参数，slice会一直提取到字符串末尾。如果该参数为负数，则被看作是 sourceLength + endSlice，这里的 sourceLength 就是字符串的长度(例如，如果 endSlice 是 -3，则是, sourceLength - 3)。
+返回一个从原字符串中提取出来的新字符串
+
+6. parseInt(string, radix);
+string
+要被解析的值。如果参数不是一个字符串，则将其转换为字符串(使用  ToString 抽象操作)。字符串开头的空白符将会被忽略。
+radix
+一个介于2和36之间的整数(数学系统的基础)，表示上述字符串的基数。比如参数"10"表示使用我们通常使用的十进制数值系统。始终指定此参数可以消除阅读该代码时的困惑并且保证转换结果可预测。当未指定基数时，不同的实现会产生不同的结果，通常将值默认为10。
+注意：radix参数为n 将会把第一个参数看作是一个数的n进制表示，而返回的值则是十进制的。
+
+7. str.match(regexp)
+返回值节
+如果使用g标志，则将返回与完整正则表达式匹配的所有结果（Array），但不会返回捕获组，或者未匹配 null。
+如果未使用g标志，则仅返回第一个完整匹配及其相关的捕获组（Array）。 在这种情况下，返回的项目将具有如下所述的其他属性，或者未匹配 null。
+
+8. str.search(regexp)
+如果匹配成功，则 search() 返回正则表达式在字符串中首次匹配项的索引;否则，返回 -1。
+
+9. str.replace(regexp|substr, newSubStr|function)
+regexp (pattern)
+一个RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。
+substr (pattern)
+一个将被 newSubStr 替换的 字符串。其被视为一整个字符串，而不是一个正则表达式。仅第一个匹配项会被替换。
+newSubStr (replacement)
+用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。参考下面的使用字符串作为参数。
+function (replacement)
+一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。
+
+
 
 
 

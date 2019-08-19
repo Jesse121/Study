@@ -1,36 +1,42 @@
 const path = require('path')
 const webpack = require('webpack')
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-const htmlWebpackPlugin = require('html-webpack-plugin')
-const smp = new SpeedMeasurePlugin()
-module.exports = smp.wrap({
-    context:path.join(__dirname,'project/src'),
-    entry:'./js/index.js',
-    output:{
-        path: path.resolve(__dirname, 'project/dist'),
-        filename: './js/[name].[hash:8].js',
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
+module.exports = {
+    entry: path.resolve(__dirname, 'national-overseas/src/v2/mobile/js/recharge/test.js'),
+    output: {
+        path: path.resolve(__dirname, 'national-overseas/dist/v2/mobile'),
+        filename: 'js/recharge/test.js'
     },
-    mode:'development',
     devServer:{
-        publicPath:'/project/dist/',
+        publicPath:'/national-overseas/dist/v2/mobile/',
+        // contentBase:'/project/html/',
         port:9000,
         hot:true
     },
     module:{
         rules:[
             {
-                test:/\.js$/,
-                use:'force-strict-loader'
-            }
+                test: /\.ejs$/,
+                use: 'ejs-loader'
+            },
         ]
     },
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
-        new htmlWebpackPlugin ({
-            filename: path.resolve(__dirname, 'project/html/index.html'),
-            template: path.resolve(__dirname,'project/src/template.html')
-        })
-
+        new HtmlWebpackHarddiskPlugin()
     ]
 
-})
+}
+var conf = {
+    template: path.resolve(__dirname, './national-overseas/html/src/mobile/recharge/test.html'),
+    filename: path.resolve(__dirname, './national-overseas/html/dist/mobile/recharge/test.html'),
+    inject: true,
+    alwaysWriteToDisk: true,
+    // cache: true, // 只改动变动的文件
+    minify: {
+        removeComments: true,
+        collapseWhitespace: false
+    }
+}
+module.exports.plugins.push(new HtmlWebpackPlugin(conf))

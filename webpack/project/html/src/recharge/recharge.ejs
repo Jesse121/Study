@@ -1,0 +1,134 @@
+<main id="app" v-cloak :style="{backgroundImage:bgi}">
+    <div class="rules-btn" @touchstart="showRules = true"></div>
+    <ul class="tab" :style="{backgroundImage:levelBg}">
+        <li @touchstart="changeTab(1)"></li>
+        <li @touchstart="changeTab(2)"></li>
+    </ul>
+    <div class="explain" v-if="tab === 1">
+        <p> Top up
+        <span class="red big">$9.99</span> everyday, you can get
+        <span class="red">3 free coins</span> everyday. People who top up for 5/7/10 days will get extra
+        <span class="red">free coins</span>.</p>
+    </div>
+    <div class="explain" v-else>
+        <p> Top up
+        <span class="red big">$49.99</span> everyday, you can get
+        <span class="red">35 free coins</span> everyday. People who top up for 5/7/10 days will get extra
+        <span class="red">free coins</span>.</p>
+    </div>
+    <div class="line" :style="{backgroundImage:line}"></div>
+    <div class="content">
+        <div class="wrap" v-if="tab === 1" :style="{backgroundColor:color.level1_bg1}">
+            <ul class="inner"  :style="{backgroundColor:color.level1_bg2}">
+                <div class="title">
+                    <span>DATE</span>
+                    <span>Recharge</span>
+                    <span>Reward</span>
+                </div>
+                <li v-for="(item,index) in receiveLowLevel1_5">
+                    <div :class="['date'+(index+1)]" :style="{backgroundImage:sprite1}"></div>
+                    <div class="recharge" v-show="item.recharged === 0" @touchstart="recharge" :style="{backgroundImage:sprite1}"></div>
+                    <div class="recharged" v-show="item.recharged === 1" :style="{backgroundImage:sprite1}"></div>
+                    <div class="reward" v-show="item.received === 0"  :style="{backgroundImage:sprite1}"@touchstart="getReward('low',index,item)"></div>
+                    <div class="rewarded" v-show="item.received === 1" :style="{backgroundImage:sprite1}"></div>
+                </li>
+                <li v-for="(item,index) in extraLowLevel" v-if="index==0">
+                    <div class="extra">Extra rewards for <span>5</span> days</div>
+                    <div class="reward5" v-show="item.received === 0" :style="{backgroundImage:sprite1}"@touchstart="getReward('extraLow',0,item)"></div>
+                    <div class="rewarded5" v-show="item.received === 1" :style="{backgroundImage:sprite1}"></div>
+                </li>
+                <li v-for="(item,index) in receiveLowLevel6_7">
+                    <div :class="['date'+(index+6)]" :style="{backgroundImage:sprite1}"></div>
+                    <div class="recharge" v-show="item.recharged === 0" :style="{backgroundImage:sprite1}" @touchstart="recharge"></div>
+                    <div class="recharged" v-show="item.recharged === 1"  :style="{backgroundImage:sprite1}"></div>
+                    <div class="reward" v-show="item.received === 0" :style="{backgroundImage:sprite1}" @touchstart="getReward('low',(index+5),item)"></div>
+                    <div class="rewarded" v-show="item.received === 1" :style="{backgroundImage:sprite1}" ></div>
+                </li>
+                <li v-for="(item,index) in extraLowLevel" v-if="index==1">
+                    <div class="extra">Extra rewards for
+                        <span>7</span> days</div>
+                    <div class="reward7" v-show="item.received === 0"  :style="{backgroundImage:sprite1}" @touchstart="getReward('extraLow',1,item)"></div>
+                    <div class="rewarded7" v-show="item.received === 1" :style="{backgroundImage:sprite1}" ></div>
+                </li>
+                <li v-for="(item,index) in receiveLowLevel8_10">
+                    <div :class="['date'+(index+8)]" :style="{backgroundImage:sprite1}"></div>
+                    <div class="recharge" v-show="item.recharged === 0" :style="{backgroundImage:sprite1}" @touchstart="recharge"></div>
+                    <div class="recharged" v-show="item.recharged === 1" :style="{backgroundImage:sprite1}"></div>
+                    <div class="reward" v-show="item.received === 0" :style="{backgroundImage:sprite1}" @touchstart="getReward('low',(index+7),item)"></div>
+                    <div class="rewarded" v-show="item.received === 1" :style="{backgroundImage:sprite1}"></div>
+                </li>
+                <li v-for="(item,index) in extraLowLevel"  v-if="index==2">
+                    <div class="extra">Extra rewards for
+                        <span>10</span> days</div>
+                    <div class="reward10" v-show="item.received === 0" :style="{backgroundImage:sprite1}" @touchstart="getReward('extraLow',2,item)"></div>
+                    <div class="rewarded10" v-show="item.received === 1"  :style="{backgroundImage:sprite1}"></div>
+                </li>
+            </ul>
+            <div class="hot1"></div>
+            <div class="hot2"></div>
+        </div>
+        <div class="wrap wrap2" v-if="tab=== 2" :style="{backgroundColor:color.level2_bg1}">
+            <ul class="inner inner2" :style="{backgroundColor:color.level2_bg2}">
+                <div class="title">
+                    <span>DATE</span>
+                    <span>Recharge</span>
+                    <span>Reward</span>
+                </div>
+                <li v-for="(item,index) in receiveHighLevel1_5">
+                    <div :class="['date'+(index+1)]" :style="{backgroundImage:sprite2}"></div>
+                    <div class="recharge" v-show="item.recharged === 0" :style="{backgroundImage:sprite2}" @touchstart="recharge"></div>
+                    <div class="recharged" v-show="item.recharged === 1" :style="{backgroundImage:sprite2}"></div>
+                    <div class="reward" v-show="item.received === 0" :style="{backgroundImage:sprite2}" @touchstart="getReward('high',index,item)"></div>
+                    <div class="rewarded" v-show="item.received === 1" :style="{backgroundImage:sprite2}"></div>
+                </li>
+                <li v-for="(item,index) in extraHighLevel"  v-if="index==0">
+                    <div class="extra">Extra rewards for <span>5</span> days</div>
+                    <div class="reward5" v-show="item.received === 0" :style="{backgroundImage:sprite2}" @touchstart="getReward('extraHigh',0,item)"></div>
+                    <div class="rewarded5" v-show="item.received === 1" :style="{backgroundImage:sprite2}"></div>
+                </li>
+                <li v-for="(item,index) in receiveHighLevel6_7">
+                    <div :class="['date'+(index+6)]" :style="{backgroundImage:sprite2}"></div>
+                    <div class="recharge" v-show="item.recharged === 0" :style="{backgroundImage:sprite2}" @touchstart="recharge"></div>
+                    <div class="recharged" v-show="item.recharged === 1" :style="{backgroundImage:sprite2}"></div>
+                    <div class="reward" v-show="item.received === 0" :style="{backgroundImage:sprite2}" @touchstart="getReward('high',(index+5),item)"></div>
+                    <div class="rewarded" v-show="item.received === 1" :style="{backgroundImage:sprite2}"></div>
+                </li>
+                <li v-for="(item,index) in extraHighLevel"  v-if="index==1">
+                    <div class="extra">Extra rewards for<span>7</span> days</div>
+                    <div class="reward7" v-show="item.received === 0" :style="{backgroundImage:sprite2}" @touchstart="getReward('extraHigh',1,item)"></div>
+                        <div class="rewarded7" v-show="item.received === 1"  :style="{backgroundImage:sprite2}"></div>
+                </li>
+                <li v-for="(item,index) in receiveHighLevel8_10">
+                    <div :class="['date'+(index+8)]" :style="{backgroundImage:sprite2}"></div>
+                    <div class="recharge" v-show="item.recharged === 0" :style="{backgroundImage:sprite2}" @touchstart="recharge"></div>
+                    <div class="recharged" v-show="item.recharged === 1" :style="{backgroundImage:sprite2}"></div>
+                    <div class="reward" v-show="item.received === 0" :style="{backgroundImage:sprite2}" @touchstart="getReward('high',(index+7),item)"></div>
+                    <div class="rewarded" v-show="item.received === 1" :style="{backgroundImage:sprite2}"></div>
+                </li>
+                <li v-for="(item,index) in extraHighLevel"  v-if="index==2">
+                    <div class="extra">Extra rewards for <span>10</span> days</div>
+                    <div class="reward10" v-show="item.received === 0" :style="{backgroundImage:sprite2}" @touchstart="getReward('extraHigh',2,item)"></div>
+                    <div class="rewarded10" v-show="item.received === 1" :style="{backgroundImage:sprite2}"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom"></div>
+    <div class="bigCoin"></div>
+    <p class="explanation">The platform reserves the final explanation to this activity.</p>
+    <div class="rules-bg" v-show="showRules">
+        <div class="rules" @touchmove.prevent>
+            <ul class="rules-inner">
+                <span class="close-btn" @click="showRules = false"></span>
+                <li>1. The event is valid from {{rulesText}}.</li>
+                <li>2. During the event time, top up specific amount, you can get coins everyday. There are 2 levels top-up for you to choose.</li>
+                <li>① Level 1: top up $9.99 everyday, you can get 3 free coins everyday. People who top up for 5 days will get extra 14 coins.People who top up for 7 days will once more get extra 16 coins.People who top up for 10 days will get extra 10 coins. </li>
+                <li>② Level 2: Top up $49.99 everyday, you can get 35 free coins everyday. People who top up for 5 days will get extra 170 coins.People who top up for 7 days will once more get extra 200 coins.People who top up for 10 days will get extra 300 coins. </li>
+                <li>3. Visa, PayPal, Apply pay, Codapay, MOLPay method on "Coins" page could be counted.</li>
+                <li>4. Reward coins will be reserved for 24 hours after the event ends. Please click and get your rewards in time.</li>
+                <li>5.Any question, please contact us by "Feedback" on the "Me" page or e-mail: livestreaming.tech@gmail.com.</li>
+                <li>6. Any fake, unreasonable or illegal Top-up of any ID will be banned and please let us know if you find any behavior above.</li>
+            </ul>
+        </div>
+    </div>
+</main>

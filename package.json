@@ -1,14 +1,16 @@
 {
   "name": "study",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "cz-customizable": "^6.2.0"
+    "cz-customizable": "^6.2.0",
+    "standard-version": "^7.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",

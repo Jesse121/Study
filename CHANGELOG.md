@@ -1,0 +1,16 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 1.1.0 (2019-09-05)
+
+
+### Bug Fixes
+
+* testaddd ([cd80e72](https://github.com/Jesse121/study/commit/cd80e72))
+
+
+### Features
+
+* ss ([db055e5](https://github.com/Jesse121/study/commit/db055e5))
+* **版本:** tstaza ([bb4edc0](https://github.com/Jesse121/study/commit/bb4edc0))

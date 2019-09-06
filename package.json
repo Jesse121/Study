@@ -1,6 +1,6 @@
 {
   "name": "study",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "dependencies": {},
@@ -9,7 +9,7 @@
     "standard-version": "^7.0.0"
   },
   "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "ci": "node ./node_modules/cz-customizable/standalone.js",
     "release": "standard-version"
   },
   "repository": {
@@ -24,10 +24,5 @@
   "bugs": {
     "url": "https://github.com/Jesse121/study/issues"
   },
-  "homepage": "https://github.com/Jesse121/study#readme",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-customizable"
-    }
-  }
+  "homepage": "https://github.com/Jesse121/study#readme"
 }

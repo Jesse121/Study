@@ -1,9 +1,11 @@
 /*
  * @Date: 2019-09-05 09:10:32
  * @LastEditors: Jesse
- * @LastEditTime: 2019-09-05 09:10:32
+ * @LastEditTime: 2019-09-05 11:52:55
  */
+//https://www.npmjs.com/package/cz-customizable
 module.exports = {
+    //提交类型
     types: [
         { value: 'feat', name: 'feat:     A new feature' },
         { value: 'fix', name: 'fix:      A bug fix' },
@@ -28,14 +30,15 @@ module.exports = {
                 'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
         },
         { value: 'revert', name: 'revert:   Revert to a commit' },
+        { value: 'merge', name: 'merge:   Merge branch to a commit' },
     ],
+    // 影响范围，修改了哪些模块
+    scopes: [{ name: '当前活动' }, { name: '公共模块' }, { name: '版本' }],
 
-    scopes: [{ name: 'accounts' }, { name: 'admin' }, { name: 'exampleScope' }, { name: 'changeMe' }],
-
-    allowTicketNumber: false,
-    isTicketNumberRequired: false,
-    ticketNumberPrefix: 'TICKET-',
-    ticketNumberRegExp: '\\d{1,5}',
+    // allowTicketNumber: false,
+    // isTicketNumberRequired: false,
+    // ticketNumberPrefix: 'TICKET-',
+    // ticketNumberRegExp: '\\d{1,5}',
 
     // it needs to match the value for field type. Eg.: 'fix'
     /*
@@ -63,9 +66,9 @@ module.exports = {
     },
 
     allowCustomScopes: true,
-    allowBreakingChanges: ['feat', 'fix'],
+    // allowBreakingChanges: ['feat', 'fix'],
     // skip any questions you want
-    skipQuestions: ['body'],
+    skipQuestions: ['body','breaking','footer'],
 
     // limit subject length
     subjectLimit: 100,

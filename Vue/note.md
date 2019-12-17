@@ -89,3 +89,18 @@ new vue({
 
 #### watch
 针对某一个数据变化的更新
+
+
+
+跳转路由的几种方式：
+ 
+  1、声明式： 1) 根据路由路径（/home/sort/detail）跳转 <router-link :to="{path: '/home/sort/detail', query:{id: 'abc'}}">点击查看子页面</router-link>
+             2) 根据路由名称（detail）跳转 <router-link :to="{name: 'detail', params:{id: 'abc'}}">点击查看子页面</router-link>
+                :to=""  可以实现绑定动态的 路由 和 参数
+ 
+  2、编程式： 1） this.$router.push({path: '/home/sort/detail',query:{id: 'abc'}})
+             2） this.$router.push({name: 'detail',params:{id: 'abc'}})
+ 
+    备注： params 和 query 传参的区别：
+            1、params传参时  参数不会出现在url的路径上面， 但是刷新页面时param里面的数据会消失
+            2、query传参时   参数出现在url的路径上面， 刷新页面时query里面的数据不变

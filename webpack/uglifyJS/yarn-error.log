@@ -1,0 +1,46 @@
+Arguments: 
+  D:\Program Files\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js add webpack@3.10.0 uglifyjs-webpack-plugin@1.1.8 --dev
+
+PATH: 
+  D:\Program Files (x86)\NetSarang\Xftp 6\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\Git\cmd;D:\Program Files\TortoiseSVN\bin;D:\Program Files\TortoiseGit\bin;D:\wamp\bin\php\php5.4.3;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\HashiCorp\Vagrant\bin;D:\nvm;D:\Program Files\nodejs;D:\Program Files (x86)\Yarn\bin\;C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\Administrator\AppData\Local\Programs\Python\Python36\;C:\Users\Administrator\AppData\Roaming\npm;D:\Program Files\TortoiseSVN\bin;D:\Program Files\Git\bin;D:\wamp64\bin\mysql\mysql5.7.19\bin;D:\wamp64\bin\php\php5.6.31;D:\nvm;D:\Program Files\nodejs;C:\Users\Administrator\AppData\Local\Yarn\bin;D:\Program Files\less.js;D:\Program Files\VSCode\bin;D:\Program Files\Docker Toolbox;C:\Users\Administrator\AppData\Local\BypassRuntm
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.11.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: F:\guojiang\xingguang\trunk\static\src\pc\uglifyJS\package.json: Unexpected token } in JSON at position 273
+      at JSON.parse (<anonymous>)
+      at D:\Program Files (x86)\Yarn\lib\cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (D:\Program Files (x86)\Yarn\lib\cli.js:92:30)
+      at D:\Program Files (x86)\Yarn\lib\cli.js:103:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "uglifyjs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+      "webpack": "webpack"
+    },
+    "author": "",
+    "license": "ISC",
+    "depDevendencies": {
+      "uglifyjs-webpack-plugin": "^1.1.8",
+      "webpack": "^3.10.0"
+    },
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

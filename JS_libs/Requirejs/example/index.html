@@ -1,0 +1,28 @@
+<!--
+ * @Date: 2019-09-11 09:54:27
+ * @LastEditors: Jesse
+ * @LastEditTime: 2019-09-11 09:55:51
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">requirejs demo</h1>
+    <script src="sea-modules/sea.js"></script>
+    <script>
+      seajs.config({
+        alias: {
+          'changeText': '../static/changeText.js',
+          'jquery': '../sea-modules/jquery.js'
+          // 'main': './static/main.js'
+        }
+      });
+      seajs.use('./static/main.js');
+    </script>
+</body>
+</html>

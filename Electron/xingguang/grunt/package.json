@@ -1,0 +1,12 @@
+{
+    "name": "xingguangzhibo",
+    "version": "1.0.0",
+    "scripts": {
+        "grunt": "grunt"
+    },
+    "devDependencies": {
+        "electron-squirrel-startup": "^1.0.0",
+        "grunt": "^1.0.4",
+        "grunt-electron-installer": "^2.1.0"
+    }
+}

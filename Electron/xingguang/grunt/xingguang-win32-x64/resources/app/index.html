@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>星光直播</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height :100vh;
+            overflow: hidden;
+        }
+        button{
+            border:none;
+            width: 20px;
+            height: 20px;
+            margin:0 5px;
+            cursor: pointer;
+        }
+        #back{
+            background-image: url(./img/back.png);
+            background-size:cover;
+        }
+        #forward{
+            background-image: url(./img/forward.png);
+            background-size:cover;
+        }
+        #refresh{
+            background-image: url(./img/refresh.png);
+            background-size:cover;
+        }
+        webview {
+            width: 100vw;
+            height :100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width:100%;display:flex;flex-direction:row;background-color: #dedddd;">
+        <button id="back" onclick="goBackWebView()"></button>
+        <button id="forward" onclick="goForwardWebView()"></button>
+        <button id="refresh" onclick="refresh()"></button>
+    </div>
+    <webview src="https://www.kuaishouvideo.com/user/goLogin2?channel=pc-baizhu-7"></webview>
+    <script>
+        let webview = document.querySelector('webview')
+
+        function goBackWebView() {
+            webview.goBack()
+        }
+
+        function goForwardWebView() {
+            webview.goForward()
+        }
+        function refresh() {
+            webview.reload()
+        }
+        webview.addEventListener('dom-ready', () => {
+        const webContents = webview.getWebContents();
+        webContents.on('new-window', (event, url) => {
+            event.preventDefault();
+            webview.loadURL(url);
+        });
+        });
+
+    </script>
+</body>
+
+</html>

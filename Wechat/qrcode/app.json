@@ -1,11 +1,12 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "二维码生成器",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
 }

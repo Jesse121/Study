@@ -2,13 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
-const smp = new SpeedMeasurePlugin()
-module.exports = smp.wrap({
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+module.exports = {
     context:path.join(__dirname,'project/src'),
     entry:'./js/index.js',
     output:{
         path: path.resolve(__dirname, 'project/dist'),
-        filename: './js/[name].[hash:8].js',
+        filename: './js/[name].js',
     },
     mode:'development',
     devServer:{
@@ -25,12 +25,14 @@ module.exports = smp.wrap({
         ]
     },
     plugins:[
+        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new htmlWebpackPlugin ({
             filename: path.resolve(__dirname, 'project/html/index.html'),
-            template: path.resolve(__dirname,'project/src/template.html')
-        })
-
+            template: path.resolve(__dirname,'project/src/template.html'),
+            alwaysWriteToDisk: true
+        }),
+        new HtmlWebpackHarddiskPlugin()
     ]
 
-})
+}

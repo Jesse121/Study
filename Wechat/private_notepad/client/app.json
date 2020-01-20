@@ -3,7 +3,6 @@
     "pages/lock/lock",
     "pages/index/index",
     "pages/add/add"
-    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -11,5 +10,6 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "私密记事本",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,27 +1,27 @@
 {
   "backgroundColor": "#000",
   "backgroundTextStyle": "dark",
-  "debug":true,
-  "pages":[
+  "debug": true,
+  "pages": [
     "pages/index/index",
     "pages/about/about"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "我的博客",
-    "navigationBarTextStyle":"black",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
-    "color":"#2c2c2c",
-    "selectedColor":"#1aad19",
+    "color": "#2c2c2c",
+    "selectedColor": "#1aad19",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "博客",
         "iconPath": "res/image/note.png",
-        "selectedIconPath":"res/image/note-active.png"
+        "selectedIconPath": "res/image/note-active.png"
       },
       {
         "pagePath": "pages/about/about",
@@ -30,5 +30,6 @@
         "selectedIconPath": "res/image/me-active.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

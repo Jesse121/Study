@@ -1,8 +1,13 @@
+/*
+ * @Date: 2019-03-09 11:06:38
+ * @LastEditors: Jesse
+ * @LastEditTime: 2019-09-14 10:03:19
+ */
 var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
-    password: '123456',
+    password: '',
     port: '3306',
     database: 'node'
 });
@@ -62,9 +67,9 @@ function update() {
 }
 
 // add();
-// del();
 // query();
-update();
+// update();
+del();
 
 
 
